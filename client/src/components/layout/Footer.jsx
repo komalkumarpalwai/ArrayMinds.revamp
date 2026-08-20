@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, ArrowUpRight, Globe2, Sparkles, Building } from 'lucide-react';
-import logoImg from '../../assets/Array Minds_edited_edited.avif';
+import logoImg from '../../assets/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -85,57 +85,65 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-[#3E2178] via-[#351A68] to-[#271250] text-white pt-16 pb-8 border-t border-white/15">
+    <footer className="bg-gradient-to-b from-[#0A1128] via-[#0D1B3E] to-[#070D1E] text-white pt-16 pb-8 border-t border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main 3-Column Enterprise Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/[0.08]">
           
           {/* Column 1: Company Profile & Direct Contact (4 Cols) */}
           <div className="lg:col-span-4 space-y-6">
-            <Link to="/" className="inline-block">
+            <Link to="/" className="inline-flex items-center gap-3 group">
               <img 
                 src={logoImg} 
                 alt="Array Minds" 
-                className="h-11 w-auto object-contain hover:opacity-95 transition-opacity"
+                className="h-8 sm:h-9 w-auto object-contain hover:opacity-95 transition-opacity"
               />
+              <div className="flex flex-col justify-center">
+                <span className="text-xl font-extrabold tracking-tight text-white leading-none group-hover:text-[#7FE4EA] transition-colors">
+                  array
+                </span>
+                <span className="text-[10px] font-bold tracking-[0.28em] text-[#C7CDDA] uppercase leading-tight mt-0.5">
+                  MINDS
+                </span>
+              </div>
             </Link>
             
-            <p className="text-purple-100/85 text-sm leading-relaxed pr-3 font-normal">
+            <p className="text-[#C7CDDA] text-sm leading-relaxed pr-3 font-normal">
               Empowering global enterprises with next-generation Salesforce architecture, Custom Cloud Engineering, and Autonomous AI Solutions.
             </p>
 
             {/* Contact Details */}
-            <div className="space-y-3 pt-1 text-sm text-purple-100">
+            <div className="space-y-3 pt-1 text-sm text-[#C7CDDA]">
               <a 
                 href="mailto:info@arrayminds.com" 
-                className="flex items-center gap-3 hover:text-white group transition-colors"
+                className="flex items-center gap-3 hover:text-[#7FE4EA] group transition-colors"
               >
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#EC1557] group-hover:bg-[#EC1557] group-hover:text-white transition-all shadow-sm">
+                <div className="w-8 h-8 rounded-lg bg-white/[0.08] flex items-center justify-center text-[#00C2CB] group-hover:bg-[#00C2CB] group-hover:text-[#032B2E] transition-all shadow-sm">
                   <Mail className="w-4 h-4" />
                 </div>
                 <span className="font-medium group-hover:underline">info@arrayminds.com</span>
               </a>
 
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#EC1557]">
+                <div className="w-8 h-8 rounded-lg bg-white/[0.08] flex items-center justify-center text-[#00C2CB]">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div className="text-xs">
-                  <span className="text-purple-200/70 block">London Direct</span>
-                  <a href="tel:+447447917183" className="font-semibold text-sm hover:text-white hover:underline transition-colors">
+                  <span className="text-[#8A99B5] block">London Direct</span>
+                  <a href="tel:+447447917183" className="font-semibold text-sm hover:text-[#7FE4EA] hover:underline transition-colors text-white">
                     +44 7447 917 183
                   </a>
                 </div>
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#EC1557]">
+                <div className="w-8 h-8 rounded-lg bg-white/[0.08] flex items-center justify-center text-[#00C2CB]">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div className="text-xs">
-                  <span className="text-purple-200/70 block">India Direct</span>
-                  <a href="tel:+918754380969" className="font-semibold text-sm hover:text-white hover:underline transition-colors">
+                  <span className="text-[#8A99B5] block">India Direct</span>
+                  <a href="tel:+918754380969" className="font-semibold text-sm hover:text-[#7FE4EA] hover:underline transition-colors text-white">
                     +91 8754 380 969
                   </a>
                 </div>
@@ -151,7 +159,7 @@ const Footer = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#EC1557] flex items-center justify-center text-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-[#EC1557]/30 border border-white/10"
+                    className="w-9 h-9 rounded-xl bg-white/[0.06] hover:bg-[#00C2CB] hover:text-[#032B2E] flex items-center justify-center text-[#C7CDDA] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md hover:shadow-[#00C2CB]/30 border border-white/[0.08]"
                     aria-label={social.name}
                   >
                     {social.icon}
@@ -163,16 +171,16 @@ const Footer = () => {
 
           {/* Column 2: Navigation Links in 2 Columns (3.5 Cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-purple-200/90 border-b border-white/15 pb-2.5">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#00C2CB] border-b border-white/[0.08] pb-2.5">
               Navigation
             </h3>
             
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 pt-1 text-sm text-purple-100/90">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 pt-1 text-sm text-[#C7CDDA]">
               {quickLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="hover:text-white hover:translate-x-0.5 py-0.5 transition-all text-[13.5px] font-medium"
+                  className="hover:text-[#7FE4EA] hover:translate-x-0.5 py-0.5 transition-all text-[13.5px] font-medium"
                 >
                   {link.name}
                 </Link>
@@ -182,7 +190,7 @@ const Footer = () => {
 
           {/* Column 3: Global Hubs (5 Cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-purple-200/90 border-b border-white/15 pb-2.5">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#00C2CB] border-b border-white/[0.08] pb-2.5">
               Global Office Locations
             </h3>
             
@@ -190,7 +198,7 @@ const Footer = () => {
               {offices.map((office) => (
                 <div 
                   key={office.city} 
-                  className="p-3.5 rounded-xl bg-white/[0.07] hover:bg-white/[0.12] border border-white/10 hover:border-white/25 transition-all duration-300 shadow-sm group"
+                  className="p-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all duration-300 shadow-sm group"
                 >
                   <div className="flex items-center justify-between mb-1">
                     <div className="flex items-center gap-2">
@@ -201,13 +209,13 @@ const Footer = () => {
                     </div>
                     <a 
                       href={`tel:${office.telLink}`} 
-                      className="text-xs text-purple-200 group-hover:text-white font-medium flex items-center gap-1 hover:underline transition-colors"
+                      className="text-xs text-[#8A99B5] group-hover:text-[#7FE4EA] font-medium flex items-center gap-1 hover:underline transition-colors"
                     >
                       <span>{office.phone}</span>
-                      <ArrowUpRight className="w-3 h-3 text-[#EC1557]" />
+                      <ArrowUpRight className="w-3 h-3 text-[#00C2CB]" />
                     </a>
                   </div>
-                  <p className="text-xs text-purple-100/75 leading-relaxed pl-5">
+                  <p className="text-xs text-[#C7CDDA]/80 leading-relaxed pl-5">
                     {office.address}
                   </p>
                 </div>
@@ -217,10 +225,10 @@ const Footer = () => {
 
         </div>
 
-        {/* Bottom Bar: Clean Centered Dynamic Copyright */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-purple-200/75 gap-2">
+        {/* Bottom Bar */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8A99B5] gap-2">
           <p>© {currentYear} Array Minds. All rights reserved.</p>
-          <p className="text-purple-300/60 text-[11px]">
+          <p className="text-[#8A99B5]/80 text-[11px]">
             Enterprise Cloud, Salesforce & AI Consulting
           </p>
         </div>

@@ -17,7 +17,8 @@ router.route('/')
 router.route('/slug/:slug')
   .get(getBlogBySlug);
 
-router.route('/:id')
+router.route('/:slug')
+  .get(getBlogBySlug)
   .put(protectAdmin, updateBlog)
   .delete(protectAdmin, deleteBlog);
 

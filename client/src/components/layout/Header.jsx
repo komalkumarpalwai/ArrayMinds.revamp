@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
-import logoImg from '../../assets/Array Minds_edited_edited.avif';
+import logoImg from '../../assets/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,18 +18,26 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 shadow-md bg-gradient-to-r from-[#4E2F94] via-[#5B3BA8] to-[#6C4AB6] text-white border-b border-white/10 backdrop-blur-md">
+    <header className="sticky top-0 z-50 bg-[#0A1128]/80 bg-gradient-to-r from-[#0A1128]/90 via-[#0D1B3E]/85 to-[#1B3B6F]/90 backdrop-blur-xl text-white border-b border-white/[0.08] shadow-md transition-all duration-300">
       {/* Full-width wrapper with wide padding */}
       <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="flex items-center justify-between h-20">
           
           {/* Left: Brand Logo */}
-          <Link to="/" className="flex items-center flex-shrink-0 group">
+          <Link to="/" className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0 group py-1">
             <img 
               src={logoImg} 
               alt="Array Minds" 
-              className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02] drop-shadow-sm"
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.05]"
             />
+            <div className="flex flex-col justify-center">
+              <span className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight text-white leading-none group-hover:text-[#7FE4EA] transition-colors">
+                array
+              </span>
+              <span className="text-[9px] sm:text-[10px] md:text-[11px] font-bold tracking-[0.28em] text-[#C7CDDA] uppercase leading-tight mt-0.5">
+                MINDS
+              </span>
+            </div>
           </Link>
 
           {/* Right: Desktop Navigation + Contact Us Button */}
@@ -40,10 +48,10 @@ const Header = () => {
                   key={link.path}
                   to={link.path}
                   className={({ isActive }) =>
-                    `relative text-[15px] font-medium tracking-wide py-2 transition-all duration-200 ${
+                    `relative text-[15px] tracking-wide py-2 transition-all duration-200 ${
                       isActive
-                        ? 'text-[#FFD1DE] font-bold after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#EC1557] after:rounded-full'
-                        : 'text-white/90 hover:text-white hover:opacity-100'
+                        ? 'text-white font-bold after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#00C2CB] after:rounded-full shadow-cyan'
+                        : 'text-[#C7CDDA] hover:text-white font-medium'
                     }`
                   }
                 >
@@ -52,14 +60,14 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* High-end "Contact Us" CTA Button */}
+            {/* High-end "Contact Us" Pill CTA Button */}
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                `group relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-300 shadow-md transform hover:-translate-y-0.5 active:scale-95 whitespace-nowrap ${
+                `group relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold text-[#032B2E] bg-[#00C2CB] hover:bg-[#7FE4EA] transition-all duration-300 shadow-md shadow-[#00C2CB]/30 transform hover:-translate-y-0.5 active:scale-95 whitespace-nowrap ${
                   isActive
-                    ? 'bg-[#0070D2] hover:bg-[#005fb2] ring-2 ring-white/60 shadow-lg shadow-[#0070D2]/50'
-                    : 'bg-[#EC1557] hover:bg-[#d0104a] shadow-md shadow-[#EC1557]/30 hover:shadow-lg hover:shadow-[#EC1557]/50'
+                    ? 'ring-2 ring-white/60 shadow-lg shadow-[#00C2CB]/50'
+                    : ''
                 }`
               }
             >
@@ -73,13 +81,13 @@ const Header = () => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
-              className="p-2.5 rounded-xl bg-white/10 text-white hover:bg-white/20 focus:outline-none transition-colors"
+              className="p-2.5 rounded-xl bg-white/[0.08] text-white hover:bg-white/[0.15] border border-white/[0.1] focus:outline-none transition-colors"
               aria-label="Toggle Navigation"
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-[#EC1557]" />
+                <X className="w-6 h-6 text-[#00C2CB]" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-6 h-6 text-[#C7CDDA]" />
               )}
             </button>
           </div>
@@ -89,17 +97,17 @@ const Header = () => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#4E2F94]/98 backdrop-blur-xl border-t border-white/10 px-5 pt-4 pb-7 space-y-2.5 shadow-2xl">
+        <div className="lg:hidden bg-[#0A1128]/95 backdrop-blur-2xl border-t border-white/[0.08] px-5 pt-4 pb-7 space-y-2.5 shadow-2xl">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
               to={link.path}
               onClick={() => setMobileMenuOpen(false)}
               className={({ isActive }) =>
-                `block px-4 py-2.5 rounded-xl text-base font-medium transition-all ${
+                `block px-4 py-2.5 rounded-xl text-base transition-all ${
                   isActive
-                    ? 'bg-white/20 text-[#FFD1DE] font-bold border border-white/20'
-                    : 'text-white/90 hover:bg-white/10 hover:text-white'
+                    ? 'bg-white/[0.08] text-[#7FE4EA] font-bold border border-[#00C2CB]/40'
+                    : 'text-[#C7CDDA] hover:bg-white/[0.05] hover:text-white font-medium'
                 }`
               }
             >
@@ -110,13 +118,7 @@ const Header = () => {
             <NavLink
               to="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className={({ isActive }) =>
-                `flex items-center justify-center gap-2 w-full py-3 rounded-full text-base font-bold text-white transition-all ${
-                  isActive
-                    ? 'bg-[#0070D2] shadow-lg shadow-[#0070D2]/40 ring-2 ring-white/50'
-                    : 'bg-[#EC1557] hover:bg-[#d0104a] shadow-lg shadow-[#EC1557]/30'
-                }`
-              }
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-full text-base font-bold text-[#032B2E] bg-[#00C2CB] hover:bg-[#7FE4EA] shadow-lg shadow-[#00C2CB]/30 transition-all"
             >
               <span>Contact Us</span>
               <ArrowRight className="w-4 h-4" />

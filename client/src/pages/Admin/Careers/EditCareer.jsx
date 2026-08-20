@@ -70,7 +70,7 @@ const EditCareer = () => {
         });
       } catch (err) {
         console.error('Error fetching career:', err);
-        setError('Failed to load career details from MongoDB Atlas.');
+        setError('Failed to load career details from Salesforce.');
       } finally {
         setLoading(false);
       }
@@ -126,7 +126,7 @@ const EditCareer = () => {
     } catch (err) {
       console.error('Error updating career:', err);
       setError(
-        err.response?.data?.message || 'Failed to update career in MongoDB Atlas.'
+        err.response?.data?.message || 'Failed to update career in Salesforce.'
       );
       setSaving(false);
     }

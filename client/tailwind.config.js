@@ -8,27 +8,25 @@ export default {
     extend: {
       colors: {
         array: {
-          indigo: {
-            deep: '#2D1B54',
+          navy: {
+            deep: '#0A1128',
+            DEFAULT: '#0D1B3E',
+            steel: '#1B3B6F',
+            light: '#244D8E',
           },
-          violet: {
-            royal: '#6C4AB6',
-            logo: '#6C3FC5',
+          cyan: {
+            DEFAULT: '#00C2CB',
+            light: '#7FE4EA',
+            dark: '#032B2E',
+            glow: 'rgba(0, 194, 203, 0.25)',
           },
-          purple: {
-            heading: '#3F2A85',
+          slate: {
+            subtext: '#C7CDDA',
+            muted: '#8A99B5',
+            card: '#F8FAFC',
+            border: 'rgba(255, 255, 255, 0.08)',
           },
-          pink: {
-            hot: '#EC1557',
-            logo: '#E91E63',
-          },
-          magenta: {
-            logo: '#B23FA0',
-          },
-          gray: {
-            light: '#F5F5F7',
-          },
-          charcoal: '#1A1A1A',
+          charcoal: '#0F172A',
         },
       },
     },

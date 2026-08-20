@@ -41,6 +41,7 @@ import {
 import emeraldLogo from '../../assets/emerland.avif';
 import aesLogo from '../../assets/AES.avif';
 import propelLogo from '../../assets/propel.avif';
+import autotexLogo from '../../assets/Autotex-Logo1.png';
 
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -57,6 +58,15 @@ const Services = () => {
       company: "Emerald Tyre Manufacturers Ltd., Chennai",
       badge: "Salesforce Multi-Cloud Implementation",
       logo: emeraldLogo,
+    },
+    {
+      quote:
+        "Array Minds delivered a truly transformative digital experience for our operations. Their deep Salesforce engineering proficiency, proactive communication, and ability to map complex industrial workflows gave us unprecedented clarity across our global delivery pipelines. Highly recommended for enterprise-scale CRM implementations.",
+      author: "Executive Leadership",
+      role: "Managing Director",
+      company: "Autotex Machinery Pvt. Ltd.",
+      badge: "Industrial CRM & Automation",
+      logo: autotexLogo,
     },
     {
       quote:
@@ -103,7 +113,7 @@ const Services = () => {
       title: 'Salesforce Implementation & Rollouts',
       category: 'salesforce',
       tag: 'Core Implementation',
-      icon: <Cloud className="w-6 h-6 text-[#EC1557]" />,
+      icon: <Cloud className="w-6 h-6 text-[#00C2CB]" />,
       shortDesc: 'End-to-end architecture, multi-cloud deployment, and seamless onboarding across Sales, Service, and Experience Clouds.',
       fullDesc: 'We architect and execute turnkey Salesforce rollouts tailored to your business model. From requirement analysis and data schema modeling to multi-cloud configuration, we ensure your Salesforce ecosystem delivers maximum user adoption and operational efficiency from day one.',
       deliverables: [
@@ -121,7 +131,7 @@ const Services = () => {
       title: 'Development & Customisation (Apex & LWC)',
       category: 'salesforce',
       tag: 'Custom Engineering',
-      icon: <Code2 className="w-6 h-6 text-[#6C4AB6]" />,
+      icon: <Code2 className="w-6 h-6 text-[#1B3B6F]" />,
       shortDesc: 'High-performance Apex controllers, modern Lightning Web Components (LWC), and asynchronous batch jobs.',
       fullDesc: 'When out-of-the-box declarative tools fall short, our certified architects build bespoke, scalable programmatic solutions. We adhere to strict enterprise design patterns (Domain, Service, Selector layers) to eliminate governor limit bottlenecks and reduce technical debt.',
       deliverables: [
@@ -139,7 +149,7 @@ const Services = () => {
       title: 'WhatsApp & Telegram CRM Integrations',
       category: 'messaging',
       tag: 'Conversational Commerce',
-      icon: <Send className="w-6 h-6 text-[#EC1557]" />,
+      icon: <Send className="w-6 h-6 text-[#00C2CB]" />,
       shortDesc: 'Real-time 2-way messaging, automated lead generation, conversational AI bots, and customer support via WhatsApp & Telegram.',
       fullDesc: 'Transform customer engagement by bringing your global audience directly into Salesforce via official WhatsApp Business APIs and Telegram Bot APIs. Power automated lead capture, instant case creation, order tracking alerts, payment link dispatch, and seamless agent handoff within the Service Cloud Console.',
       deliverables: [
@@ -157,7 +167,7 @@ const Services = () => {
       title: 'AWS Connect Voice & Contact Center',
       category: 'messaging',
       tag: 'AWS & Voice CTI',
-      icon: <Headphones className="w-6 h-6 text-[#6C4AB6]" />,
+      icon: <Headphones className="w-6 h-6 text-[#1B3B6F]" />,
       shortDesc: 'Cloud telephony, intelligent IVR, omni-channel routing, and real-time voice analytics embedded inside Service Cloud.',
       fullDesc: 'Modernize your call center by integrating Amazon Connect directly into Salesforce Service Cloud Voice. Empower support representatives with screen pops, automated call logging, real-time sentiment analysis, and intelligent IVR flows powered by AWS Contact Lens.',
       deliverables: [
@@ -175,7 +185,7 @@ const Services = () => {
       title: 'Databricks Lakehouse & Data Engineering',
       category: 'databricks',
       tag: 'Databricks Partner',
-      icon: <Database className="w-6 h-6 text-[#EC1557]" />,
+      icon: <Database className="w-6 h-6 text-[#00C2CB]" />,
       shortDesc: 'Unified data platform implementation, Delta Lake architecture, and scalable ETL pipelines for zero-copy data federation.',
       fullDesc: 'As certified Databricks partners, we build robust data platforms that bridge enterprise data silos. We engineer high-throughput Delta Lake pipelines that synchronize operational CRM records with massive enterprise data lakes, giving your teams a single, accurate source of truth.',
       deliverables: [
@@ -193,7 +203,7 @@ const Services = () => {
       title: 'AI/BI Level Reports & Dashboards in Databricks',
       category: 'databricks',
       tag: 'Databricks BI & AI',
-      icon: <BarChart3 className="w-6 h-6 text-[#6C4AB6]" />,
+      icon: <BarChart3 className="w-6 h-6 text-[#1B3B6F]" />,
       shortDesc: 'Executive Lakehouse BI dashboards, predictive KPI modeling, and Databricks SQL real-time operational reporting.',
       fullDesc: 'Turn raw big data into executive clarity. We build AI/BI dashboards and Databricks SQL visualizations that monitor customer lifetime value, churn risk, revenue forecasts, and supply chain telemetry with sub-second query performance.',
       deliverables: [
@@ -211,7 +221,7 @@ const Services = () => {
       title: 'BOTs, Einstein AI & Agentforce Agents',
       category: 'salesforce',
       tag: 'Autonomous AI',
-      icon: <Bot className="w-6 h-6 text-[#EC1557]" />,
+      icon: <Bot className="w-6 h-6 text-[#00C2CB]" />,
       shortDesc: 'Autonomous Agentforce AI agents, Einstein predictive bots, and generative AI copilot setups for sales and service.',
       fullDesc: 'Deploy intelligent autonomous agents that act on behalf of your customers and employees. We configure Salesforce Agentforce and Einstein Chatbots to resolve support cases, qualify high-intent sales prospects, and execute complex workflows without human intervention.',
       deliverables: [
@@ -229,7 +239,7 @@ const Services = () => {
       title: 'Payment Gateway & FinTech Integrations',
       category: 'integrations',
       tag: 'FinTech & Payments',
-      icon: <CreditCard className="w-6 h-6 text-[#6C4AB6]" />,
+      icon: <CreditCard className="w-6 h-6 text-[#1B3B6F]" />,
       shortDesc: 'PCI-compliant checkout pipelines connecting Stripe, PayPal, Adyen, and Razorpay directly with Salesforce CPQ and Billing.',
       fullDesc: 'Enable seamless digital checkout, automated invoice collections, and subscription billing within your CRM. We build secure payment pipelines that synchronize transactions, issue automated receipts, and trigger downstream fulfillment workflows.',
       deliverables: [
@@ -247,7 +257,7 @@ const Services = () => {
       title: 'Live Delivery & Logistics Tracking Integrations',
       category: 'integrations',
       tag: 'Logistics & Fleet',
-      icon: <Truck className="w-6 h-6 text-[#EC1557]" />,
+      icon: <Truck className="w-6 h-6 text-[#00C2CB]" />,
       shortDesc: 'Real-time carrier webhooks (FedEx, DHL, custom fleets) and GPS telemetry synced into the Salesforce Order Management cockpit.',
       fullDesc: 'Give your operations and support reps complete visibility into parcel transit. We connect major logistics APIs and IoT fleet trackers into Salesforce to display real-time map positions, estimated delivery milestones, and automated exception notifications.',
       deliverables: [
@@ -265,7 +275,7 @@ const Services = () => {
       title: 'SAP Integration with Salesforce',
       category: 'integrations',
       tag: 'Enterprise ERP Sync',
-      icon: <Server className="w-6 h-6 text-[#6C4AB6]" />,
+      icon: <Server className="w-6 h-6 text-[#1B3B6F]" />,
       shortDesc: 'Bidirectional synchronization of ERP master data, inventory levels, sales orders, and invoices between SAP and Salesforce.',
       fullDesc: 'Eliminate manual data re-entry between your front-office CRM and back-office ERP. We build high-throughput, bidirectional middleware pipelines between SAP ECC / S4HANA and Salesforce, ensuring inventory, pricing tiers, and credit checks are always in sync.',
       deliverables: [
@@ -283,7 +293,7 @@ const Services = () => {
       title: 'Admin Support & Managed Maintenance',
       category: 'support',
       tag: 'Managed Services',
-      icon: <LifeBuoy className="w-6 h-6 text-[#EC1557]" />,
+      icon: <LifeBuoy className="w-6 h-6 text-[#00C2CB]" />,
       shortDesc: 'Dedicated Salesforce administration, routine maintenance, release updates, user permissions, and 24/7 SLA-backed support.',
       fullDesc: 'Ensure your CRM environment runs smoothly without the overhead of hiring an in-house team. Our certified administrators manage day-to-day user tickets, configure reports, monitor system health, and implement seasonal release features proactively.',
       deliverables: [
@@ -301,7 +311,7 @@ const Services = () => {
       title: 'Salesforce Consultation & Health Check',
       category: 'support',
       tag: 'Audit & Review',
-      icon: <ShieldCheck className="w-6 h-6 text-[#6C4AB6]" />,
+      icon: <ShieldCheck className="w-6 h-6 text-[#1B3B6F]" />,
       shortDesc: 'Technical debt audits, governor limit health assessments, security reviews, and architectural optimization roadmaps.',
       fullDesc: 'Is your Salesforce instance slowing down, hitting governor limits, or burdened with legacy technical debt? Our senior architects perform an exhaustive 360-degree audit across your codebase, schema, and security settings to deliver an actionable remediation plan.',
       deliverables: [
@@ -319,7 +329,7 @@ const Services = () => {
       title: 'AppExchange Product Development (ISV)',
       category: 'salesforce',
       tag: 'AppExchange Packaging',
-      icon: <Award className="w-6 h-6 text-[#EC1557]" />,
+      icon: <Award className="w-6 h-6 text-[#00C2CB]" />,
       shortDesc: 'Design, 2GP managed packaging, security review preparation, and licensing architecture for commercial AppExchange products.',
       fullDesc: 'Turn your software product into a thriving Salesforce AppExchange business. Having built and published multiple top-rated AppExchange tools (Data Drift, Batch Me, Product Finder), we guide ISVs through the entire lifecycle from architecture to passing the Salesforce Security Review.',
       deliverables: [
@@ -337,7 +347,7 @@ const Services = () => {
       title: 'Sprout Social & Omnichannel Marketing Integration',
       category: 'integrations',
       tag: 'Marketing Integrations',
-      icon: <Workflow className="w-6 h-6 text-[#6C4AB6]" />,
+      icon: <Workflow className="w-6 h-6 text-[#1B3B6F]" />,
       shortDesc: 'Connecting Sprout Social, marketing engines, and customer listening streams directly into Salesforce CRM records.',
       fullDesc: 'Bridge your social marketing intelligence with customer accounts. We connect Sprout Social, social listening streams, and advertising pipelines directly into Salesforce to trigger automatic lead scoring, customer sentiment alerts, and proactive outreach.',
       deliverables: [
@@ -355,7 +365,7 @@ const Services = () => {
       title: 'Experience Cloud with Enterprise SSO',
       category: 'salesforce',
       tag: 'Portals & SSO',
-      icon: <Users className="w-6 h-6 text-[#EC1557]" />,
+      icon: <Users className="w-6 h-6 text-[#00C2CB]" />,
       shortDesc: 'Branded customer, partner, and vendor portals with enterprise SAML / OAuth Single Sign-On and granular security.',
       fullDesc: 'Build high-performance self-service portals and partner communities. We deploy customized Experience Cloud sites integrated with your corporate identity providers (Okta, Azure AD, Ping Identity) for effortless single sign-on.',
       deliverables: [
@@ -373,7 +383,7 @@ const Services = () => {
       title: 'Salesforce Migration & Data Cleanup',
       category: 'salesforce',
       tag: 'Zero-Downtime Migration',
-      icon: <RefreshCw className="w-6 h-6 text-[#6C4AB6]" />,
+      icon: <RefreshCw className="w-6 h-6 text-[#1B3B6F]" />,
       shortDesc: 'Flawless data transition from legacy CRMs with automated deduplication, normalization, and relational schema mapping.',
       fullDesc: 'Migrating from HubSpot, Microsoft Dynamics, Zoho, or legacy on-prem systems? We ensure zero data loss and minimal business interruption through rigorous ETL mapping, data deduplication, and staging validation before final production cutover.',
       deliverables: [
@@ -391,7 +401,7 @@ const Services = () => {
       title: 'Slack Migration & Workflow Automation',
       category: 'messaging',
       tag: 'Team Collaboration',
-      icon: <MessageSquare className="w-6 h-6 text-[#EC1557]" />,
+      icon: <MessageSquare className="w-6 h-6 text-[#00C2CB]" />,
       shortDesc: 'Connecting Slack directly with Salesforce records for real-time deal alerts, approvals, and team swarm workflows.',
       fullDesc: 'Empower your sales and support teams to work where they already communicate. We deploy bidirectional Slack + Salesforce integrations that deliver real-time deal stage notifications, case swarming channels, and 1-click approvals directly within Slack.',
       deliverables: [
@@ -409,7 +419,7 @@ const Services = () => {
       title: 'HubSpot CRM & Marketing Automation',
       category: 'crm-platforms',
       tag: 'Growth & Inbound',
-      icon: <Sparkles className="w-6 h-6 text-[#FF7A59]" />,
+      icon: <Sparkles className="w-6 h-6 text-[#00C2CB]" />,
       shortDesc: 'Turnkey HubSpot CRM setup, marketing automation pipelines, customer journey orchestration, and bidirectional Salesforce sync.',
       fullDesc: 'Empower your revenue teams with full-lifecycle HubSpot implementation. We configure Sales Hub, Marketing Hub, Service Hub, and Operations Hub with custom lead scoring, automated sequences, advanced reporting dashboards, and frictionless integrations.',
       deliverables: [
@@ -427,7 +437,7 @@ const Services = () => {
       title: 'Zoho CRM & Ecosystem Architecture',
       category: 'crm-platforms',
       tag: 'Enterprise Scalability',
-      icon: <Layers className="w-6 h-6 text-[#EC1557]" />,
+      icon: <Layers className="w-6 h-6 text-[#1B3B6F]" />,
       shortDesc: 'Custom Zoho CRM deployment, Deluge scripting, blueprint orchestration, and multi-app Zoho One integrations.',
       fullDesc: 'Accelerate business agility with bespoke Zoho CRM and Zoho One solutions. From automated lead distribution and custom module creation to Deluge scripting, third-party ERP integrations, and custom analytics dashboards.',
       deliverables: [
@@ -472,38 +482,38 @@ const Services = () => {
   };
 
   const handleSearchSubmit = (e) => {
-    if (e) e.preventDefault();
+    e.preventDefault();
     scrollToServices();
   };
 
   return (
-    <div ref={containerRef} className="w-full bg-[#F8F9FD] text-[#1E113F] overflow-hidden">
+    <div ref={containerRef} className="w-full bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
       
       {/* ========================================================================= */}
       {/* 1. HERO HEADER SECTION */}
       {/* ========================================================================= */}
-      <section className="relative bg-gradient-to-br from-[#4E2F94] via-[#5B3BA8] to-[#6C4AB6] text-white py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden shadow-xl">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#EC1557]/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#6C4AB6]/40 rounded-full blur-3xl pointer-events-none"></div>
+      <section className="relative bg-gradient-to-br from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden shadow-xl">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#00C2CB]/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#1B3B6F]/40 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative max-w-5xl mx-auto text-center space-y-6">
           
           {/* Alliance Badge */}
-          <div className="gsap-service-hero inline-flex items-center gap-3 p-1.5 px-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-inner">
+          <div className="gsap-service-hero inline-flex items-center gap-3 p-1.5 px-5 rounded-full bg-white/[0.08] border border-white/[0.1] backdrop-blur-md shadow-inner">
             <span className="text-xs sm:text-sm font-semibold tracking-wide text-white flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#FFD1DE]" />
+              <Sparkles className="w-4 h-4 text-[#7FE4EA]" />
               <span>Full-Lifecycle Enterprise Solutions</span>
             </span>
           </div>
 
           <h1 className="gsap-service-hero text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
             Comprehensive Services. <br />
-            <span className="bg-gradient-to-r from-white via-purple-100 to-[#FFD1DE] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#7FE4EA] via-[#00C2CB] to-[#7FE4EA] bg-clip-text text-transparent">
               Engineered for Enterprise Scale.
             </span>
           </h1>
 
-          <p className="gsap-service-hero text-base sm:text-xl text-purple-100/90 font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="gsap-service-hero text-base sm:text-xl text-[#C7CDDA] font-light max-w-3xl mx-auto leading-relaxed">
             From multi-cloud Salesforce architectures and Databricks Lakehouse data engineering to WhatsApp/Telegram conversational pipelines and 24/7 managed support.
           </p>
 
@@ -523,11 +533,11 @@ const Services = () => {
                     handleSearchSubmit(e);
                   }
                 }}
-                className="w-full pl-12 pr-28 py-3.5 rounded-full bg-white text-gray-800 placeholder-gray-400 text-sm shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#EC1557]"
+                className="w-full pl-12 pr-28 py-3.5 rounded-full bg-white text-gray-800 placeholder-gray-400 text-sm shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#00C2CB]"
               />
               <button
                 type="submit"
-                className="absolute right-2 px-5 py-2 rounded-full bg-[#EC1557] hover:bg-[#d0104a] text-white text-xs font-bold shadow-md transition-all transform hover:scale-105 active:scale-95"
+                className="absolute right-2 px-5 py-2 rounded-full bg-[#00C2CB] hover:bg-[#7FE4EA] text-[#032B2E] text-xs font-bold shadow-md transition-all transform hover:scale-105 active:scale-95"
               >
                 Search
               </button>
@@ -538,7 +548,7 @@ const Services = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. CATEGORY FILTER TABS (CLEAN WRAP LAYOUT - NO SCROLLBAR) */}
+      {/* 2. CATEGORY FILTER TABS */}
       {/* ========================================================================= */}
       <section className="py-5 bg-white border-b border-gray-200 sticky top-20 z-40 shadow-xs backdrop-blur-md bg-white/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -549,8 +559,8 @@ const Services = () => {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 ${
                   activeCategory === cat.id
-                    ? 'bg-[#2D1B54] text-white shadow-md scale-105'
-                    : 'bg-[#F8F9FD] text-gray-700 hover:bg-purple-50 hover:text-[#2D1B54] border border-gray-200 hover:border-purple-200'
+                    ? 'bg-[#0A1128] text-white shadow-md scale-105'
+                    : 'bg-[#F8FAFC] text-gray-700 hover:bg-slate-100 hover:text-[#0A1128] border border-gray-200 hover:border-slate-300'
                 }`}
               >
                 {cat.name}
@@ -570,7 +580,7 @@ const Services = () => {
             <p className="text-xl font-bold text-gray-700">No services match your search query.</p>
             <button
               onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
-              className="px-6 py-2.5 rounded-full bg-[#EC1557] text-white font-bold text-sm"
+              className="px-6 py-2.5 rounded-full bg-[#00C2CB] text-[#032B2E] font-bold text-sm"
             >
               Reset Filters
             </button>
@@ -581,24 +591,24 @@ const Services = () => {
               <div
                 key={service.id}
                 id={service.id}
-                className="animate-fade-in-up bg-white rounded-3xl border border-gray-200/80 hover:border-[#6C4AB6]/60 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group transform hover:-translate-y-1"
+                className="animate-fade-in-up bg-white rounded-3xl border border-gray-200/80 hover:border-[#00C2CB] shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group transform hover:-translate-y-1"
               >
                 {/* Card Top Section */}
                 <div className="p-7 space-y-5">
                   
                   {/* Icon & Tag */}
                   <div className="flex items-center justify-between">
-                    <div className="p-3.5 rounded-2xl bg-[#F8F9FD] border border-gray-100 shadow-xs group-hover:scale-110 transition-transform duration-300">
+                    <div className="p-3.5 rounded-2xl bg-[#F8FAFC] border border-gray-100 shadow-xs group-hover:scale-110 transition-transform duration-300">
                       {service.icon}
                     </div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-purple-50 text-[#2D1B54] border border-purple-200/60">
+                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#E0F7FA] text-[#00838F] border border-[#00C2CB]/30">
                       {service.tag}
                     </span>
                   </div>
 
                   {/* Title & Short Description */}
                   <div className="space-y-2">
-                    <h3 className="text-xl font-extrabold text-[#2D1B54] group-hover:text-[#EC1557] transition-colors leading-snug">
+                    <h3 className="text-xl font-extrabold text-[#0A1128] group-hover:text-[#1B3B6F] transition-colors leading-snug">
                       {service.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
@@ -614,7 +624,7 @@ const Services = () => {
                     <div className="space-y-2">
                       {service.deliverables.map((deliv, dIdx) => (
                         <div key={dIdx} className="flex items-start gap-2.5 text-xs text-gray-700">
-                          <CheckCircle2 className="w-4 h-4 text-[#EC1557] flex-shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-[#00C2CB] flex-shrink-0 mt-0.5" />
                           <span>{deliv}</span>
                         </div>
                       ))}
@@ -624,7 +634,7 @@ const Services = () => {
                 </div>
 
                 {/* Card Bottom: Tech Stack & CTA */}
-                <div className="p-6 bg-[#F8F9FD] border-t border-gray-100 space-y-4">
+                <div className="p-6 bg-[#F8FAFC] border-t border-gray-100 space-y-4">
                   <div className="flex flex-wrap gap-1.5">
                     {service.techStack.map((tech, tIdx) => (
                       <span key={tIdx} className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-white border border-gray-200 text-gray-700">
@@ -635,7 +645,7 @@ const Services = () => {
 
                   <Link
                     to="/contact"
-                    className="inline-flex items-center justify-between w-full p-3 px-4 rounded-xl bg-[#2D1B54] hover:bg-[#EC1557] text-white text-xs sm:text-sm font-bold transition-all duration-300 shadow-xs"
+                    className="inline-flex items-center justify-between w-full p-3 px-4 rounded-xl bg-[#0A1128] hover:bg-[#00C2CB] hover:text-[#032B2E] text-white text-xs sm:text-sm font-bold transition-all duration-300 shadow-xs"
                   >
                     <span>Inquire About This Service</span>
                     <ArrowRight className="w-4 h-4" />
@@ -654,10 +664,10 @@ const Services = () => {
       {/* ========================================================================= */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#EC1557]">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#00838F] bg-[#E0F7FA] px-3 py-1 rounded-full border border-[#00C2CB]/30">
             Proven Engineering Framework
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-[#2D1B54]">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0A1128]">
             How We Deliver Enterprise Excellence
           </h2>
           <p className="text-sm sm:text-base text-gray-600 font-light">
@@ -668,32 +678,32 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
           <div className="p-6 rounded-3xl bg-white border border-gray-200/80 shadow-md space-y-4 relative">
-            <span className="text-3xl font-black text-[#6C4AB6]/20">01</span>
-            <h3 className="text-lg font-bold text-[#2D1B54]">Discovery & Architecture Audit</h3>
+            <span className="text-3xl font-black text-[#1B3B6F]/20">01</span>
+            <h3 className="text-lg font-bold text-[#0A1128]">Discovery & Architecture Audit</h3>
             <p className="text-xs text-gray-600 leading-relaxed">
               We analyze your systems, data models, and business objectives to design a bulletproof architectural roadmap.
             </p>
           </div>
 
           <div className="p-6 rounded-3xl bg-white border border-gray-200/80 shadow-md space-y-4 relative">
-            <span className="text-3xl font-black text-[#EC1557]/20">02</span>
-            <h3 className="text-lg font-bold text-[#2D1B54]">Agile Sprints & Development</h3>
+            <span className="text-3xl font-black text-[#00C2CB]/20">02</span>
+            <h3 className="text-lg font-bold text-[#0A1128]">Agile Sprints & Development</h3>
             <p className="text-xs text-gray-600 leading-relaxed">
               Two-week sprint cycles with live demos, transparent backlog tracking, and rigorous peer code reviews.
             </p>
           </div>
 
           <div className="p-6 rounded-3xl bg-white border border-gray-200/80 shadow-md space-y-4 relative">
-            <span className="text-3xl font-black text-[#6C4AB6]/20">03</span>
-            <h3 className="text-lg font-bold text-[#2D1B54]">Testing & Staging Sandbox</h3>
+            <span className="text-3xl font-black text-[#1B3B6F]/20">03</span>
+            <h3 className="text-lg font-bold text-[#0A1128]">Testing & Staging Sandbox</h3>
             <p className="text-xs text-gray-600 leading-relaxed">
               Comprehensive end-to-end regression, security checks, and mock migrations in full sandbox environments.
             </p>
           </div>
 
           <div className="p-6 rounded-3xl bg-white border border-gray-200/80 shadow-md space-y-4 relative">
-            <span className="text-3xl font-black text-[#EC1557]/20">04</span>
-            <h3 className="text-lg font-bold text-[#2D1B54]">Zero-Downtime Launch & SLA</h3>
+            <span className="text-3xl font-black text-[#00C2CB]/20">04</span>
+            <h3 className="text-lg font-bold text-[#0A1128]">Zero-Downtime Launch & SLA</h3>
             <p className="text-xs text-gray-600 leading-relaxed">
               Seamless production deployment backed by dedicated post-launch support and continuous SLA monitoring.
             </p>
@@ -703,17 +713,17 @@ const Services = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. CLIENT TESTIMONIALS SECTION (SMOOTH HORIZONTAL SLIDER WITH HOVER PAUSE & DRAIN TIMER) */}
+      {/* 6. CLIENT TESTIMONIALS SECTION */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-[#2D1B54] text-white relative overflow-hidden shadow-2xl">
+      <section className="py-20 bg-gradient-to-br from-[#0A1128] via-[#0D1B3E] to-[#1B3B6F] text-white relative overflow-hidden shadow-2xl">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center space-y-3 mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#FFD1DE] text-xs font-bold uppercase tracking-wider border border-white/20">
-              <Quote className="w-3.5 h-3.5 text-[#EC1557]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] text-[#7FE4EA] text-xs font-bold uppercase tracking-wider border border-[#00C2CB]/30">
+              <Quote className="w-3.5 h-3.5 text-[#00C2CB]" />
               <span>Client Success Stories</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
               What Our Clients Say
             </h2>
           </div>
@@ -722,9 +732,9 @@ const Services = () => {
           <div 
             onMouseEnter={() => setIsTestimonialHovered(true)}
             onMouseLeave={() => setIsTestimonialHovered(false)}
-            className="relative p-6 sm:p-12 rounded-3xl bg-white/5 border border-white/15 backdrop-blur-xl shadow-2xl overflow-hidden"
+            className="relative p-6 sm:p-12 rounded-3xl bg-white/[0.04] border border-white/[0.08] backdrop-blur-xl shadow-2xl overflow-hidden"
           >
-            <Quote className="w-12 h-12 text-[#EC1557]/40 mb-3 ml-2" />
+            <Quote className="w-12 h-12 text-[#00C2CB]/30 mb-3 ml-2" />
             
             {/* Smooth Sliding Viewport */}
             <div className="overflow-hidden">
@@ -734,34 +744,34 @@ const Services = () => {
               >
                 {testimonials.map((item, idx) => (
                   <div key={idx} className="w-full flex-shrink-0 px-2 sm:px-4">
-                    <p className="text-base sm:text-xl text-purple-100 leading-relaxed italic font-light min-h-[140px] sm:min-h-[110px]">
+                    <p className="text-base sm:text-xl text-[#C7CDDA] leading-relaxed italic font-light min-h-[140px] sm:min-h-[110px]">
                       "{item.quote}"
                     </p>
 
                     {/* Embedded Client Logo */}
                     {item.logo && (
                       <div className="my-6 flex justify-center">
-                        <div className="p-3 px-6 rounded-2xl bg-white shadow-md flex items-center justify-center">
+                        <div className="w-48 h-16 p-2.5 px-6 rounded-2xl bg-white shadow-md flex items-center justify-center">
                           <img 
                             src={item.logo} 
                             alt={item.company} 
-                            className="h-10 md:h-12 w-auto object-contain"
+                            className="max-h-9 max-w-[140px] w-auto h-auto object-contain"
                           />
                         </div>
                       </div>
                     )}
 
-                    <div className="pt-6 mt-6 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="pt-6 mt-6 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <div>
                         <h4 className="text-lg font-bold text-white">
                           {item.author}
                         </h4>
-                        <p className="text-xs sm:text-sm text-purple-200">
-                          {item.role} — <span className="text-[#FFD1DE] font-semibold">{item.company}</span>
+                        <p className="text-xs sm:text-sm text-[#8A99B5]">
+                          {item.role} — <span className="text-[#7FE4EA] font-semibold">{item.company}</span>
                         </p>
                       </div>
 
-                      <span className="self-start sm:self-auto text-xs font-bold px-3 py-1 rounded-full bg-[#EC1557]/20 border border-[#EC1557]/40 text-[#FFD1DE]">
+                      <span className="self-start sm:self-auto text-xs font-bold px-3 py-1 rounded-full bg-[#00C2CB]/20 border border-[#00C2CB]/40 text-[#7FE4EA]">
                         {item.badge}
                       </span>
                     </div>
@@ -770,7 +780,7 @@ const Services = () => {
               </div>
             </div>
 
-            {/* Clean Animated Slide Indicators with 4-3-2-1 Countdown Progress Drain */}
+            {/* Clean Animated Slide Indicators with Progress Drain */}
             <div className="flex items-center justify-center gap-2.5 pt-8">
               {testimonials.map((_, idx) => (
                 <button
@@ -786,7 +796,7 @@ const Services = () => {
                   {currentTestimonial === idx && (
                     <div 
                       key={currentTestimonial}
-                      className={`h-full bg-gradient-to-r from-[#EC1557] to-[#FF6B8B] rounded-full ${
+                      className={`h-full bg-[#00C2CB] rounded-full ${
                         isTestimonialHovered ? 'w-full' : 'animate-reduce-bar'
                       }`}
                     ></div>
@@ -804,12 +814,12 @@ const Services = () => {
       {/* 7. CALL TO ACTION BANNER */}
       {/* ========================================================================= */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-[#4E2F94] via-[#5B3BA8] to-[#6C4AB6] text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left relative overflow-hidden">
+        <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left relative overflow-hidden border border-white/[0.08]">
           <div className="space-y-3 max-w-2xl relative z-10">
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
               Ready to Accelerate Your Enterprise Architecture?
             </h2>
-            <p className="text-purple-100 text-sm sm:text-base font-light">
+            <p className="text-[#C7CDDA] text-sm sm:text-base font-light">
               Connect with our certified Salesforce & Databricks architects for a comprehensive discovery session.
             </p>
           </div>
@@ -817,7 +827,7 @@ const Services = () => {
           <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">
             <Link
               to="/contact"
-              className="px-8 py-3.5 rounded-full text-base font-bold text-white bg-[#EC1557] hover:bg-[#d0104a] shadow-lg shadow-[#EC1557]/40 transition-all transform hover:-translate-y-0.5 whitespace-nowrap"
+              className="px-8 py-3.5 rounded-full text-base font-bold text-[#032B2E] bg-[#00C2CB] hover:bg-[#7FE4EA] shadow-lg shadow-[#00C2CB]/30 transition-all transform hover:-translate-y-0.5 whitespace-nowrap"
             >
               Schedule an Architectural Consultation
             </Link>

@@ -27,6 +27,7 @@ import EditBlog from '../pages/Admin/Blogs/EditBlog';
 import CareerManagement from '../pages/Admin/Careers/CareerManagement';
 import CreateCareer from '../pages/Admin/Careers/CreateCareer';
 import EditCareer from '../pages/Admin/Careers/EditCareer';
+import CareerSubmissions from '../pages/Admin/CareerSubmissions/CareerSubmissions';
 import ContactSubmissions from '../pages/Admin/ContactSubmissions/ContactSubmissions';
 
 const AppRoutes = () => {
@@ -59,6 +60,7 @@ const AppRoutes = () => {
           <Route path="/admin/careers" element={<CareerManagement />} />
           <Route path="/admin/careers/create" element={<CreateCareer />} />
           <Route path="/admin/careers/edit/:id" element={<EditCareer />} />
+          <Route path="/admin/career-submissions" element={<CareerSubmissions />} />
           <Route path="/admin/contact-submissions" element={<ContactSubmissions />} />
         </Route>
       </Route>

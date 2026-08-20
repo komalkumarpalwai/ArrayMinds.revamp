@@ -52,32 +52,32 @@ const Products = () => {
         {
           title: 'Effortless CSV Imports',
           desc: 'Easily upload bulk data into Salesforce from CSV files for Leads, Accounts, Contacts, or Opportunities.',
-          icon: <FileSpreadsheet className="w-5 h-5 text-[#EC1557]" />
+          icon: <FileSpreadsheet className="w-5 h-5 text-[#00C2CB]" />
         },
         {
           title: 'Streamlined Field Mapping',
           desc: 'Automatically map CSV headers to standard and custom Salesforce fields for accurate data placement.',
-          icon: <RefreshCw className="w-5 h-5 text-[#6C4AB6]" />
+          icon: <RefreshCw className="w-5 h-5 text-[#1B3B6F]" />
         },
         {
           title: 'Flexible Operations (Insert, Update, Upsert)',
           desc: 'Choose from insert, update, or upsert operations matching your exact business workflow requirements.',
-          icon: <Layers className="w-5 h-5 text-[#EC1557]" />
+          icon: <Layers className="w-5 h-5 text-[#00C2CB]" />
         },
         {
           title: 'Real-Time Progress Tracking',
           desc: 'Live upload execution indicators, percentage progress, and immediate notifications upon completion.',
-          icon: <Clock className="w-5 h-5 text-[#6C4AB6]" />
+          icon: <Clock className="w-5 h-5 text-[#1B3B6F]" />
         },
         {
           title: 'Comprehensive Error Logging',
           desc: 'Access detailed error logs and export row-level diagnostic reports for fast troubleshooting.',
-          icon: <ShieldCheck className="w-5 h-5 text-[#EC1557]" />
+          icon: <ShieldCheck className="w-5 h-5 text-[#00C2CB]" />
         },
         {
           title: 'Multi-Object Batch Support',
           desc: 'Manage and orchestrate data uploads across up to three related Salesforce objects simultaneously.',
-          icon: <Database className="w-5 h-5 text-[#6C4AB6]" />
+          icon: <Database className="w-5 h-5 text-[#1B3B6F]" />
         }
       ],
       highlights: [
@@ -104,32 +104,32 @@ const Products = () => {
         {
           title: 'Effortless Batch Scheduling',
           desc: 'Configure, schedule, and automate recurring batch jobs directly within Salesforce with just a few clicks.',
-          icon: <Clock className="w-5 h-5 text-[#EC1557]" />
+          icon: <Clock className="w-5 h-5 text-[#00C2CB]" />
         },
         {
           title: 'Automate Data Operations',
           desc: 'Execute and orchestrate batch operations for both standard and custom Salesforce objects seamlessly.',
-          icon: <Zap className="w-5 h-5 text-[#6C4AB6]" />
+          icon: <Zap className="w-5 h-5 text-[#1B3B6F]" />
         },
         {
           title: 'Streamlined Workflows',
           desc: 'Simplify complex data manipulation pipelines and eliminate repetitive manual data maintenance tasks.',
-          icon: <RefreshCw className="w-5 h-5 text-[#EC1557]" />
+          icon: <RefreshCw className="w-5 h-5 text-[#00C2CB]" />
         },
         {
           title: 'Real-Time Job Monitoring',
           desc: 'Track batch execution statuses, throughput, and performance with built-in dashboard telemetry.',
-          icon: <Layers className="w-5 h-5 text-[#6C4AB6]" />
+          icon: <Layers className="w-5 h-5 text-[#1B3B6F]" />
         },
         {
           title: 'Built-in Error Recovery',
           desc: 'Benefit from automated error handling and resilient rollback mechanisms for reliable data integrity.',
-          icon: <ShieldCheck className="w-5 h-5 text-[#EC1557]" />
+          icon: <ShieldCheck className="w-5 h-5 text-[#00C2CB]" />
         },
         {
           title: 'No Coding Required',
           desc: 'Empower Salesforce admins with a visual interface that minimizes reliance on specialized developers.',
-          icon: <Cpu className="w-5 h-5 text-[#6C4AB6]" />
+          icon: <Cpu className="w-5 h-5 text-[#1B3B6F]" />
         }
       ],
       highlights: [
@@ -156,32 +156,32 @@ const Products = () => {
         {
           title: 'Fast Multi-Filter Search',
           desc: 'Use advanced multi-attribute filters to instantly locate catalog products for Opportunities, Quotes, and Orders.',
-          icon: <Search className="w-5 h-5 text-[#EC1557]" />
+          icon: <Search className="w-5 h-5 text-[#00C2CB]" />
         },
         {
           title: 'Unified Single-Screen Actions',
           desc: 'Add, edit, adjust quantities, discount lines, and delete products all within a high-speed modal interface.',
-          icon: <Layers className="w-5 h-5 text-[#6C4AB6]" />
+          icon: <Layers className="w-5 h-5 text-[#1B3B6F]" />
         },
         {
           title: 'Automated Duplicate Prevention',
           desc: 'Intelligent validation rules automatically prevent duplicate product line items from entering finalized quotes.',
-          icon: <ShieldCheck className="w-5 h-5 text-[#EC1557]" />
+          icon: <ShieldCheck className="w-5 h-5 text-[#00C2CB]" />
         },
         {
           title: 'Flexible Viewing Modes',
           desc: 'Seamlessly switch between popup overlay windows and dedicated tab views depending on user preference.',
-          icon: <Filter className="w-5 h-5 text-[#6C4AB6]" />
+          icon: <Filter className="w-5 h-5 text-[#1B3B6F]" />
         },
         {
           title: 'Auto-Populate Data Fields',
           desc: 'Automatically cascade pre-configured fields and pricebook tiers for quick, error-free data entry.',
-          icon: <Zap className="w-5 h-5 text-[#EC1557]" />
+          icon: <Zap className="w-5 h-5 text-[#00C2CB]" />
         },
         {
           title: 'Pricebook & Multi-Currency Ready',
           desc: 'Full enterprise compatibility with standard/custom pricebooks, localized currencies, and volume pricing.',
-          icon: <Award className="w-5 h-5 text-[#6C4AB6]" />
+          icon: <Award className="w-5 h-5 text-[#1B3B6F]" />
         }
       ],
       highlights: [
@@ -216,7 +216,7 @@ const Products = () => {
     setTimeout(() => {
       const target = document.getElementById(tabId === 'all' ? 'products-showcase' : tabId);
       if (target) {
-        const yOffset = -90;
+        const yOffset = -100;
         const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
@@ -224,20 +224,20 @@ const Products = () => {
   };
 
   return (
-    <div ref={containerRef} className="w-full bg-[#F8F9FD] text-[#1E113F] overflow-hidden">
+    <div ref={containerRef} className="w-full bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
       
       {/* ========================================================================= */}
       {/* 1. HERO HEADER SECTION */}
       {/* ========================================================================= */}
-      <section className="relative bg-gradient-to-br from-[#4E2F94] via-[#5B3BA8] to-[#6C4AB6] text-white py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden shadow-xl">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#EC1557]/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#6C4AB6]/40 rounded-full blur-3xl pointer-events-none"></div>
+      <section className="relative bg-gradient-to-br from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden shadow-xl">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#00C2CB]/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#1B3B6F]/40 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative max-w-5xl mx-auto text-center space-y-6">
           
           {/* AppExchange Partner Ribbon */}
-          <div className="gsap-products-hero inline-flex items-center gap-2 p-1.5 px-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-inner">
-            <Cloud className="w-4 h-4 text-[#00A1E0]" />
+          <div className="gsap-products-hero inline-flex items-center gap-2 p-1.5 px-5 rounded-full bg-white/[0.08] border border-white/[0.1] backdrop-blur-md shadow-inner">
+            <Cloud className="w-4 h-4 text-[#7FE4EA]" />
             <span className="text-xs sm:text-sm font-semibold tracking-wide text-white">
               Official Salesforce AppExchange Applications
             </span>
@@ -245,12 +245,12 @@ const Products = () => {
 
           <h1 className="gsap-products-hero text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
             Engineered on Salesforce. <br />
-            <span className="bg-gradient-to-r from-white via-purple-100 to-[#FFD1DE] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#7FE4EA] via-[#00C2CB] to-[#7FE4EA] bg-clip-text text-transparent">
               Built for Enterprise Performance.
             </span>
           </h1>
 
-          <p className="gsap-products-hero text-base sm:text-xl text-purple-100/90 font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="gsap-products-hero text-base sm:text-xl text-[#C7CDDA] font-light max-w-3xl mx-auto leading-relaxed">
             Discover our suite of proprietary Salesforce AppExchange tools designed to eliminate operational friction, automate complex batch jobs, and accelerate data workflows.
           </p>
 
@@ -260,8 +260,8 @@ const Products = () => {
               onClick={() => handleTabClick('all')}
               className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all ${
                 activeTab === 'all'
-                  ? 'bg-white text-[#2D1B54] shadow-lg scale-105'
-                  : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
+                  ? 'bg-[#00C2CB] text-[#032B2E] shadow-lg scale-105'
+                  : 'bg-white/[0.08] text-white hover:bg-white/[0.15] border border-white/[0.2]'
               }`}
             >
               All Products
@@ -270,8 +270,8 @@ const Products = () => {
               onClick={() => handleTabClick('datadrift')}
               className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all ${
                 activeTab === 'datadrift'
-                  ? 'bg-white text-[#2D1B54] shadow-lg scale-105'
-                  : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
+                  ? 'bg-[#00C2CB] text-[#032B2E] shadow-lg scale-105'
+                  : 'bg-white/[0.08] text-white hover:bg-white/[0.15] border border-white/[0.2]'
               }`}
             >
               Data Drift (Free)
@@ -280,8 +280,8 @@ const Products = () => {
               onClick={() => handleTabClick('batchme')}
               className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all ${
                 activeTab === 'batchme'
-                  ? 'bg-white text-[#2D1B54] shadow-lg scale-105'
-                  : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
+                  ? 'bg-[#00C2CB] text-[#032B2E] shadow-lg scale-105'
+                  : 'bg-white/[0.08] text-white hover:bg-white/[0.15] border border-white/[0.2]'
               }`}
             >
               Batch Me (Free)
@@ -290,8 +290,8 @@ const Products = () => {
               onClick={() => handleTabClick('productfinder')}
               className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all ${
                 activeTab === 'productfinder'
-                  ? 'bg-white text-[#2D1B54] shadow-lg scale-105'
-                  : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
+                  ? 'bg-[#00C2CB] text-[#032B2E] shadow-lg scale-105'
+                  : 'bg-white/[0.08] text-white hover:bg-white/[0.15] border border-white/[0.2]'
               }`}
             >
               Product Finder
@@ -310,11 +310,11 @@ const Products = () => {
           <div 
             key={product.id}
             id={product.id}
-            className="animate-fade-in-up bg-white rounded-3xl border border-gray-200/80 shadow-xl overflow-hidden hover:border-[#6C4AB6]/40 transition-all duration-300"
+            className="animate-fade-in-up bg-white rounded-3xl border border-gray-200/80 shadow-xl overflow-hidden hover:border-[#00C2CB] transition-all duration-300"
           >
             
             {/* Product Top Header Bar */}
-            <div className="bg-gradient-to-r from-[#2D1B54] to-[#4E2F94] text-white p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="bg-gradient-to-r from-[#0A1128] to-[#1B3B6F] text-white p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/[0.08]">
               
               <div className="flex items-center gap-5">
                 <div className="p-3 sm:p-4 bg-white rounded-2xl shadow-md flex items-center justify-center flex-shrink-0">
@@ -329,23 +329,23 @@ const Products = () => {
                     <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                       {product.name}
                     </h2>
-                    <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#EC1557] text-white">
+                    <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#00C2CB] text-[#032B2E]">
                       {product.badge}
                     </span>
                   </div>
-                  <p className="text-xs sm:text-sm text-purple-200 mt-1">
+                  <p className="text-xs sm:text-sm text-[#8A99B5] mt-1">
                     By <span className="font-semibold text-white">Array Minds Limited</span> • Official Salesforce AppExchange Package
                   </p>
                 </div>
               </div>
 
               {/* Pricing Display */}
-              <div className="md:text-right bg-white/10 p-3.5 px-5 rounded-2xl border border-white/15 flex-shrink-0">
+              <div className="md:text-right bg-white/[0.08] p-3.5 px-5 rounded-2xl border border-white/[0.1] flex-shrink-0">
                 <div className="flex items-baseline md:justify-end gap-1.5">
                   <span className="text-2xl sm:text-3xl font-black text-white">{product.pricing}</span>
-                  {product.pricing !== 'Free' && <span className="text-xs text-purple-200 font-medium">/ year</span>}
+                  {product.pricing !== 'Free' && <span className="text-xs text-[#8A99B5] font-medium">/ year</span>}
                 </div>
-                <p className="text-[11px] text-[#FFD1DE] font-semibold">{product.pricingSub}</p>
+                <p className="text-[11px] text-[#7FE4EA] font-semibold">{product.pricingSub}</p>
               </div>
 
             </div>
@@ -358,7 +358,7 @@ const Products = () => {
                 
                 {/* Left Column: Narrative & Highlights */}
                 <div className="lg:col-span-6 space-y-5">
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#2D1B54] leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#0A1128] leading-snug">
                     {product.headline}
                   </h3>
                   
@@ -370,7 +370,7 @@ const Products = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                     {product.highlights.map((highlight, hIdx) => (
                       <div key={hIdx} className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-gray-800">
-                        <CheckCircle2 className="w-4 h-4 text-[#EC1557] flex-shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#00C2CB] flex-shrink-0" />
                         <span>{highlight}</span>
                       </div>
                     ))}
@@ -382,7 +382,7 @@ const Products = () => {
                       href={product.appExchangeUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm sm:text-base font-bold text-white bg-[#EC1557] hover:bg-[#d0104a] shadow-lg shadow-[#EC1557]/30 transition-all transform hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm sm:text-base font-bold text-[#032B2E] bg-[#00C2CB] hover:bg-[#7FE4EA] shadow-lg shadow-[#00C2CB]/30 transition-all transform hover:-translate-y-0.5"
                     >
                       <span>Get It on AppExchange</span>
                       <ExternalLink className="w-4 h-4" />
@@ -402,7 +402,7 @@ const Products = () => {
                     ></iframe>
                   </div>
                   <p className="text-center text-xs text-gray-500 mt-2 flex items-center justify-center gap-1.5">
-                    <Play className="w-3 h-3 text-[#EC1557]" />
+                    <Play className="w-3 h-3 text-[#00C2CB]" />
                     <span>Watch official walkthrough demo for {product.name}</span>
                   </p>
                 </div>
@@ -411,8 +411,8 @@ const Products = () => {
 
               {/* Comprehensive Features Grid */}
               <div className="pt-6 border-t border-gray-200">
-                <h4 className="text-base font-bold text-[#2D1B54] uppercase tracking-wider mb-6 flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#EC1557]" />
+                <h4 className="text-base font-bold text-[#0A1128] uppercase tracking-wider mb-6 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#00C2CB]" />
                   <span>Key Architectural Features & Capabilities</span>
                 </h4>
 
@@ -420,13 +420,13 @@ const Products = () => {
                   {product.features.map((feat, fIdx) => (
                     <div 
                       key={fIdx}
-                      className="p-5 rounded-2xl bg-[#F8F9FD] border border-gray-200/80 hover:border-[#6C4AB6]/50 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                      className="p-5 rounded-2xl bg-[#F8FAFC] border border-gray-200/80 hover:border-[#00C2CB] hover:shadow-md transition-all duration-300 flex flex-col justify-between"
                     >
                       <div className="space-y-3">
                         <div className="p-2.5 rounded-xl bg-white w-fit shadow-xs border border-gray-100">
                           {feat.icon}
                         </div>
-                        <h5 className="font-bold text-sm text-[#2D1B54]">
+                        <h5 className="font-bold text-sm text-[#0A1128]">
                           {feat.title}
                         </h5>
                         <p className="text-xs text-gray-600 leading-relaxed">
@@ -448,49 +448,49 @@ const Products = () => {
       {/* ========================================================================= */}
       {/* 3. ENTERPRISE SECURITY & COMPLIANCE SECTION */}
       {/* ========================================================================= */}
-      <section className="py-16 bg-[#2D1B54] text-white">
+      <section className="py-16 bg-gradient-to-br from-[#0A1128] via-[#0D1B3E] to-[#1B3B6F] text-white border-y border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#FFD1DE]">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#7FE4EA]">
               AppExchange Compliance
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
               Enterprise Trust & Security Standards
             </h2>
-            <p className="text-sm sm:text-base text-purple-100/90 font-light">
+            <p className="text-sm sm:text-base text-[#C7CDDA] font-light">
               All Array Minds applications adhere strictly to Salesforce ISV security guidelines and rigorous security review protocols.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
-              <ShieldCheck className="w-8 h-8 text-[#EC1557]" />
-              <h3 className="font-bold text-base">Salesforce Security Review</h3>
-              <p className="text-xs text-purple-100/80 leading-relaxed">
+            <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/[0.08] space-y-3">
+              <ShieldCheck className="w-8 h-8 text-[#00C2CB]" />
+              <h3 className="font-bold text-base text-white">Salesforce Security Review</h3>
+              <p className="text-xs text-[#8A99B5] leading-relaxed">
                 Thoroughly audited and verified against OWASP and Salesforce vulnerability standards.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
-              <Lock className="w-8 h-8 text-[#6C4AB6]" />
-              <h3 className="font-bold text-base">Zero External Data Storage</h3>
-              <p className="text-xs text-purple-100/80 leading-relaxed">
+            <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/[0.08] space-y-3">
+              <Lock className="w-8 h-8 text-[#7FE4EA]" />
+              <h3 className="font-bold text-base text-white">Zero External Data Storage</h3>
+              <p className="text-xs text-[#8A99B5] leading-relaxed">
                 Your data stays entirely within your Salesforce instance with zero external server transit.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
-              <Cloud className="w-8 h-8 text-[#00A1E0]" />
-              <h3 className="font-bold text-base">100% Lightning Native</h3>
-              <p className="text-xs text-purple-100/80 leading-relaxed">
+            <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/[0.08] space-y-3">
+              <Cloud className="w-8 h-8 text-[#00C2CB]" />
+              <h3 className="font-bold text-base text-white">100% Lightning Native</h3>
+              <p className="text-xs text-[#8A99B5] leading-relaxed">
                 Engineered with modern Lightning Web Components (LWC) for maximum speed and seamless UX.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+            <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/[0.08] space-y-3">
               <Award className="w-8 h-8 text-emerald-400" />
-              <h3 className="font-bold text-base">Continuous Upgrades</h3>
-              <p className="text-xs text-purple-100/80 leading-relaxed">
+              <h3 className="font-bold text-base text-white">Continuous Upgrades</h3>
+              <p className="text-xs text-[#8A99B5] leading-relaxed">
                 Regular seasonal releases ensuring 100% compatibility with latest Salesforce updates.
               </p>
             </div>
@@ -502,12 +502,12 @@ const Products = () => {
       {/* 4. CUSTOM APPEXCHANGE PRODUCT DEVELOPMENT CTA */}
       {/* ========================================================================= */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-[#4E2F94] via-[#5B3BA8] to-[#6C4AB6] text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left relative overflow-hidden">
+        <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left relative overflow-hidden border border-white/[0.08]">
           <div className="space-y-3 max-w-2xl relative z-10">
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
               Looking for Custom AppExchange Product Engineering?
             </h2>
-            <p className="text-purple-100 text-sm sm:text-base font-light">
+            <p className="text-[#C7CDDA] text-sm sm:text-base font-light">
               We design, build, test, and pass the Salesforce Security Review for ISVs and enterprise clients looking to publish bespoke AppExchange applications.
             </p>
           </div>
@@ -515,7 +515,7 @@ const Products = () => {
           <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">
             <Link
               to="/contact"
-              className="px-8 py-3.5 rounded-full text-base font-bold text-white bg-[#EC1557] hover:bg-[#d0104a] shadow-lg shadow-[#EC1557]/40 transition-all transform hover:-translate-y-0.5 whitespace-nowrap"
+              className="px-8 py-3.5 rounded-full text-base font-bold text-[#032B2E] bg-[#00C2CB] hover:bg-[#7FE4EA] shadow-lg shadow-[#00C2CB]/30 transition-all transform hover:-translate-y-0.5 whitespace-nowrap"
             >
               Consult an ISV Architect
             </Link>

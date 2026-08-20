@@ -39,7 +39,7 @@ const ContactSubmissions = () => {
     } catch (err) {
       console.error('Error fetching submissions:', err);
       setError(
-        err.response?.data?.message || 'Failed to load submissions from MongoDB Atlas. Please ensure the server is running.'
+        err.response?.data?.message || 'Failed to load leads from Salesforce CRM. Please ensure the server is running.'
       );
     } finally {
       setLoading(false);
@@ -115,13 +115,13 @@ const ContactSubmissions = () => {
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-[#2D1B54] text-xs font-bold uppercase tracking-wider mb-2">
             <MessageSquare className="w-3.5 h-3.5 text-[#EC1557]" />
-            <span>MongoDB Atlas CRM Inquiries</span>
+            <span>Salesforce CRM Leads</span>
           </div>
           <h1 className="text-2xl font-extrabold text-[#2D1B54]">
             Contact Form Submissions
           </h1>
           <p className="text-xs text-gray-500 mt-1">
-            Real-time client leads and project inquiries stored in MongoDB Atlas
+            Real-time client leads and project inquiries stored in Salesforce Org
           </p>
         </div>
 
@@ -235,7 +235,7 @@ const ContactSubmissions = () => {
           <div className="p-16 text-center space-y-3">
             <RefreshCw className="w-8 h-8 text-[#EC1557] animate-spin mx-auto" />
             <p className="text-xs font-semibold text-gray-500">
-              Retrieving live submissions from MongoDB Atlas...
+              Retrieving live leads from Salesforce CRM...
             </p>
           </div>
         ) : filteredSubmissions.length === 0 ? (

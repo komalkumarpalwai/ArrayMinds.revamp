@@ -14,7 +14,12 @@ import {
   ArrowRight,
   MessageSquare,
   Lock,
-  Headphones
+  Headphones,
+  ChevronDown,
+  Check,
+  Briefcase,
+  Layers,
+  Zap
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -22,6 +27,7 @@ import api from '../../services/api';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Contact page with isolated smooth scroll for dropdowns
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -37,6 +43,19 @@ const Contact = () => {
     success: false,
     error: null,
   });
+
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsSelectOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const subjects = [
     'Salesforce Implementation & Agentforce',
@@ -60,7 +79,7 @@ const Contact = () => {
       address: '20-22 Wenlock Road, London, N1 7GU, United Kingdom',
       phone: '+44 20 8144 0407',
       telLink: '+442081440407',
-      email: 'info@arrayminds.co.uk',
+      email: 'info@arrayminds.com',
       hours: 'Mon - Fri: 9:00 AM - 6:00 PM GMT'
     },
     {
@@ -70,7 +89,7 @@ const Contact = () => {
       address: 'SF No. 370/3, Ground Floor, Sri Andal Nagar, Kalapatti, Coimbatore - 641048',
       phone: '+91 8754 380 969',
       telLink: '+918754380969',
-      email: 'india@arrayminds.com',
+      email: 'info@arrayminds.com',
       hours: 'Mon - Fri: 9:30 AM - 6:30 PM IST'
     },
     {
@@ -80,7 +99,7 @@ const Contact = () => {
       address: '7-96/5, Heeba Villa, Shankar Nagar Colony, Uppal Depot, Hyderabad, Telangana 500039',
       phone: '+91 8754 380 969',
       telLink: '+918754380969',
-      email: 'hyderabad@arrayminds.com',
+      email: 'info@arrayminds.com',
       hours: 'Mon - Fri: 9:30 AM - 6:30 PM IST'
     }
   ];
@@ -133,19 +152,19 @@ const Contact = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full bg-[#F8F9FD] text-[#1E113F] overflow-hidden">
+    <div ref={containerRef} className="w-full bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
       
       {/* ========================================================================= */}
       {/* 1. HERO HEADER SECTION */}
       {/* ========================================================================= */}
-      <section className="relative bg-gradient-to-br from-[#4E2F94] via-[#5B3BA8] to-[#6C4AB6] text-white py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden shadow-xl">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#EC1557]/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#6C4AB6]/40 rounded-full blur-3xl pointer-events-none"></div>
+      <section className="relative bg-gradient-to-br from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden shadow-xl">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#00C2CB]/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#1B3B6F]/40 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative max-w-5xl mx-auto text-center space-y-6">
           
-          <div className="gsap-contact-hero inline-flex items-center gap-2 p-1.5 px-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-inner">
-            <MessageSquare className="w-4 h-4 text-[#FFD1DE]" />
+          <div className="gsap-contact-hero inline-flex items-center gap-2 p-1.5 px-5 rounded-full bg-white/[0.08] border border-white/[0.1] backdrop-blur-md shadow-inner">
+            <MessageSquare className="w-4 h-4 text-[#7FE4EA]" />
             <span className="text-xs sm:text-sm font-semibold tracking-wide text-white">
               Direct Enterprise Consulting Channel
             </span>
@@ -153,12 +172,12 @@ const Contact = () => {
 
           <h1 className="gsap-contact-hero text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
             Let's Architect Your <br />
-            <span className="bg-gradient-to-r from-white via-purple-100 to-[#FFD1DE] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#7FE4EA] via-[#00C2CB] to-[#7FE4EA] bg-clip-text text-transparent">
               Next Digital Breakthrough.
             </span>
           </h1>
 
-          <p className="gsap-contact-hero text-base sm:text-xl text-purple-100/90 font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="gsap-contact-hero text-base sm:text-xl text-[#C7CDDA] font-light max-w-3xl mx-auto leading-relaxed">
             Reach out to our certified Salesforce & Databricks architects. We are ready to analyze your ecosystem, solve technical bottlenecks, and accelerate your business growth.
           </p>
 
@@ -175,11 +194,11 @@ const Contact = () => {
           <div className="animate-fade-in-up lg:col-span-7 bg-white p-8 sm:p-12 rounded-3xl border border-gray-200 shadow-xl space-y-8 relative">
             
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#EC1557]">
-                <Send className="w-4 h-4" />
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#00838F]">
+                <Send className="w-4 h-4 text-[#00C2CB]" />
                 <span>Send Us a Message</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#2D1B54]">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0A1128]">
                 Tell Us About Your Project
               </h2>
               <p className="text-xs sm:text-sm text-gray-600">
@@ -226,7 +245,7 @@ const Contact = () => {
                 {/* Full Name */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-700">
-                    Full Name <span className="text-[#EC1557]">*</span>
+                    Full Name <span className="text-[#00C2CB]">*</span>
                   </label>
                   <input
                     type="text"
@@ -235,14 +254,14 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="e.g. John Doe"
-                    className="w-full px-4 py-3 rounded-xl bg-[#F8F9FD] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#6C4AB6] focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#00C2CB] focus:border-transparent transition-all"
                   />
                 </div>
 
                 {/* Work Email */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-700">
-                    Work Email <span className="text-[#EC1557]">*</span>
+                    Work Email <span className="text-[#00C2CB]">*</span>
                   </label>
                   <input
                     type="email"
@@ -251,7 +270,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@company.com"
-                    className="w-full px-4 py-3 rounded-xl bg-[#F8F9FD] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#6C4AB6] focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#00C2CB] focus:border-transparent transition-all"
                   />
                 </div>
 
@@ -270,7 +289,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+44 20 8144 0407"
-                    className="w-full px-4 py-3 rounded-xl bg-[#F8F9FD] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#6C4AB6] focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#00C2CB] focus:border-transparent transition-all"
                   />
                 </div>
 
@@ -285,35 +304,94 @@ const Contact = () => {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="e.g. Acme Corporation"
-                    className="w-full px-4 py-3 rounded-xl bg-[#F8F9FD] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#6C4AB6] focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#00C2CB] focus:border-transparent transition-all"
                   />
                 </div>
 
               </div>
 
-              {/* Subject / Area of Interest */}
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-700">
-                  Area of Interest / Service <span className="text-[#EC1557]">*</span>
+              {/* Subject / Area of Interest - Custom Luxury Dropdown */}
+              <div className="space-y-1.5 relative" ref={dropdownRef}>
+                <label className="text-xs font-bold uppercase tracking-wider text-gray-700 flex items-center justify-between">
+                  <span>Area of Interest / Service <span className="text-[#00C2CB]">*</span></span>
+                  <span className="text-[10px] text-[#00838F] font-medium lowercase">Select capability</span>
                 </label>
-                <select
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-[#F8F9FD] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#6C4AB6] focus:border-transparent transition-all"
+                
+                {/* Dropdown Trigger Button */}
+                <button
+                  type="button"
+                  onClick={() => setIsSelectOpen((prev) => !prev)}
+                  className={`w-full px-4 py-3.5 rounded-xl bg-[#F8FAFC] border text-left flex items-center justify-between transition-all duration-200 focus:outline-none ${
+                    isSelectOpen 
+                      ? 'border-[#00C2CB] ring-2 ring-[#00C2CB]/20 bg-white shadow-md' 
+                      : 'border-gray-200 hover:border-cyan-300 hover:bg-white'
+                  }`}
                 >
-                  {subjects.map((subj, idx) => (
-                    <option key={idx} value={subj}>
-                      {subj}
-                    </option>
-                  ))}
-                </select>
+                  <div className="flex items-center gap-3 truncate pr-2">
+                    <div className="p-1.5 rounded-lg bg-[#E0F7FA] text-[#00838F]">
+                      <Briefcase className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm font-semibold text-[#0A1128] truncate">
+                      {formData.subject}
+                    </span>
+                  </div>
+                  <ChevronDown 
+                    className={`w-4 h-4 text-gray-500 transition-transform duration-300 flex-shrink-0 ${
+                      isSelectOpen ? 'transform rotate-180 text-[#00C2CB]' : ''
+                    }`} 
+                  />
+                </button>
+
+                {/* Custom Animated Dropdown Menu */}
+                {isSelectOpen && (
+                  <div 
+                    data-lenis-prevent
+                    className="absolute z-50 left-0 right-0 mt-2 bg-white rounded-2xl border border-cyan-100 shadow-2xl shadow-slate-900/15 overflow-hidden animate-fade-in-up"
+                  >
+                    <div className="p-2.5 border-b border-gray-100 bg-[#FBFBFF] flex items-center justify-between text-[11px] font-semibold text-gray-500 px-3.5 select-none">
+                      <span>Available Solutions & Services</span>
+                      <span className="text-[#00838F] font-bold">{subjects.length} options</span>
+                    </div>
+                    
+                    <div 
+                      data-lenis-prevent
+                      className="max-h-60 overflow-y-auto overscroll-contain p-1.5 space-y-1 focus:outline-none custom-select-scrollbar"
+                      onWheel={(e) => e.stopPropagation()}
+                    >
+                      {subjects.map((subj, idx) => {
+                        const isSelected = formData.subject === subj;
+                        return (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => {
+                              setFormData((prev) => ({ ...prev, subject: subj }));
+                              setIsSelectOpen(false);
+                            }}
+                            className={`w-full text-left px-3.5 py-2.5 rounded-xl text-sm flex items-center justify-between transition-all duration-150 group ${
+                              isSelected
+                                ? 'bg-gradient-to-r from-[#0A1128] to-[#1B3B6F] text-white font-semibold shadow-sm'
+                                : 'text-gray-700 hover:bg-[#E0F7FA] hover:text-[#0A1128]'
+                            }`}
+                          >
+                            <span className="truncate pr-2">{subj}</span>
+                            {isSelected ? (
+                              <Check className="w-4 h-4 text-[#7FE4EA] flex-shrink-0" />
+                            ) : (
+                              <div className="w-1.5 h-1.5 rounded-full bg-cyan-200 group-hover:bg-[#00C2CB] transition-colors flex-shrink-0" />
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Message */}
               <div className="space-y-1.5">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-700">
-                  Project Scope & Requirements <span className="text-[#EC1557]">*</span>
+                  Project Scope & Requirements <span className="text-[#00C2CB]">*</span>
                 </label>
                 <textarea
                   name="message"
@@ -322,7 +400,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Describe your current systems, objectives, timeline, and any specific requirements..."
-                  className="w-full px-4 py-3 rounded-xl bg-[#F8F9FD] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#6C4AB6] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#00C2CB] focus:border-transparent transition-all"
                 ></textarea>
               </div>
 
@@ -330,10 +408,10 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={status.loading}
-                className={`w-full py-4 rounded-full text-base font-bold text-white shadow-lg transition-all transform flex items-center justify-center gap-2 ${
+                className={`w-full py-4 rounded-full text-base font-bold text-[#032B2E] shadow-lg transition-all transform flex items-center justify-center gap-2 ${
                   status.loading
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-[#EC1557] hover:bg-[#d0104a] shadow-[#EC1557]/40 hover:-translate-y-0.5 active:scale-95'
+                    ? 'bg-gray-400 cursor-not-allowed text-white'
+                    : 'bg-[#00C2CB] hover:bg-[#7FE4EA] shadow-[#00C2CB]/30 hover:-translate-y-0.5 active:scale-95'
                 }`}
               >
                 {status.loading ? (
@@ -359,58 +437,58 @@ const Contact = () => {
           <div className="animate-fade-in-up lg:col-span-5 space-y-8">
             
             {/* Quick Connect Card */}
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-[#2D1B54] to-[#4E2F94] text-white shadow-xl space-y-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-36 h-36 bg-[#EC1557]/20 rounded-full blur-2xl"></div>
+            <div className="p-8 rounded-3xl bg-gradient-to-br from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white shadow-xl space-y-6 relative overflow-hidden border border-white/[0.08]">
+              <div className="absolute top-0 right-0 w-36 h-36 bg-[#00C2CB]/15 rounded-full blur-2xl"></div>
 
               <div className="space-y-2 relative z-10">
-                <span className="text-xs font-bold uppercase tracking-widest text-[#FFD1DE]">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#7FE4EA]">
                   Fast Response Guarantee
                 </span>
-                <h3 className="text-2xl font-extrabold">
+                <h3 className="text-2xl font-extrabold text-white">
                   Direct Channel Access
                 </h3>
-                <p className="text-xs sm:text-sm text-purple-100 leading-relaxed font-light">
+                <p className="text-xs sm:text-sm text-[#C7CDDA] leading-relaxed font-light">
                   Need immediate architectural advice? Reach our global consulting teams directly via phone or email.
                 </p>
               </div>
 
               <div className="space-y-4 relative z-10 text-sm">
                 <a
-                  href="mailto:info@arrayminds.co.uk"
-                  className="p-4 rounded-2xl bg-white/10 border border-white/15 hover:bg-white/20 transition-all flex items-center gap-3.5 group"
+                  href="mailto:info@arrayminds.com"
+                  className="p-4 rounded-2xl bg-white/[0.08] border border-white/[0.1] hover:bg-white/[0.15] transition-all flex items-center gap-3.5 group"
                 >
-                  <div className="p-2.5 rounded-xl bg-[#EC1557] text-white shadow-xs">
+                  <div className="p-2.5 rounded-xl bg-[#00C2CB] text-[#032B2E] shadow-xs font-bold">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs text-purple-200">Global Inquiries</p>
-                    <p className="font-bold text-white group-hover:text-[#FFD1DE] transition-colors">info@arrayminds.co.uk</p>
+                    <p className="text-xs text-[#8A99B5]">Global Inquiries</p>
+                    <p className="font-bold text-white group-hover:text-[#7FE4EA] transition-colors">info@arrayminds.com</p>
                   </div>
                 </a>
 
                 <a
                   href="tel:+442081440407"
-                  className="p-4 rounded-2xl bg-white/10 border border-white/15 hover:bg-white/20 transition-all flex items-center gap-3.5 group"
+                  className="p-4 rounded-2xl bg-white/[0.08] border border-white/[0.1] hover:bg-white/[0.15] transition-all flex items-center gap-3.5 group"
                 >
-                  <div className="p-2.5 rounded-xl bg-[#6C4AB6] text-white shadow-xs">
+                  <div className="p-2.5 rounded-xl bg-[#1B3B6F] text-white shadow-xs">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs text-purple-200">UK Office Direct</p>
-                    <p className="font-bold text-white group-hover:text-[#FFD1DE] transition-colors">+44 20 8144 0407</p>
+                    <p className="text-xs text-[#8A99B5]">UK Office Direct</p>
+                    <p className="font-bold text-white group-hover:text-[#7FE4EA] transition-colors">+44 20 8144 0407</p>
                   </div>
                 </a>
 
                 <a
                   href="tel:+918754380969"
-                  className="p-4 rounded-2xl bg-white/10 border border-white/15 hover:bg-white/20 transition-all flex items-center gap-3.5 group"
+                  className="p-4 rounded-2xl bg-white/[0.08] border border-white/[0.1] hover:bg-white/[0.15] transition-all flex items-center gap-3.5 group"
                 >
                   <div className="p-2.5 rounded-xl bg-emerald-500 text-white shadow-xs">
                     <Headphones className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs text-purple-200">India Operations Direct</p>
-                    <p className="font-bold text-white group-hover:text-[#FFD1DE] transition-colors">+91 8754 380 969</p>
+                    <p className="text-xs text-[#8A99B5]">India Operations Direct</p>
+                    <p className="font-bold text-white group-hover:text-[#7FE4EA] transition-colors">+91 8754 380 969</p>
                   </div>
                 </a>
               </div>
@@ -419,24 +497,24 @@ const Contact = () => {
 
             {/* Why Partner With Us Checklist */}
             <div className="p-6 sm:p-8 rounded-3xl bg-white border border-gray-200 shadow-sm space-y-4">
-              <h4 className="font-extrabold text-base text-[#2D1B54]">
+              <h4 className="font-extrabold text-base text-[#0A1128]">
                 Enterprise Engagement Standards
               </h4>
               <div className="space-y-3 text-xs sm:text-sm text-gray-700">
                 <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#EC1557] flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-[#00C2CB] flex-shrink-0 mt-0.5" />
                   <span>Full mutual Non-Disclosure Agreement (NDA) before discovery</span>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#6C4AB6] flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-[#1B3B6F] flex-shrink-0 mt-0.5" />
                   <span>Direct access to Senior Certified Technical Architects</span>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#EC1557] flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-[#00C2CB] flex-shrink-0 mt-0.5" />
                   <span>Transparent milestone-based SOW and sprint tracking</span>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#6C4AB6] flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-[#1B3B6F] flex-shrink-0 mt-0.5" />
                   <span>24/7 multi-timezone SLA support across UK and India</span>
                 </div>
               </div>
@@ -454,10 +532,10 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#EC1557]">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#00838F] bg-[#E0F7FA] px-3 py-1 rounded-full border border-[#00C2CB]/30">
               Visit Our Facilities
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#2D1B54]">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A1128]">
               Global Operating Centers
             </h2>
             <p className="text-sm sm:text-base text-gray-600 font-light">
@@ -469,38 +547,38 @@ const Contact = () => {
             {offices.map((office, idx) => (
               <div 
                 key={idx}
-                className="p-8 rounded-3xl bg-[#F8F9FD] border border-gray-200/80 hover:border-[#6C4AB6]/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                className="p-8 rounded-3xl bg-[#F8FAFC] border border-gray-200/80 hover:border-[#00C2CB] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-3xl">{office.flag}</span>
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-purple-100 text-[#2D1B54] border border-purple-200">
+                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#E0F7FA] text-[#00838F] border border-[#00C2CB]/30">
                       {office.type}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="text-xl font-extrabold text-[#2D1B54] group-hover:text-[#EC1557] transition-colors">
+                    <h3 className="text-xl font-extrabold text-[#0A1128] group-hover:text-[#1B3B6F] transition-colors">
                       {office.city}
                     </h3>
                   </div>
 
                   <div className="space-y-3 text-xs text-gray-600 pt-2 border-t border-gray-200">
                     <div className="flex items-start gap-2.5">
-                      <MapPin className="w-4 h-4 text-[#6C4AB6] flex-shrink-0 mt-0.5" />
+                      <MapPin className="w-4 h-4 text-[#1B3B6F] flex-shrink-0 mt-0.5" />
                       <span>{office.address}</span>
                     </div>
 
                     <div className="flex items-center gap-2.5">
-                      <Phone className="w-4 h-4 text-[#EC1557] flex-shrink-0" />
-                      <a href={`tel:${office.telLink}`} className="hover:text-[#EC1557] font-semibold">
+                      <Phone className="w-4 h-4 text-[#00C2CB] flex-shrink-0" />
+                      <a href={`tel:${office.telLink}`} className="hover:text-[#00C2CB] font-semibold">
                         {office.phone}
                       </a>
                     </div>
 
                     <div className="flex items-center gap-2.5">
-                      <Mail className="w-4 h-4 text-[#6C4AB6] flex-shrink-0" />
-                      <a href={`mailto:${office.email}`} className="hover:text-[#6C4AB6] font-semibold">
+                      <Mail className="w-4 h-4 text-[#1B3B6F] flex-shrink-0" />
+                      <a href={`mailto:${office.email}`} className="hover:text-[#1B3B6F] font-semibold">
                         {office.email}
                       </a>
                     </div>

@@ -28,6 +28,8 @@ const AdminDashboard = () => {
     newSubmissions: 0,
     totalCareers: 0,
     activeCareers: 0,
+    totalApplications: 0,
+    newApplications: 0,
   });
   const [recentSubmissions, setRecentSubmissions] = useState([]);
   const [recentCareers, setRecentCareers] = useState([]);
@@ -36,19 +38,23 @@ const AdminDashboard = () => {
   const loadDashboardData = async () => {
     setLoading(true);
     try {
-      const [submissionsRes, careersRes] = await Promise.all([
+      const [submissionsRes, careersRes, applicationsRes] = await Promise.allSettled([
         api.get('/contact'),
-        api.get('/api/careers').catch(() => api.get('/careers')),
+        api.get('/careers?all=true'),
+        api.get('/career-submissions'),
       ]);
 
-      const subs = submissionsRes.data || [];
-      const careers = careersRes.data || [];
+      const subs = submissionsRes.status === 'fulfilled' ? submissionsRes.value.data || [] : [];
+      const careers = careersRes.status === 'fulfilled' ? careersRes.value.data || [] : [];
+      const apps = applicationsRes.status === 'fulfilled' ? applicationsRes.value.data || [] : [];
 
       setStats({
         totalSubmissions: subs.length,
         newSubmissions: subs.filter(s => s.status === 'new').length,
         totalCareers: careers.length,
         activeCareers: careers.filter(c => c.status === 'active').length,
+        totalApplications: apps.length,
+        newApplications: apps.filter(a => a.status === 'New').length,
       });
 
       setRecentSubmissions(subs.slice(0, 5));
@@ -111,14 +117,14 @@ const AdminDashboard = () => {
       {/* ========================================================================= */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         
-        {/* Total Inquiries */}
+        {/* Total Inquiries (Leads) */}
         <Link 
           to="/admin/contact-submissions"
-          className="p-6 rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#6C4AB6]/50 transition-all group"
+          className="p-6 rounded-3xl bg-white border border-gray-200 shadow-xs hover:shadow-xl hover:border-[#6C4AB6]/50 transition-all group"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-              Total Inquiries
+            <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">
+              Client Inquiries
             </span>
             <div className="p-2.5 rounded-2xl bg-purple-50 text-[#6C4AB6] group-hover:bg-[#6C4AB6] group-hover:text-white transition-colors">
               <MessageSquare className="w-5 h-5" />
@@ -126,30 +132,30 @@ const AdminDashboard = () => {
           </div>
           <div className="mt-4">
             <p className="text-3xl font-black text-[#2D1B54]">{stats.totalSubmissions}</p>
-            <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
-              <span>View all inquiries</span>
+            <p className="text-xs text-gray-600 mt-1 flex items-center gap-1">
+              <span>{stats.newSubmissions} new leads</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </p>
           </div>
         </Link>
 
-        {/* New Leads */}
+        {/* Candidate Submissions */}
         <Link 
-          to="/admin/contact-submissions"
-          className="p-6 rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-500/50 transition-all group"
+          to="/admin/career-submissions"
+          className="p-6 rounded-3xl bg-white border border-gray-200 shadow-xs hover:shadow-xl hover:border-indigo-500/50 transition-all group"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider">
-              New Leads
+            <span className="text-xs font-bold text-indigo-700 uppercase tracking-wider">
+              Candidate Applications
             </span>
-            <div className="p-2.5 rounded-2xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-              <Sparkles className="w-5 h-5" />
+            <div className="p-2.5 rounded-2xl bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+              <Users className="w-5 h-5" />
             </div>
           </div>
           <div className="mt-4">
-            <p className="text-3xl font-black text-emerald-700">{stats.newSubmissions}</p>
-            <p className="text-xs text-emerald-600 mt-1 flex items-center gap-1 font-semibold">
-              <span>Requires attention</span>
+            <p className="text-3xl font-black text-indigo-900">{stats.totalApplications}</p>
+            <p className="text-xs text-indigo-600 mt-1 flex items-center gap-1 font-semibold">
+              <span>{stats.newApplications} new candidates</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </p>
           </div>
@@ -158,10 +164,10 @@ const AdminDashboard = () => {
         {/* Active Careers */}
         <Link 
           to="/admin/careers"
-          className="p-6 rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#EC1557]/50 transition-all group"
+          className="p-6 rounded-3xl bg-white border border-gray-200 shadow-xs hover:shadow-xl hover:border-[#EC1557]/50 transition-all group"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+            <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">
               Active Job Postings
             </span>
             <div className="p-2.5 rounded-2xl bg-pink-50 text-[#EC1557] group-hover:bg-[#EC1557] group-hover:text-white transition-colors">
@@ -170,18 +176,18 @@ const AdminDashboard = () => {
           </div>
           <div className="mt-4">
             <p className="text-3xl font-black text-[#2D1B54]">{stats.activeCareers}</p>
-            <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
+            <p className="text-xs text-gray-600 mt-1 flex items-center gap-1">
               <span>{stats.totalCareers} total listings</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </p>
           </div>
         </Link>
 
-        {/* Database Health */}
-        <div className="p-6 rounded-3xl bg-white border border-gray-200 shadow-sm">
+        {/* Salesforce Status */}
+        <div className="p-6 rounded-3xl bg-white border border-gray-200 shadow-xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-              MongoDB Database
+            <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">
+              Salesforce CRM
             </span>
             <div className="p-2.5 rounded-2xl bg-emerald-50 text-emerald-600">
               <Database className="w-5 h-5" />
@@ -190,9 +196,9 @@ const AdminDashboard = () => {
           <div className="mt-4">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <p className="text-lg font-extrabold text-[#2D1B54]">Online & Syncing</p>
+              <p className="text-lg font-extrabold text-[#2D1B54]">Connected & Active</p>
             </div>
-            <p className="text-xs text-gray-500 mt-1 font-mono">Cluster0 Atlas Live</p>
+            <p className="text-xs text-gray-600 mt-1 font-mono">SOQL & REST Live</p>
           </div>
         </div>
 
@@ -208,7 +214,7 @@ const AdminDashboard = () => {
           <div className="flex items-center justify-between border-b border-gray-100 pb-4">
             <div>
               <h3 className="text-lg font-bold text-[#2D1B54]">Recent Contact Inquiries</h3>
-              <p className="text-xs text-gray-500 mt-0.5">Latest leads recorded in MongoDB Atlas</p>
+              <p className="text-xs text-gray-500 mt-0.5">Latest leads recorded in Salesforce CRM</p>
             </div>
             <Link
               to="/admin/contact-submissions"

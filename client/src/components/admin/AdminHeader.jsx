@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogOut, User, Globe, Shield, Sparkles } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-import logoImg from '../../assets/Array Minds_edited_edited.avif';
+import logoImg from '../../assets/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
 
 const AdminHeader = () => {
   const { admin, logout } = useAuth();
@@ -14,19 +14,20 @@ const AdminHeader = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-gradient-to-r from-[#2D1B54] via-[#381D66] to-[#4E2F94] text-white border-b border-white/10 shadow-md">
+    <header className="sticky top-0 z-40 bg-gradient-to-r from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white border-b border-white/10 shadow-md">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
           {/* Logo & Portal Badge */}
           <div className="flex items-center gap-4">
             <Link to="/admin/dashboard" className="flex items-center gap-3">
-              <div className="p-1.5 rounded-xl bg-white shadow-xs">
-                <img src={logoImg} alt="Array Minds" className="h-7 w-auto object-contain" />
-              </div>
-              <div className="hidden sm:block">
-                <span className="text-sm font-extrabold text-white">Array Minds</span>
-                <span className="text-[10px] font-mono text-[#FFD1DE] block">Admin Console</span>
+              <img src={logoImg} alt="Array Minds" className="h-7 w-auto object-contain" />
+              <div className="flex flex-col justify-center">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-base font-extrabold text-white leading-none">array</span>
+                  <span className="text-[9px] font-bold tracking-[0.2em] text-[#C7CDDA] uppercase">MINDS</span>
+                </div>
+                <span className="text-[10px] font-mono text-[#7FE4EA] block mt-0.5">Admin Console</span>
               </div>
             </Link>
           </div>
@@ -39,7 +40,7 @@ const AdminHeader = () => {
               to="/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-purple-100 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-[#C7CDDA] hover:text-white transition-colors"
             >
               <Globe className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Live Website</span>
@@ -47,14 +48,14 @@ const AdminHeader = () => {
 
             {/* Admin User Info */}
             <div className="flex items-center gap-2.5 pl-3 border-l border-white/15">
-              <div className="w-8 h-8 rounded-full bg-[#EC1557] flex items-center justify-center text-white text-xs font-bold shadow-xs">
+              <div className="w-8 h-8 rounded-full bg-[#00C2CB] text-[#032B2E] flex items-center justify-center text-xs font-bold shadow-xs">
                 {admin?.name ? admin.name.charAt(0).toUpperCase() : 'A'}
               </div>
               <div className="hidden md:block text-left">
                 <p className="text-xs font-bold text-white leading-tight">
                   {admin?.name || 'Administrator'}
                 </p>
-                <p className="text-[10px] text-purple-200 font-mono">
+                <p className="text-[10px] text-[#8A99B5] font-mono">
                   {admin?.email || 'admin@arrayminds.com'}
                 </p>
               </div>

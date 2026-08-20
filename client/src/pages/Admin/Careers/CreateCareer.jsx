@@ -102,7 +102,7 @@ const CreateCareer = () => {
     } catch (err) {
       console.error('Error creating career:', err);
       setError(
-        err.response?.data?.message || 'Failed to publish job posting to MongoDB Atlas.'
+        err.response?.data?.message || 'Failed to publish job posting to Salesforce.'
       );
       setLoading(false);
     }
