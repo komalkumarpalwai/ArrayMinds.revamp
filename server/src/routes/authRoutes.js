@@ -10,13 +10,19 @@ router.get('/me', protectAdmin, getAdminProfile);
 
 // 1-Click Salesforce OAuth Connect
 router.get('/salesforce/connect', (req, res) => {
-  const authUrl = salesforceService.getAuthorizeUrl('http://localhost:5000/api/auth/salesforce/callback');
+  const redirectUri =
+    process.env.SALESFORCE_REDIRECT_URI ||
+    `${req.protocol}://${req.get('host')}/api/auth/salesforce/callback`;
+  const authUrl = salesforceService.getAuthorizeUrl(redirectUri);
   res.redirect(authUrl);
 });
 
 // 1-Click Salesforce OAuth Callback
 router.get('/salesforce/callback', async (req, res) => {
   const { code, error, error_description } = req.query;
+  const redirectUri =
+    process.env.SALESFORCE_REDIRECT_URI ||
+    `${req.protocol}://${req.get('host')}/api/auth/salesforce/callback`;
 
   if (error) {
     return res.status(400).send(`
@@ -29,7 +35,7 @@ router.get('/salesforce/callback', async (req, res) => {
   }
 
   try {
-    const result = await salesforceService.handleCallback(code, 'http://localhost:5000/api/auth/salesforce/callback');
+    const result = await salesforceService.handleCallback(code, redirectUri);
     res.send(`
       <div style="font-family: sans-serif; padding: 40px; text-align: center; max-width: 600px; margin: 40px auto; border-radius: 20px; border: 1px solid #e5e7eb; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
         <div style="font-size: 48px; margin-bottom: 10px;">🎉</div>
