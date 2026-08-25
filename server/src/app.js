@@ -38,7 +38,33 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-  res.json({ message: 'Array-Minds API Server is operational', salesforce: 'Connected' });
+  res.json({ message: 'Array-Minds API Server is operational' });
+});
+
+app.get('/api/health', async (req, res) => {
+  try {
+    const { salesforceConfig } = await import('./config/salesforce.js');
+    const salesforceService = (await import('./services/salesforceService.js')).default;
+    const tokenInfo = await salesforceService.getAccessToken();
+    res.json({
+      status: 'OK',
+      salesforce: 'Connected',
+      instanceUrl: tokenInfo.instanceUrl,
+      hasClientId: !!salesforceConfig.clientId,
+      hasClientSecret: !!salesforceConfig.clientSecret,
+      loginUrl: salesforceConfig.loginUrl,
+    });
+  } catch (err) {
+    const { salesforceConfig } = await import('./config/salesforce.js');
+    res.status(500).json({
+      status: 'Error',
+      salesforce: 'Connection Failed',
+      error: err.message,
+      hasClientId: !!salesforceConfig.clientId,
+      hasClientSecret: !!salesforceConfig.clientSecret,
+      loginUrl: salesforceConfig.loginUrl,
+    });
+  }
 });
 
 // Mounted Routes
