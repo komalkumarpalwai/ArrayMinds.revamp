@@ -142,46 +142,74 @@ class SalesforceService {
       }
     }
 
-    // 2. Otherwise try Username-Password flow or Client Credentials
+    // 2. Try Client Credentials Flow (Enterprise External Client App standard)
     if (!clientId || !clientSecret) {
       throw new Error('Salesforce credentials missing in server/.env');
     }
 
-    const params = new URLSearchParams();
+    try {
+      const ccParams = new URLSearchParams();
+      ccParams.append('grant_type', 'client_credentials');
+      ccParams.append('client_id', clientId);
+      ccParams.append('client_secret', clientSecret);
+
+      const ccRes = await fetch(tokenUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: ccParams.toString(),
+      });
+
+      const ccData = await ccRes.json();
+
+      if (ccRes.ok && ccData.access_token) {
+        this.accessToken = ccData.access_token;
+        this.instanceUrl = ccData.instance_url || salesforceConfig.loginUrl;
+        this.tokenExpiresAt = Date.now() + 110 * 60 * 1000;
+        return { accessToken: this.accessToken, instanceUrl: this.instanceUrl };
+      } else if (username && password) {
+        console.warn('Client credentials failed, falling back to password flow:', ccData.error_description || ccData.error);
+      } else {
+        const errorDesc = ccData.error_description || ccData.error || ccRes.statusText;
+        throw new Error(`Salesforce OAuth Authentication Failed (${ccRes.status}): ${errorDesc}`);
+      }
+    } catch (ccErr) {
+      if (!username || !password) {
+        throw ccErr;
+      }
+    }
+
+    // 3. Fallback to Username-Password flow if configured
     if (username && password) {
+      const params = new URLSearchParams();
       params.append('grant_type', 'password');
       params.append('client_id', clientId);
       params.append('client_secret', clientSecret);
       params.append('username', username);
       params.append('password', password);
-    } else {
-      params.append('grant_type', 'client_credentials');
-      params.append('client_id', clientId);
-      params.append('client_secret', clientSecret);
-    }
 
-    try {
-      const response = await fetch(tokenUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString(),
-      });
+      try {
+        const response = await fetch(tokenUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString(),
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (!response.ok) {
-        const errorDesc = data.error_description || data.error || response.statusText;
-        throw new Error(`Salesforce OAuth Authentication Failed (${response.status}): ${errorDesc}`);
+        if (!response.ok) {
+          const errorDesc = data.error_description || data.error || response.statusText;
+          throw new Error(`Salesforce OAuth Authentication Failed (${response.status}): ${errorDesc}`);
+        }
+
+        this.accessToken = data.access_token;
+        this.instanceUrl = data.instance_url || salesforceConfig.loginUrl;
+        this.tokenExpiresAt = Date.now() + 110 * 60 * 1000;
+
+        return { accessToken: this.accessToken, instanceUrl: this.instanceUrl };
+      } catch (error) {
+        console.error('❌ Salesforce Token Retrieval Error:', error.message);
+        throw error;
       }
-
-      this.accessToken = data.access_token;
-      this.instanceUrl = data.instance_url;
-      this.tokenExpiresAt = Date.now() + 110 * 60 * 1000;
-
-      return { accessToken: this.accessToken, instanceUrl: this.instanceUrl };
-    } catch (error) {
-      console.error('❌ Salesforce Token Retrieval Error:', error.message);
-      throw error;
     }
   }
 
