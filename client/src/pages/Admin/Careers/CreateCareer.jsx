@@ -22,9 +22,9 @@ const CreateCareer = () => {
 
   const [formData, setFormData] = useState({
     title: '',
-    department: 'Salesforce Multi-Cloud',
+    department: 'Engineering',
     location: 'London, UK (Hybrid)',
-    employmentType: 'full-time',
+    employmentType: 'Full-time',
     status: 'active',
     description: '',
     responsibilities: [''],
@@ -32,13 +32,15 @@ const CreateCareer = () => {
   });
 
   const departments = [
-    'Salesforce Multi-Cloud',
-    'Databricks & Lakehouse AI',
-    'Integrations & Messaging (WhatsApp/Telegram)',
-    'Developer Operations & DevOps',
-    'Delivery, Agile & QA',
-    'Consulting & Enterprise Architecture',
-    'Sales & Solutions Engineering'
+    'Engineering',
+    'Consulting',
+    'Data & AI',
+    'Sales',
+    'Operations',
+    'Marketing',
+    'Human Resources',
+    'Finance',
+    'Other'
   ];
 
   const locations = [
@@ -102,7 +104,7 @@ const CreateCareer = () => {
     } catch (err) {
       console.error('Error creating career:', err);
       setError(
-        err.response?.data?.message || 'Failed to publish job posting to Salesforce.'
+        err.response?.data?.error || err.response?.data?.message || 'Failed to publish job posting to Salesforce.'
       );
       setLoading(false);
     }
@@ -217,10 +219,11 @@ const CreateCareer = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-xl bg-[#F8F9FD] border border-gray-200 text-sm text-gray-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#6C4AB6]"
               >
-                <option value="full-time">Full-Time</option>
-                <option value="contract">Contract / Freelance</option>
-                <option value="part-time">Part-Time</option>
-                <option value="internship">Internship</option>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Internship">Internship</option>
+                <option value="Contract">Contract</option>
+                <option value="Freelance">Freelance</option>
               </select>
             </div>
 

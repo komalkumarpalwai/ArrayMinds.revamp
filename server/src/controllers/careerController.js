@@ -152,25 +152,82 @@ export const createCareer = async (req, res) => {
       return String(val);
     };
 
+    const validDepartments = [
+      'Engineering',
+      'Consulting',
+      'Data & AI',
+      'Sales',
+      'Operations',
+      'Marketing',
+      'Human Resources',
+      'Finance',
+      'Other',
+    ];
+
+    const normalizeDepartment = (dept) => {
+      if (!dept) return 'Engineering';
+      if (validDepartments.includes(dept)) return dept;
+      const lower = dept.toLowerCase();
+      if (lower.includes('data') || lower.includes('ai') || lower.includes('databricks')) return 'Data & AI';
+      if (lower.includes('consult') || lower.includes('architect')) return 'Consulting';
+      if (lower.includes('sale') || lower.includes('solution')) return 'Sales';
+      if (lower.includes('market')) return 'Marketing';
+      if (lower.includes('hr') || lower.includes('human')) return 'Human Resources';
+      if (lower.includes('finance')) return 'Finance';
+      if (lower.includes('operat') || lower.includes('devops') || lower.includes('delivery') || lower.includes('qa')) return 'Operations';
+      if (lower.includes('engine') || lower.includes('develop') || lower.includes('salesforce') || lower.includes('integrat')) return 'Engineering';
+      return 'Other';
+    };
+
+    const formatEmploymentType = (type) => {
+      if (!type) return 'Full-time';
+      const clean = type.trim().toLowerCase();
+      if (clean === 'full-time' || clean === 'fulltime') return 'Full-time';
+      if (clean === 'part-time' || clean === 'parttime') return 'Part-time';
+      if (clean === 'internship' || clean === 'intern') return 'Internship';
+      if (clean === 'contract') return 'Contract';
+      if (clean === 'freelance') return 'Freelance';
+      return 'Full-time';
+    };
+
+    const formatJobType = (jt, loc) => {
+      if (jt) {
+        const clean = jt.trim().toLowerCase();
+        if (clean === 'on-site' || clean === 'onsite') return 'On-site';
+        if (clean === 'remote') return 'Remote';
+        if (clean === 'hybrid') return 'Hybrid';
+      }
+      if (loc) {
+        const locClean = loc.toLowerCase();
+        if (locClean.includes('remote')) return 'Remote';
+        if (locClean.includes('on-site') || locClean.includes('onsite')) return 'On-site';
+        if (locClean.includes('hybrid')) return 'Hybrid';
+      }
+      return 'Hybrid';
+    };
+
     const salesforcePayload = {
-      Job_Title__c: title,
-      Department__c: department || 'Engineering',
-      Location__c: location || 'Remote / Hybrid',
-      Employment_Type__c: employmentType || 'Full-Time',
+      Job_Title__c: title.length > 255 ? title.substring(0, 255) : title,
+      Department__c: normalizeDepartment(department),
+      Location__c: location ? location.substring(0, 255) : 'Remote / Hybrid',
+      Employment_Type__c: formatEmploymentType(employmentType),
+      Job_Type__c: formatJobType(jobType, location),
       Status__c: sfStatus,
       Application_Email__c: applicationEmail || 'info@arrayminds.com',
     };
 
-    if (jobType) salesforcePayload.Job_Type__c = jobType;
-    if (experienceRequired) salesforcePayload.Experience_Required__c = experienceRequired;
-    if (salaryRange) salesforcePayload.Salary_Range__c = salaryRange;
+    if (experienceRequired) salesforcePayload.Experience_Required__c = String(experienceRequired).substring(0, 100);
+    if (salaryRange) salesforcePayload.Salary_Range__c = String(salaryRange).substring(0, 100);
     if (isFeatured !== undefined) salesforcePayload.Is_Featured__c = !!isFeatured;
     if (applicationDeadline) salesforcePayload.Application_Deadline__c = applicationDeadline;
-    if (applicationUrl) salesforcePayload.Application_URL__c = applicationUrl;
+    if (applicationUrl) salesforcePayload.Application_URL__c = String(applicationUrl).substring(0, 255);
     if (description) salesforcePayload.Description__c = description;
     if (requirements) salesforcePayload.Requirements__c = stringifyList(requirements);
     if (responsibilities) salesforcePayload.Responsibilities__c = stringifyList(responsibilities);
-    if (skills) salesforcePayload.Skills__c = stringifyList(skills);
+    if (skills) {
+      const skillsStr = stringifyList(skills);
+      salesforcePayload.Skills__c = skillsStr.length > 1000 ? skillsStr.substring(0, 1000) : skillsStr;
+    }
 
     const result = await salesforceService.createRecord('Website_Career__c', salesforcePayload);
     const createdRecord = await salesforceService.getRecord('Website_Career__c', result.id);
@@ -215,22 +272,82 @@ export const updateCareer = async (req, res) => {
       return String(val);
     };
 
+    const validDepartments = [
+      'Engineering',
+      'Consulting',
+      'Data & AI',
+      'Sales',
+      'Operations',
+      'Marketing',
+      'Human Resources',
+      'Finance',
+      'Other',
+    ];
+
+    const normalizeDepartment = (dept) => {
+      if (!dept) return 'Engineering';
+      if (validDepartments.includes(dept)) return dept;
+      const lower = dept.toLowerCase();
+      if (lower.includes('data') || lower.includes('ai') || lower.includes('databricks')) return 'Data & AI';
+      if (lower.includes('consult') || lower.includes('architect')) return 'Consulting';
+      if (lower.includes('sale') || lower.includes('solution')) return 'Sales';
+      if (lower.includes('market')) return 'Marketing';
+      if (lower.includes('hr') || lower.includes('human')) return 'Human Resources';
+      if (lower.includes('finance')) return 'Finance';
+      if (lower.includes('operat') || lower.includes('devops') || lower.includes('delivery') || lower.includes('qa')) return 'Operations';
+      if (lower.includes('engine') || lower.includes('develop') || lower.includes('salesforce') || lower.includes('integrat')) return 'Engineering';
+      return 'Other';
+    };
+
+    const formatEmploymentType = (type) => {
+      if (!type) return undefined;
+      const clean = type.trim().toLowerCase();
+      if (clean === 'full-time' || clean === 'fulltime') return 'Full-time';
+      if (clean === 'part-time' || clean === 'parttime') return 'Part-time';
+      if (clean === 'internship' || clean === 'intern') return 'Internship';
+      if (clean === 'contract') return 'Contract';
+      if (clean === 'freelance') return 'Freelance';
+      return 'Full-time';
+    };
+
+    const formatJobType = (jt, loc) => {
+      if (jt) {
+        const clean = jt.trim().toLowerCase();
+        if (clean === 'on-site' || clean === 'onsite') return 'On-site';
+        if (clean === 'remote') return 'Remote';
+        if (clean === 'hybrid') return 'Hybrid';
+      }
+      if (loc) {
+        const locClean = loc.toLowerCase();
+        if (locClean.includes('remote')) return 'Remote';
+        if (locClean.includes('on-site') || locClean.includes('onsite')) return 'On-site';
+        if (locClean.includes('hybrid')) return 'Hybrid';
+      }
+      return undefined;
+    };
+
     const salesforcePayload = {};
-    if (title !== undefined) salesforcePayload.Job_Title__c = title;
-    if (department !== undefined) salesforcePayload.Department__c = department;
-    if (location !== undefined) salesforcePayload.Location__c = location;
-    if (employmentType !== undefined) salesforcePayload.Employment_Type__c = employmentType;
-    if (jobType !== undefined) salesforcePayload.Job_Type__c = jobType;
-    if (experienceRequired !== undefined) salesforcePayload.Experience_Required__c = experienceRequired;
-    if (salaryRange !== undefined) salesforcePayload.Salary_Range__c = salaryRange;
+    if (title !== undefined) salesforcePayload.Job_Title__c = title.substring(0, 255);
+    if (department !== undefined) salesforcePayload.Department__c = normalizeDepartment(department);
+    if (location !== undefined) salesforcePayload.Location__c = location.substring(0, 255);
+    if (employmentType !== undefined) salesforcePayload.Employment_Type__c = formatEmploymentType(employmentType);
+    if (jobType !== undefined || location !== undefined) {
+      const jtVal = formatJobType(jobType, location);
+      if (jtVal) salesforcePayload.Job_Type__c = jtVal;
+    }
+    if (experienceRequired !== undefined) salesforcePayload.Experience_Required__c = String(experienceRequired).substring(0, 100);
+    if (salaryRange !== undefined) salesforcePayload.Salary_Range__c = String(salaryRange).substring(0, 100);
     if (isFeatured !== undefined) salesforcePayload.Is_Featured__c = !!isFeatured;
     if (applicationDeadline !== undefined) salesforcePayload.Application_Deadline__c = applicationDeadline;
     if (applicationEmail !== undefined) salesforcePayload.Application_Email__c = applicationEmail;
-    if (applicationUrl !== undefined) salesforcePayload.Application_URL__c = applicationUrl;
+    if (applicationUrl !== undefined) salesforcePayload.Application_URL__c = String(applicationUrl).substring(0, 255);
     if (description !== undefined) salesforcePayload.Description__c = description;
     if (requirements !== undefined) salesforcePayload.Requirements__c = stringifyList(requirements);
     if (responsibilities !== undefined) salesforcePayload.Responsibilities__c = stringifyList(responsibilities);
-    if (skills !== undefined) salesforcePayload.Skills__c = stringifyList(skills);
+    if (skills !== undefined) {
+      const skillsStr = stringifyList(skills);
+      salesforcePayload.Skills__c = skillsStr.length > 1000 ? skillsStr.substring(0, 1000) : skillsStr;
+    }
     if (status !== undefined) {
       salesforcePayload.Status__c = status === 'closed' ? 'Closed' : status === 'draft' ? 'Draft' : 'Open';
     }
