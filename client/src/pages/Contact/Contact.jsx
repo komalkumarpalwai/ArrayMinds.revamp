@@ -19,7 +19,8 @@ import {
   Check,
   Briefcase,
   Layers,
-  Zap
+  Zap,
+  ExternalLink
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -74,33 +75,42 @@ const Contact = () => {
   const offices = [
     {
       city: 'London, United Kingdom',
+      shortCity: 'London',
       flag: '🇬🇧',
       type: 'Global Headquarters',
       address: '20-22 Wenlock Road, London, N1 7GU, United Kingdom',
       phone: '+44 20 8144 0407',
       telLink: '+442081440407',
       email: 'info@arrayminds.com',
-      hours: 'Mon - Fri: 9:00 AM - 6:00 PM GMT'
+      hours: 'Mon - Fri: 9:00 AM - 6:00 PM GMT',
+      mapUrl: 'https://maps.google.com/maps?q=20-22%20Wenlock%20Road,%20London,%20N1%207GU,%20UK&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      directionsUrl: 'https://www.google.com/maps/search/?api=1&query=20-22+Wenlock+Road,+London,+N1+7GU,+United+Kingdom'
     },
     {
       city: 'Coimbatore, India',
+      shortCity: 'Coimbatore',
       flag: '🇮🇳',
       type: 'Engineering Center',
       address: 'SF No. 370/3, Ground Floor, Sri Andal Nagar, Kalapatti, Coimbatore - 641048',
       phone: '+91 8754 380 969',
       telLink: '+918754380969',
       email: 'info@arrayminds.com',
-      hours: 'Mon - Fri: 9:30 AM - 6:30 PM IST'
+      hours: 'Mon - Fri: 9:30 AM - 6:30 PM IST',
+      mapUrl: 'https://maps.google.com/maps?q=SF%20No.%20370/3,%20Kalapatti,%20Coimbatore%20641048&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      directionsUrl: 'https://www.google.com/maps/search/?api=1&query=SF+No.+370/3,+Kalapatti,+Coimbatore+641048'
     },
     {
       city: 'Hyderabad, India',
+      shortCity: 'Hyderabad',
       flag: '🇮🇳',
       type: 'Data & AI Excellence Hub',
       address: '7-96/5, Heeba Villa, Shankar Nagar Colony, Uppal Depot, Hyderabad, Telangana 500039',
       phone: '+91 8754 380 969',
       telLink: '+918754380969',
       email: 'info@arrayminds.com',
-      hours: 'Mon - Fri: 9:30 AM - 6:30 PM IST'
+      hours: 'Mon - Fri: 9:30 AM - 6:30 PM IST',
+      mapUrl: 'https://maps.google.com/maps?q=Uppal%20Depot,%20Hyderabad,%20Telangana%20500039&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      directionsUrl: 'https://www.google.com/maps/search/?api=1&query=7-96/5+Heeba+Villa,+Uppal+Depot,+Hyderabad,+Telangana+500039'
     }
   ];
 
@@ -588,6 +598,35 @@ const Contact = () => {
                       <span>{office.hours}</span>
                     </div>
                   </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Location Maps Grid (Matching Picture 2) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 pt-8 border-t border-gray-100">
+            {offices.map((office, idx) => (
+              <div key={idx} className="flex flex-col items-center group">
+                <div className="w-full h-56 sm:h-64 rounded-2xl overflow-hidden border border-gray-200/90 shadow-md hover:shadow-xl transition-all duration-300 bg-slate-100 relative">
+                  <iframe
+                    title={`${office.shortCity} Office Map`}
+                    src={office.mapUrl}
+                    className="w-full h-full border-0"
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+                <div className="mt-4 text-center">
+                  <a
+                    href={office.directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-base sm:text-lg font-bold text-[#1B3B6F] hover:text-[#00C2CB] transition-colors"
+                  >
+                    <span>{office.shortCity}</span>
+                    <ExternalLink className="w-4 h-4 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                  </a>
                 </div>
               </div>
             ))}
