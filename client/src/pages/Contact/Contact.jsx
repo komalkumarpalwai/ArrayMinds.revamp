@@ -355,7 +355,7 @@ const Contact = () => {
                     
                     <div 
                       data-lenis-prevent
-                      className="max-h-60 overflow-y-auto overscroll-contain p-1.5 space-y-1 focus:outline-none custom-select-scrollbar"
+                      className="max-h-60 overflow-y-auto overscroll-contain p-2 pr-1.5 space-y-1 focus:outline-none custom-select-scrollbar"
                       onWheel={(e) => e.stopPropagation()}
                     >
                       {subjects.map((subj, idx) => {

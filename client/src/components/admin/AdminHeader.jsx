@@ -24,7 +24,7 @@ const AdminHeader = () => {
               <img src={logoImg} alt="Array Minds" className="h-7 w-auto object-contain" />
               <div className="flex flex-col justify-center">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-base font-extrabold text-white leading-none">array</span>
+                  <span className="text-base font-extrabold text-white leading-none">Array</span>
                   <span className="text-[9px] font-bold tracking-[0.2em] text-[#C7CDDA] uppercase">MINDS</span>
                 </div>
                 <span className="text-[10px] font-mono text-[#7FE4EA] block mt-0.5">Admin Console</span>

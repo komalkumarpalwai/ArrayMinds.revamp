@@ -320,7 +320,7 @@ const Careers = () => {
 
           {/* Job Postings Grid */}
           {loading ? (
-            <LogoLoader text="Fetching open roles from Salesforce Org..." size="md" />
+            <LogoLoader text="Loading career opportunities..." size="md" />
           ) : filteredCareers.length === 0 ? (
             <div className="p-16 text-center bg-[#F8FAFC] rounded-3xl border border-gray-200 space-y-4">
               <div className="w-12 h-12 rounded-full bg-[#E0F7FA] text-[#00838F] flex items-center justify-center mx-auto">
@@ -443,7 +443,7 @@ const Careers = () => {
         >
           <div 
             data-lenis-prevent="true"
-            className="bg-white rounded-3xl border border-gray-200 shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto overscroll-contain animate-scale-up"
+            className="bg-white rounded-3xl border border-gray-200 shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto overscroll-contain animate-scale-up light-scrollbar"
           >
             
             <div className="bg-gradient-to-r from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white p-6 sm:p-8 flex items-center justify-between">
@@ -614,7 +614,7 @@ const Careers = () => {
         >
           <div 
             data-lenis-prevent="true"
-            className="bg-white rounded-3xl border border-gray-200 shadow-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto overscroll-contain animate-scale-up"
+            className="bg-white rounded-3xl border border-gray-200 shadow-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto overscroll-contain animate-scale-up light-scrollbar"
           >
             
             <div className="bg-gradient-to-r from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white p-6 sm:p-8 flex items-center justify-between">

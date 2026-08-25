@@ -32,7 +32,7 @@ const Header = () => {
             />
             <div className="flex flex-col justify-center">
               <span className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight text-white leading-none group-hover:text-[#7FE4EA] transition-colors">
-                array
+                Array
               </span>
               <span className="text-[9px] sm:text-[10px] md:text-[11px] font-bold tracking-[0.28em] text-[#C7CDDA] uppercase leading-tight mt-0.5">
                 MINDS

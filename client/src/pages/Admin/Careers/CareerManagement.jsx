@@ -159,7 +159,7 @@ const CareerManagement = () => {
           <div className="p-16 text-center space-y-3">
             <RefreshCw className="w-8 h-8 text-[#EC1557] animate-spin mx-auto" />
             <p className="text-xs font-semibold text-gray-500">
-              Loading active job listings from Salesforce Org...
+              Loading active job listings...
             </p>
           </div>
         ) : filteredCareers.length === 0 ? (

@@ -125,7 +125,7 @@ const ArrayMindsLogo = ({
       {/* 2. TYPOGRAPHY: "array" & "MINDS" */}
       {/* ========================================================================= */}
       
-      {/* "array" (Bold Geometric Lowercase) */}
+      {/* "Array" (Bold Geometric Titlecase) */}
       <text
         x="250"
         y="74"
@@ -135,7 +135,7 @@ const ArrayMindsLogo = ({
         fontWeight="800"
         letterSpacing="-0.03em"
       >
-        array
+        Array
       </text>
 
       {/* "MINDS" (Tracked Uppercase Modern Sans) */}

@@ -101,7 +101,7 @@ const Footer = () => {
               />
               <div className="flex flex-col justify-center">
                 <span className="text-xl font-extrabold tracking-tight text-white leading-none group-hover:text-[#7FE4EA] transition-colors">
-                  array
+                  Array
                 </span>
                 <span className="text-[10px] font-bold tracking-[0.28em] text-[#C7CDDA] uppercase leading-tight mt-0.5">
                   MINDS
@@ -228,8 +228,9 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8A99B5] gap-2">
           <p>© {currentYear} Array Minds. All rights reserved.</p>
-          <p className="text-[#8A99B5]/80 text-[11px]">
-            Enterprise Cloud, Salesforce & AI Consulting
+          <p className="text-[#C7CDDA] text-[11px] sm:text-xs font-medium flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00C2CB]"></span>
+            <span>Official Salesforce & Databricks Partner</span>
           </p>
         </div>
 

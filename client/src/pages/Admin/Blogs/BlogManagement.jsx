@@ -32,9 +32,9 @@ const BlogManagement = () => {
       const response = await api.get('/blogs?all=true');
       setBlogs(response.data || []);
     } catch (err) {
-      console.error('Error fetching blogs from Salesforce:', err);
+      console.error('Error fetching blogs:', err);
       setError(
-        err.response?.data?.message || 'Failed to load blog posts from Salesforce Org.'
+        err.response?.data?.message || 'Failed to load blog posts.'
       );
     } finally {
       setLoading(false);
@@ -181,7 +181,7 @@ const BlogManagement = () => {
           <div className="p-16 text-center space-y-3">
             <RefreshCw className="w-8 h-8 text-[#EC1557] animate-spin mx-auto" />
             <p className="text-xs font-semibold text-gray-500">
-              Loading blog articles from Salesforce Org...
+              Loading blog articles...
             </p>
           </div>
         ) : filteredBlogs.length === 0 ? (

@@ -28,6 +28,7 @@ import radhaImg from '../../assets/radha-selva.jfif';
 import bharathImg from '../../assets/bharath.png';
 import vaishnaviImg from '../../assets/Vaishnavi.jfif';
 import ramImg from '../../assets/Ram-gandham.jfif';
+import kalyanImg from '../../assets/kalyan-ceo.jpeg';
 
 const Team = () => {
   const [activeDepartment, setActiveDepartment] = useState('all');
@@ -36,7 +37,7 @@ const Team = () => {
     { id: 'all', name: 'All Leadership' },
     { id: 'directors', name: 'Board of Directors' },
     { id: 'delivery', name: 'Delivery & Operations' },
-    { id: 'regional', name: 'Regional Hub Managers' },
+    { id: 'regional', name: 'Developer Operations' },
   ];
 
   const teamMembers = [
@@ -116,34 +117,54 @@ const Team = () => {
       initials: 'BR'
     },
 
-    // 3. Regional Hub Managers
+    // 3. Developer Operations (Regional Engineering Hubs)
     {
       id: 'vaishnavi',
       name: 'Vaishnavi R',
-      role: 'Regional Delivery & Operations Manager',
+      role: 'Head of Developer Operations',
       category: 'regional',
       location: 'Coimbatore Hub, India 🇮🇳',
       linkedin: 'https://www.linkedin.com/in/vaishnavi-r-154ab247/',
-      bio: 'Leading the Coimbatore technical development center, driving sprint execution, developer mentoring, and operational cadence.',
-      expertise: ['Center Management', 'Delivery Operations', 'Sprint Coordination'],
+      bio: 'Leading Developer Operations and software engineering at the Coimbatore development center, managing sprint coordination, developer mentoring, and agile development cadence.',
+      expertise: ['Developer Operations', 'Coimbatore Engineering Center', 'Agile Development'],
       image: vaishnaviImg,
       initials: 'VR'
     },
     {
       id: 'ram',
       name: 'Ram Gandham',
-      role: 'Regional Delivery & Operations Manager',
+      role: 'Developer Operations & Engineering Lead',
       category: 'regional',
       location: 'Hyderabad Hub, India 🇮🇳',
       linkedin: 'https://www.linkedin.com/in/ramgandham93/',
-      bio: 'Managing the Hyderabad Data & AI delivery center, overseeing enterprise implementations and engineering quality.',
-      expertise: ['Data Center Management', 'Technical Delivery', 'Operations Oversight'],
+      bio: 'Co-leading Developer Operations and technical development at the Hyderabad development center alongside Kalyan, managing Data Cloud engineering, Databricks pipelines, and developer workflows.',
+      expertise: ['Developer Operations', 'Data & AI Development', 'Technical Engineering'],
       image: ramImg,
       initials: 'RG'
+    },
+    {
+      id: 'kalyan',
+      name: 'Kalyan Sivapuram',
+      role: 'Developer Operations & Engineering Lead',
+      category: 'regional',
+      location: 'Hyderabad Hub, India 🇮🇳',
+      linkedin: 'https://www.linkedin.com/in/kalyan-sivapuram-177904216/',
+      bio: 'Co-leading Developer Operations and software development at the Hyderabad development center alongside Ram, managing Salesforce programmatic engineering, Apex/LWC development, and developer workflows.',
+      expertise: ['Developer Operations', 'Apex & LWC Development', 'Salesforce Engineering'],
+      image: kalyanImg,
+      initials: 'KS'
     }
   ];
 
   const containerRef = useRef(null);
+  const statRefs = useRef([]);
+
+  const statItems = [
+    { value: 4, suffix: '', label: 'Board Directors' },
+    { value: 3, suffix: '', label: 'Global Delivery Hubs' },
+    { value: 49, suffix: '+', label: 'Certified Specialists' },
+    { value: 100, suffix: '%', label: 'Agile Delivery' },
+  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -152,6 +173,31 @@ const Team = () => {
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out', clearProps: 'all' }
       );
+
+      // GSAP Count-Up Animation for Metrics
+      statRefs.current.forEach((el, index) => {
+        if (!el) return;
+        const target = statItems[index].value;
+        const suffix = statItems[index].suffix;
+        const counter = { val: 0 };
+
+        gsap.to(counter, {
+          val: target,
+          duration: 1.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 95%',
+            toggleActions: 'play none none none',
+          },
+          onUpdate: () => {
+            el.innerText = `${Math.floor(counter.val)}${suffix}`;
+          },
+          onComplete: () => {
+            el.innerText = `${target}${suffix}`;
+          }
+        });
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -191,24 +237,24 @@ const Team = () => {
             Meet the founders, delivery directors, and regional center managers orchestrating transformative Salesforce & Databricks solutions across the UK and India.
           </p>
 
-          {/* Quick Metrics */}
+          {/* Quick Metrics with GSAP Count-Up */}
           <div className="gsap-team-hero grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 max-w-4xl mx-auto">
-            <div className="p-4 rounded-2xl bg-white/[0.08] border border-white/[0.1] backdrop-blur-md">
-              <span className="text-2xl sm:text-3xl font-black text-white">4</span>
-              <p className="text-xs text-[#8A99B5] mt-1">Board Directors</p>
-            </div>
-            <div className="p-4 rounded-2xl bg-white/[0.08] border border-white/[0.1] backdrop-blur-md">
-              <span className="text-2xl sm:text-3xl font-black text-white">3</span>
-              <p className="text-xs text-[#8A99B5] mt-1">Global Delivery Hubs</p>
-            </div>
-            <div className="p-4 rounded-2xl bg-white/[0.08] border border-white/[0.1] backdrop-blur-md">
-              <span className="text-2xl sm:text-3xl font-black text-white">49+</span>
-              <p className="text-xs text-[#8A99B5] mt-1">Certified Specialists</p>
-            </div>
-            <div className="p-4 rounded-2xl bg-white/[0.08] border border-white/[0.1] backdrop-blur-md">
-              <span className="text-2xl sm:text-3xl font-black text-white">100%</span>
-              <p className="text-xs text-[#8A99B5] mt-1">Agile Delivery</p>
-            </div>
+            {statItems.map((stat, i) => (
+              <div 
+                key={i} 
+                className="p-4 rounded-2xl bg-white/[0.08] hover:bg-white/[0.12] border border-white/[0.1] hover:border-[#00C2CB]/40 backdrop-blur-md transition-all duration-300 group"
+              >
+                <span 
+                  ref={(el) => (statRefs.current[i] = el)}
+                  className="text-2xl sm:text-3xl font-black text-white group-hover:text-[#7FE4EA] transition-colors tabular-nums block"
+                >
+                  0{stat.suffix}
+                </span>
+                <p className="text-xs text-[#8A99B5] group-hover:text-[#C7CDDA] transition-colors mt-1 font-medium">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
           </div>
 
         </div>

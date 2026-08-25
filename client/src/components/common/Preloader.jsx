@@ -57,7 +57,7 @@ const Preloader = () => {
             />
             <div className="flex flex-col text-left">
               <span className="text-3xl sm:text-4xl font-black tracking-tight text-white leading-none">
-                array
+                Array
               </span>
               <span className="text-xs sm:text-sm font-bold tracking-[0.3em] text-[#C7CDDA] uppercase leading-tight mt-1">
                 MINDS

@@ -78,7 +78,7 @@ const AdminLogin = () => {
               />
               <div className="flex flex-col text-left">
                 <span className="text-2xl font-extrabold tracking-tight text-white leading-none">
-                  array
+                  Array
                 </span>
                 <span className="text-[11px] font-bold tracking-[0.28em] text-[#C7CDDA] uppercase leading-tight mt-0.5">
                   MINDS

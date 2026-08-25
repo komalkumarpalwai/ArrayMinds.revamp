@@ -121,7 +121,7 @@ const ContactSubmissions = () => {
             Contact Form Submissions
           </h1>
           <p className="text-xs text-gray-500 mt-1">
-            Real-time client leads and project inquiries stored in Salesforce Org
+            Real-time client leads and project inquiries
           </p>
         </div>
 

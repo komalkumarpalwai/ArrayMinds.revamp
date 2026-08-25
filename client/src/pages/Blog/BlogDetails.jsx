@@ -53,7 +53,7 @@ const BlogDetails = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6">
-        <LogoLoader text="Retrieving article from Salesforce Org..." size="lg" />
+        <LogoLoader text="Loading article..." size="lg" />
       </div>
     );
   }
@@ -68,7 +68,7 @@ const BlogDetails = () => {
           <div>
             <h2 className="text-xl font-bold text-[#2D1B54]">Article Unavailable</h2>
             <p className="text-xs sm:text-sm text-gray-500 mt-2 leading-relaxed">
-              {error || 'Article not found in Salesforce Org.'}
+              {error || 'The requested article could not be found.'}
             </p>
           </div>
           <Link

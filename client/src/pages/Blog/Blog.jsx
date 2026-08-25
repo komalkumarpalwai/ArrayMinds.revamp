@@ -98,7 +98,7 @@ const Blog = () => {
         
         {/* State: Loading */}
         {loading && (
-          <LogoLoader text="Retrieving articles from Salesforce Org..." size="md" />
+          <LogoLoader text="Loading insights & articles..." size="md" />
         )}
 
         {/* State: Error */}

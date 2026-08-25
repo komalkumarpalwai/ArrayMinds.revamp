@@ -154,13 +154,13 @@ const CareerSubmissions = () => {
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-[#6C4AB6] text-xs font-semibold mb-2">
             <Users className="w-3.5 h-3.5" />
-            <span>Salesforce Website_Career_Submission__c</span>
+            <span>Talent Pipeline</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#2D1B54]">
             Career Applications & Talent Pipeline
           </h1>
           <p className="text-xs sm:text-sm text-gray-500">
-            Real-time candidate submissions and resume applications stored in your Salesforce Org
+            Real-time candidate submissions and resume applications
           </p>
         </div>
 

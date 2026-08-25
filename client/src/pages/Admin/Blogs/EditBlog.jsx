@@ -45,8 +45,8 @@ const EditBlog = () => {
           status: data.status || 'draft',
         });
       } catch (err) {
-        console.error('Error fetching blog from Salesforce:', err);
-        setError('Failed to load blog details from Salesforce Org.');
+        console.error('Error fetching blog:', err);
+        setError('Failed to load blog details.');
       } finally {
         setLoading(false);
       }
@@ -72,9 +72,9 @@ const EditBlog = () => {
       await api.put(`/blogs/${id}`, formData);
       navigate('/admin/blogs');
     } catch (err) {
-      console.error('Error updating blog post in Salesforce:', err);
+      console.error('Error updating blog post:', err);
       setError(
-        err.response?.data?.message || 'Failed to update blog post in Salesforce.'
+        err.response?.data?.message || 'Failed to update blog post.'
       );
       setSaving(false);
     }
@@ -85,7 +85,7 @@ const EditBlog = () => {
       <div className="p-16 text-center space-y-3">
         <RefreshCw className="w-8 h-8 text-[#EC1557] animate-spin mx-auto" />
         <p className="text-xs font-semibold text-gray-500">
-          Loading article from Salesforce Org...
+          Loading article...
         </p>
       </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import logoImg from '../../assets/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
 
-const LogoLoader = ({ text = "Loading data from Salesforce Org...", size = "md" }) => {
+const LogoLoader = ({ text = "Loading...", size = "md" }) => {
   const sizeClasses = {
     sm: {
       logo: "h-5",
@@ -57,7 +57,7 @@ const LogoLoader = ({ text = "Loading data from Salesforce Org...", size = "md" 
           />
           <div className="flex flex-col text-left">
             <span className="text-sm sm:text-base font-extrabold tracking-tight text-white leading-none">
-              array
+              Array
             </span>
             <span className="text-[7px] sm:text-[8px] font-bold tracking-[0.22em] text-[#C7CDDA] uppercase leading-tight mt-0.5">
               MINDS

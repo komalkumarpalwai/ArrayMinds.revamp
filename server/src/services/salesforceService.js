@@ -24,7 +24,7 @@ class SalesforceService {
     this.codeVerifier = crypto.randomBytes(32).toString('base64url');
     const codeChallenge = crypto.createHash('sha256').update(this.codeVerifier).digest('base64url');
 
-    return `${base}/services/oauth2/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodedRedirect}&scope=api%20refresh_token%20full&code_challenge=${codeChallenge}&code_challenge_method=S256`;
+    return `${base}/services/oauth2/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodedRedirect}&scope=api%20refresh_token%20full%20offline_access&prompt=consent&code_challenge=${codeChallenge}&code_challenge_method=S256`;
   }
 
   /**
