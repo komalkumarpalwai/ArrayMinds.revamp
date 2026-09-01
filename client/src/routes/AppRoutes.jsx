@@ -9,6 +9,7 @@ import ProtectedRoute from '../components/admin/ProtectedRoute';
 // Public Pages
 import Home from '../pages/Home/Home';
 import Products from '../pages/Products/Products';
+import AMERP from '../pages/AMERP/AMERP';
 import Services from '../pages/Services/Services';
 import Team from '../pages/Team/Team';
 import Industries from '../pages/Industries/Industries';
@@ -37,6 +38,8 @@ const AppRoutes = () => {
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/AMERP" element={<AMERP />} />
+        <Route path="/amerp" element={<AMERP />} />
         <Route path="/services" element={<Services />} />
         <Route path="/team" element={<Team />} />
         <Route path="/industries" element={<Industries />} />

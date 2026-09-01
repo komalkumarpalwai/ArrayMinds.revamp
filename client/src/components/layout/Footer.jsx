@@ -35,7 +35,8 @@ const Footer = () => {
 
   const quickLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Products', path: '/products' },
+    { name: 'AppExchange Products', path: '/products' },
+    { name: 'AM ERP', path: '/AMERP', external: true },
     { name: 'Services', path: '/services' },
     // { name: 'Industries', path: '/industries' },
     { name: 'Team', path: '/team' },
@@ -176,15 +177,28 @@ const Footer = () => {
             </h3>
             
             <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 pt-1 text-sm text-[#C7CDDA]">
-              {quickLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="hover:text-[#7FE4EA] hover:translate-x-0.5 py-0.5 transition-all text-[13.5px] font-medium"
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {quickLinks.map((link) => 
+                link.external ? (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#7FE4EA] hover:translate-x-0.5 py-0.5 transition-all text-[13.5px] font-medium inline-flex items-center gap-1"
+                  >
+                    <span>{link.name}</span>
+                    <ArrowUpRight className="w-3 h-3 text-[#00C2CB]" />
+                  </a>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="hover:text-[#7FE4EA] hover:translate-x-0.5 py-0.5 transition-all text-[13.5px] font-medium"
+                  >
+                    {link.name}
+                  </Link>
+                )
+              )}
             </div>
           </div>
 

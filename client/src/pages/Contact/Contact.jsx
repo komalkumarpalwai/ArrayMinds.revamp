@@ -59,6 +59,7 @@ const Contact = () => {
   }, []);
 
   const subjects = [
+    'ArrayMinds ERP (AM ERP) / Supply & Operations',
     'Salesforce Implementation & Agentforce',
     'Databricks Lakehouse & Data Engineering',
     'AI/BI Reports & Dashboards in Databricks',

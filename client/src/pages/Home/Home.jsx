@@ -21,7 +21,13 @@ import {
   Headphones,
   CreditCard,
   Truck,
-  BarChart3
+  BarChart3,
+  Package,
+  ArrowLeftRight,
+  Boxes,
+  FileText,
+  Activity,
+  Check
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -29,13 +35,14 @@ import TypewriterText from '../../components/common/TypewriterText';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Brand & Client Logos
+// Brand & Client Logos & Hero Video
 import salesforceLogo from '../../assets/salesforce-logo2.png';
 import databricksLogo from '../../assets/databricks-logo2.png';
 import emeraldLogo from '../../assets/emerland.avif';
 import aesLogo from '../../assets/AES.avif';
 import propelLogo from '../../assets/propel.avif';
 import autotexLogo from '../../assets/Autotex-Logo1.png';
+import heroBgVideo from '../../assets/Create_a_seamless_cinematic_we.mp4';
 
 const Home = () => {
   const containerRef = useRef(null);
@@ -44,6 +51,7 @@ const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isTestimonialHovered, setIsTestimonialHovered] = useState(false);
   const [activeServiceTab, setActiveServiceTab] = useState('all');
+  const [activeArchFlow, setActiveArchFlow] = useState('all');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -282,6 +290,21 @@ const Home = () => {
       {/* 1. HERO SECTION */}
       {/* ========================================================================= */}
       <section className="relative bg-gradient-to-br from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden shadow-xl">
+        {/* Background Cinematic Video (Seamless 120% Framing naturally crops all corner watermarks) */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none mix-blend-screen transform scale-125 origin-center"
+        >
+          <source src={heroBgVideo} type="video/mp4" />
+        </video>
+        
+        {/* Single Smooth Continuous Full-Width Gradient (Zero hard boxes or visible edges) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/50 via-transparent to-[#0A1128] pointer-events-none" />
+        <div className="absolute inset-0 bg-[#0A1128]/25 pointer-events-none" />
+
         {/* Subtle Ambient Glows */}
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#00C2CB]/15 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#1B3B6F]/40 rounded-full blur-3xl pointer-events-none"></div>
@@ -329,6 +352,7 @@ const Home = () => {
                 <TypewriterText
                   words={[
                     'Salesforce & Agentforce AI.',
+                    'ArrayMinds Native ERP.',
                     'Databricks & Lakehouse BI.',
                     'Enterprise AI Automation.',
                     'Retail & Cloud Architecture.',
@@ -613,7 +637,266 @@ const Home = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. CORE SERVICES & CAPABILITIES SECTION */}
+      {/* 4. INTERACTIVE ENTERPRISE ARCHITECTURE TRIAD (CRM ↔ ERP ↔ LAKEHOUSE) */}
+      {/* ========================================================================= */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E0F7FA] text-[#00838F] text-xs font-bold uppercase tracking-wider border border-[#00C2CB]/30 shadow-xs">
+            <Activity className="w-3.5 h-3.5 text-[#00C2CB]" />
+            <span>The Unified Enterprise Triad</span>
+          </div>
+          
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0A1128] tracking-tight leading-tight">
+            How ArrayMinds Unifies <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00A1E0] via-[#00C2CB] to-[#FF3621]">
+              CRM, Native ERP & Lakehouse
+            </span>
+          </h2>
+          
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            Seamlessly connecting customer sales, inventory operations, and enterprise AI in one unified loop.
+          </p>
+
+          {/* Interactive Flow Switcher Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 pt-3">
+            {[
+              { id: 'all', label: 'Unified Triad' },
+              { id: 'crm-erp', label: '1. CRM ➔ ERP' },
+              { id: 'erp-lakehouse', label: '2. ERP ➔ Lakehouse' },
+              { id: 'lakehouse-ai', label: '3. Lakehouse ➔ BI & Analytics' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveArchFlow(tab.id)}
+                className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+                  activeArchFlow === tab.id
+                    ? 'bg-[#0A1128] text-white shadow-md scale-105'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 shadow-2xs'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 3-Pillar Interactive Visual Container */}
+        <div className="p-6 sm:p-10 lg:p-12 rounded-3xl bg-gradient-to-br from-[#0A1128] via-[#0D1B3E] to-[#10224A] text-white shadow-2xl border border-white/[0.08] relative overflow-hidden">
+          
+          {/* Subtle Ambient Lights */}
+          <div className="absolute top-0 left-1/4 w-80 h-80 bg-[#00A1E0]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#FF3621]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#00C2CB]/10 rounded-full blur-3xl pointer-events-none" />
+
+          {/* Triad Nodes Grid */}
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+            
+            {/* Node 1: Salesforce CRM */}
+            <div 
+              onClick={() => setActiveArchFlow('crm-erp')}
+              className={`p-6 sm:p-7 rounded-2xl transition-all duration-300 flex flex-col justify-between cursor-pointer border ${
+                activeArchFlow === 'crm-erp' || activeArchFlow === 'all'
+                  ? 'bg-white/[0.08] border-[#00A1E0] ring-2 ring-[#00A1E0]/40 shadow-lg shadow-[#00A1E0]/10 scale-[1.01]'
+                  : 'bg-white/[0.03] border-white/[0.08] opacity-75 hover:opacity-100 hover:bg-white/[0.06]'
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00A1E0]/20 text-[#60cdff] border border-[#00A1E0]/30">
+                    Front-Office Demand
+                  </span>
+                  <div className="w-10 h-10 rounded-xl bg-[#00A1E0]/20 border border-[#00A1E0]/30 flex items-center justify-center text-[#60cdff]">
+                    <Cloud className="w-5 h-5" />
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-extrabold text-white mb-1">
+                  Salesforce CRM & Agentforce
+                </h3>
+                <p className="text-xs text-[#8A99B5] mb-4">
+                  Lead capture, CPQ quoting, opportunity tracking, and autonomous customer agents.
+                </p>
+
+                <div className="space-y-2 text-xs text-[#C7CDDA]">
+                  <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.04]">
+                    <Check className="w-3.5 h-3.5 text-[#60cdff] flex-shrink-0" />
+                    <span>Customer 360 & Pipeline Management</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.04]">
+                    <Check className="w-3.5 h-3.5 text-[#60cdff] flex-shrink-0" />
+                    <span>Instant Quote & Contract Generation</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.04]">
+                    <Check className="w-3.5 h-3.5 text-[#60cdff] flex-shrink-0" />
+                    <span>Agentforce Autonomous AI Assistants</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold text-[#60cdff]">
+                <Link to="/services" className="hover:underline flex items-center gap-1">
+                  <span>Explore CRM Services</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Node 2: ArrayMinds ERP */}
+            <div 
+              onClick={() => setActiveArchFlow('erp-lakehouse')}
+              className={`p-6 sm:p-7 rounded-2xl transition-all duration-300 flex flex-col justify-between cursor-pointer border relative ${
+                activeArchFlow === 'erp-lakehouse' || activeArchFlow === 'crm-erp' || activeArchFlow === 'all'
+                  ? 'bg-gradient-to-b from-[#00C2CB]/15 to-white/[0.05] border-[#00C2CB] ring-2 ring-[#00C2CB]/50 shadow-xl shadow-[#00C2CB]/15 scale-[1.02]'
+                  : 'bg-white/[0.03] border-white/[0.08] opacity-75 hover:opacity-100 hover:bg-white/[0.06]'
+              }`}
+            >
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-[#00C2CB] text-slate-950 text-[10px] font-black uppercase tracking-wider shadow-sm">
+                100% Native Managed Package
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-4 mt-1">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00C2CB]/20 text-[#7FE4EA] border border-[#00C2CB]/30">
+                    Mid-Office Operations
+                  </span>
+                  <div className="w-10 h-10 rounded-xl bg-[#00C2CB]/20 border border-[#00C2CB]/30 flex items-center justify-center text-[#7FE4EA]">
+                    <Package className="w-5 h-5" />
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-extrabold text-white mb-1">
+                  ArrayMinds ERP (AM ERP)
+                </h3>
+                <p className="text-xs text-[#8A99B5] mb-4">
+                  Multi-warehouse inventory, ATP reservations, Bill of Materials (BOM), and automated PO/MO.
+                </p>
+
+                <div className="space-y-2 text-xs text-[#C7CDDA]">
+                  <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.04]">
+                    <Check className="w-3.5 h-3.5 text-[#00C2CB] flex-shrink-0" />
+                    <span>Real-Time Inventory & Bin Allocation</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.04]">
+                    <Check className="w-3.5 h-3.5 text-[#00C2CB] flex-shrink-0" />
+                    <span>Automated PO & Manufacturing Orders</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.04]">
+                    <Check className="w-3.5 h-3.5 text-[#00C2CB] flex-shrink-0" />
+                    <span>Zero Admin Setup • 1-Click AppExchange</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold text-[#7FE4EA]">
+                <Link to="/AMERP" className="hover:underline flex items-center gap-1">
+                  <span>Explore AM ERP Details</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Node 3: Databricks Lakehouse */}
+            <div 
+              onClick={() => setActiveArchFlow('lakehouse-ai')}
+              className={`p-6 sm:p-7 rounded-2xl transition-all duration-300 flex flex-col justify-between cursor-pointer border ${
+                activeArchFlow === 'lakehouse-ai' || activeArchFlow === 'all'
+                  ? 'bg-white/[0.08] border-[#FF3621] ring-2 ring-[#FF3621]/40 shadow-lg shadow-[#FF3621]/10 scale-[1.01]'
+                  : 'bg-white/[0.03] border-white/[0.08] opacity-75 hover:opacity-100 hover:bg-white/[0.06]'
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#FF3621]/20 text-[#ff8f82] border border-[#FF3621]/30">
+                    Back-Office Intelligence
+                  </span>
+                  <div className="w-10 h-10 rounded-xl bg-[#FF3621]/20 border border-[#FF3621]/30 flex items-center justify-center text-[#ff8f82]">
+                    <Database className="w-5 h-5" />
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-extrabold text-white mb-1">
+                  Databricks Lakehouse & AI
+                </h3>
+                <p className="text-xs text-[#8A99B5] mb-4">
+                  Zero-copy data federation, ML demand forecasting, executive AI/BI, and automated restock signals.
+                </p>
+
+                <div className="space-y-2 text-xs text-[#C7CDDA]">
+                  <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.04]">
+                    <Check className="w-3.5 h-3.5 text-[#ff8f82] flex-shrink-0" />
+                    <span>Real-Time Delta Lakehouse Ingestion</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.04]">
+                    <Check className="w-3.5 h-3.5 text-[#ff8f82] flex-shrink-0" />
+                    <span>Predictive Demand & Supply Forecasting</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.04]">
+                    <Check className="w-3.5 h-3.5 text-[#ff8f82] flex-shrink-0" />
+                    <span>Executive Lakehouse BI Dashboards</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold text-[#ff8f82]">
+                <Link to="/services" className="hover:underline flex items-center gap-1">
+                  <span>Explore Databricks BI</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Interactive Live Data Stream Explainer Box */}
+          <div className="relative z-10 mt-8 p-5 sm:p-6 rounded-2xl bg-white/[0.05] border border-white/[0.1] backdrop-blur-md">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              
+              <div className="flex items-start gap-3">
+                <div className="p-2.5 rounded-xl bg-[#00C2CB]/20 text-[#7FE4EA] flex-shrink-0 mt-0.5">
+                  <ArrowLeftRight className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white">
+                    {activeArchFlow === 'crm-erp' && 'Data Loop 1: Salesforce CRM ➔ ArrayMinds ERP'}
+                    {activeArchFlow === 'erp-lakehouse' && 'Data Loop 2: ArrayMinds ERP ➔ Databricks Lakehouse'}
+                    {activeArchFlow === 'lakehouse-ai' && 'Data Loop 3: Databricks Lakehouse ➔ BI & Executive Analytics'}
+                    {activeArchFlow === 'all' && 'The Complete Zero-Friction Enterprise Data Loop'}
+                  </h4>
+                  <p className="text-xs text-[#8A99B5] mt-0.5 leading-relaxed">
+                    {activeArchFlow === 'crm-erp' && 'When a deal closes in Sales Cloud, AM ERP triggers instant ATP stock reservation and routes PO/MO requests without manual admin intervention.'}
+                    {activeArchFlow === 'erp-lakehouse' && 'All multi-warehouse inventory movements, manufacturing lead-times, and PO vendor performance stream directly into Databricks Delta Lake.'}
+                    {activeArchFlow === 'lakehouse-ai' && 'Databricks SQL & AI/BI visualizations transform raw ERP execution data into real-time executive dashboards, margin reports, and predictive demand forecasts.'}
+                    {activeArchFlow === 'all' && 'Customer quotes automatically reserve inventory, warehouse execution streams into Databricks Delta Lake, and BI dashboards deliver real-time executive intelligence.'}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 flex-shrink-0 self-end md:self-center">
+                <Link
+                  to="/AMERP"
+                  className="px-4 py-2 rounded-xl text-xs font-bold text-slate-950 bg-[#00C2CB] hover:bg-[#7FE4EA] transition-all shadow-md"
+                >
+                  View ArrayMinds ERP
+                </Link>
+                <Link
+                  to="/contact"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-white/[0.08] hover:bg-white/[0.15] border border-white/[0.2] transition-all"
+                >
+                  Book Demo
+                </Link>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. CORE SERVICES & CAPABILITIES SECTION */}
       {/* ========================================================================= */}
       <section className="py-20 bg-white border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -16,7 +16,10 @@ import {
   Globe, 
   Building2,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  Bot,
+  TestTube2,
+  Code2
 } from 'lucide-react';
 
 // Team Member Headshot Images
@@ -29,15 +32,19 @@ import bharathImg from '../../assets/bharath.png';
 import vaishnaviImg from '../../assets/Vaishnavi.jfif';
 import ramImg from '../../assets/Ram-gandham.jfif';
 import kalyanImg from '../../assets/kalyan-ceo.jpeg';
+import preethaImg from '../../assets/Preetha.jfif';
+import saiImg from '../../assets/sai3.png';
+import tharunImg from '../../assets/tharun3.png';
 
 const Team = () => {
   const [activeDepartment, setActiveDepartment] = useState('all');
 
   const departments = [
-    { id: 'all', name: 'All Leadership' },
+    { id: 'all', name: 'All Team' },
     { id: 'directors', name: 'Board of Directors' },
-    { id: 'delivery', name: 'Delivery & Operations' },
+    { id: 'delivery', name: 'Delivery Leadership' },
     { id: 'regional', name: 'Developer Operations' },
+    { id: 'leads', name: 'Technical & Engineering Leads' },
   ];
 
   const teamMembers = [
@@ -153,6 +160,47 @@ const Team = () => {
       expertise: ['Developer Operations', 'Apex & LWC Development', 'Salesforce Engineering'],
       image: kalyanImg,
       initials: 'KS'
+    },
+
+    // 4. Technical & Engineering Leads (LEADS SECTION - LAST TAB)
+    {
+      id: 'tharun',
+      name: 'Tharun Maddela',
+      role: 'Agentforce & AI Specialist',
+      category: 'leads',
+      location: 'Hyderabad Hub, India 🇮🇳',
+      linkedin: 'https://www.linkedin.com/in/tharun-maddela-17a592271/',
+      bio: 'Architecting Salesforce Agentforce autonomous agents, generative AI prompts, and Data Cloud AI workflows to supercharge enterprise productivity.',
+      expertise: ['Agentforce & Autonomous AI', 'Generative AI Workflows', 'Prompt Builder & Apex AI'],
+      image: tharunImg,
+      imgPos: 'object-[center_25%]',
+      initials: 'TM'
+    },
+    {
+      id: 'preetha',
+      name: 'Preetha S',
+      role: 'Quality Assurance Lead & Tester',
+      category: 'leads',
+      location: 'Coimbatore Hub, India 🇮🇳',
+      linkedin: 'https://www.linkedin.com/in/preethas1903/',
+      bio: 'Governing end-to-end software quality assurance, test automation, and regression suites across Salesforce multi-cloud and custom ERP deployments.',
+      expertise: ['Quality Assurance (QA)', 'Salesforce Test Automation', 'Regression & UAT Testing'],
+      image: preethaImg,
+      imgPos: 'object-[center_20%]',
+      initials: 'PS'
+    },
+    {
+      id: 'sai',
+      name: 'S G Lakshman Punati (Sai)',
+      role: 'Software Developer & QA Specialist',
+      category: 'leads',
+      location: 'Hyderabad Hub, India 🇮🇳',
+      linkedin: 'https://www.linkedin.com/in/s-g-lakshman-punati-776661212/',
+      bio: 'Full-stack Salesforce developer and testing engineer driving Apex, LWC components, automated test scripts, and robust enterprise feature delivery.',
+      expertise: ['Salesforce Development', 'QA Testing & Automation', 'Apex & Lightning Web Components'],
+      image: saiImg,
+      imgPos: 'object-[center_15%]',
+      initials: 'SP'
     }
   ];
 
@@ -162,7 +210,7 @@ const Team = () => {
   const statItems = [
     { value: 4, suffix: '', label: 'Board Directors' },
     { value: 3, suffix: '', label: 'Global Delivery Hubs' },
-    { value: 49, suffix: '+', label: 'Certified Specialists' },
+    { value: 50, suffix: '+', label: 'Certified Specialists' },
     { value: 100, suffix: '%', label: 'Agile Delivery' },
   ];
 
@@ -234,7 +282,7 @@ const Team = () => {
           </h1>
 
           <p className="gsap-team-hero text-base sm:text-xl text-[#C7CDDA] font-light max-w-3xl mx-auto leading-relaxed">
-            Meet the founders, delivery directors, and regional center managers orchestrating transformative Salesforce & Databricks solutions across the UK and India.
+            Meet the founders, delivery directors, and engineering leads orchestrating transformative Salesforce, Agentforce AI & Databricks solutions across the UK and India.
           </p>
 
           {/* Quick Metrics with GSAP Count-Up */}
@@ -263,7 +311,7 @@ const Team = () => {
       {/* ========================================================================= */}
       {/* 2. CATEGORY FILTER BAR */}
       {/* ========================================================================= */}
-      <section className="py-5 bg-white border-b border-gray-200 sticky top-20 z-40 shadow-xs backdrop-blur-md bg-white/95">
+      <section className="py-5 bg-white border-b border-gray-200 sticky top-16 sm:top-20 z-40 shadow-xs backdrop-blur-md bg-white/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
             {departments.map((dept) => (
@@ -302,7 +350,7 @@ const Team = () => {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      className={`w-full h-full object-cover ${member.imgPos || 'object-center'} transition-transform duration-500 group-hover:scale-105`}
                     />
                   ) : (
                     <div className="w-full h-full p-6 flex flex-col items-center justify-center relative">
