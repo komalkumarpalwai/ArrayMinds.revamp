@@ -36,12 +36,12 @@ import TypewriterText from '../../components/common/TypewriterText';
 gsap.registerPlugin(ScrollTrigger);
 
 // Brand & Client Logos & Hero Video
-import salesforceLogo from '../../assets/salesforce-logo2.png';
-import databricksLogo from '../../assets/databricks-logo2.png';
-import emeraldLogo from '../../assets/emerland.avif';
-import aesLogo from '../../assets/AES.avif';
-import propelLogo from '../../assets/propel.avif';
-import autotexLogo from '../../assets/Autotex-Logo1.png';
+import salesforceLogo from '../../assets/Partnerships/salesforce-logo2.png';
+import databricksLogo from '../../assets/Partnerships/databricks-logo2.png';
+import emeraldLogo from '../../assets/Clients/emerland.avif';
+import aesLogo from '../../assets/Clients/AES.avif';
+import propelLogo from '../../assets/Clients/propel.avif';
+import autotexLogo from '../../assets/Clients/Autotex-Logo1.png';
 import heroBgVideo from '../../assets/Create_a_seamless_cinematic_we.mp4';
 
 const Home = () => {

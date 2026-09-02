@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../../context/AuthContext';
 import api from '../../../services/api';
-import logoImg from '../../../assets/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
+import logoImg from '../../../assets/Company Logos/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');

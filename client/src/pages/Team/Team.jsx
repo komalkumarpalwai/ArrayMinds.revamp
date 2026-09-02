@@ -23,18 +23,18 @@ import {
 } from 'lucide-react';
 
 // Team Member Headshot Images
-import selvaImg from '../../assets/selva.jfif';
-import rajImg from '../../assets/raj.png';
-import yousufImg from '../../assets/yousuf.jfif';
-import nawazImg from '../../assets/nawaz.jfif';
-import radhaImg from '../../assets/radha-selva.jfif';
-import bharathImg from '../../assets/bharath.png';
-import vaishnaviImg from '../../assets/Vaishnavi.jfif';
-import ramImg from '../../assets/Ram-gandham.jfif';
-import kalyanImg from '../../assets/kalyan-ceo.jpeg';
-import preethaImg from '../../assets/Preetha.jfif';
-import saiImg from '../../assets/sai3.png';
-import tharunImg from '../../assets/tharun3.png';
+import selvaImg from '../../assets/Team Pictures/selva.jfif';
+import rajImg from '../../assets/Team Pictures/raj.png';
+import yousufImg from '../../assets/Team Pictures/yousuf.jfif';
+import nawazImg from '../../assets/Team Pictures/nawaz.jfif';
+import radhaImg from '../../assets/Team Pictures/radha-selva.jfif';
+import bharathImg from '../../assets/Team Pictures/bharath.png';
+import vaishnaviImg from '../../assets/Team Pictures/Vaishnavi.jfif';
+import ramImg from '../../assets/Team Pictures/Ram-gandham.jfif';
+import kalyanImg from '../../assets/Team Pictures/kalyan-ceo.jpeg';
+import preethaImg from '../../assets/Team Pictures/Preetha.jfif';
+import saiImg from '../../assets/Team Pictures/sai3.png';
+import tharunImg from '../../assets/Team Pictures/tharun3.png';
 
 const Team = () => {
   const [activeDepartment, setActiveDepartment] = useState('all');

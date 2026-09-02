@@ -49,28 +49,28 @@ import {
 } from 'lucide-react';
 
 // Actual ERP Product Screenshots from Assets
-import imgSalesPlanner from '../../assets/1_hero_sales_allocation_planner.png';
-import imgSalesDetails from '../../assets/2_feature_sales_allocation_details.png';
-import imgCoverageSummary from '../../assets/3_feature_coverage_summary.png';
-import imgInventoryTransfers from '../../assets/4_hero_manage_inventory_transfers.png';
-import imgBulkConfirm from '../../assets/5_feature_bulk_confirm_dialogs.png';
-import imgEnterpriseInventory from '../../assets/6_hero_enterprise_inventory.png';
-import imgReservedInventory from '../../assets/7_feature_reserved_inventory_transfers.png';
-import imgInventoryDetail from '../../assets/8_feature_inventory_record_detail.png';
-import imgSupplyMethod from '../../assets/9_hero_decide_supply_method.png';
-import imgPurchasePlanning from '../../assets/10_feature_purchase_planning.png';
-import imgCreatePO from '../../assets/11_feature_create_purchase_orders.png';
-import imgSupplyMonitoring from '../../assets/12_feature_supply_monitoring.png';
-import imgMfgPlanning from '../../assets/13_hero_manufacturing_planning.png';
-import imgSupplySelection from '../../assets/14_feature_supply_request_selection.png';
-import imgMaterialPlanning from '../../assets/15_feature_material_planning.png';
-import imgMODocuments from '../../assets/16_feature_mo_documents_generated.png';
-import imgSupplyHero from '../../assets/17_hero_supply_monitoring.png';
-import imgExceptionsOverview from '../../assets/18_feature_exceptions_overview.png';
-import imgOrderTracking from '../../assets/19_hero_sales_order_tracking.png';
-import imgFulfillmentJourney from '../../assets/20_feature_order_fulfillment_journey.png';
-import imgOrderTimeline from '../../assets/21_feature_order_timeline.png';
-import imgQuoteAndPOPdf from '../../assets/quote_and_po_pdfs.png';
+import imgSalesPlanner from '../../assets/ERP-Project/1_hero_sales_allocation_planner.png';
+import imgSalesDetails from '../../assets/ERP-Project/2_feature_sales_allocation_details.png';
+import imgCoverageSummary from '../../assets/ERP-Project/3_feature_coverage_summary.png';
+import imgInventoryTransfers from '../../assets/ERP-Project/4_hero_manage_inventory_transfers.png';
+import imgBulkConfirm from '../../assets/ERP-Project/5_feature_bulk_confirm_dialogs.png';
+import imgEnterpriseInventory from '../../assets/ERP-Project/6_hero_enterprise_inventory.png';
+import imgReservedInventory from '../../assets/ERP-Project/7_feature_reserved_inventory_transfers.png';
+import imgInventoryDetail from '../../assets/ERP-Project/8_feature_inventory_record_detail.png';
+import imgSupplyMethod from '../../assets/ERP-Project/9_hero_decide_supply_method.png';
+import imgPurchasePlanning from '../../assets/ERP-Project/10_feature_purchase_planning.png';
+import imgCreatePO from '../../assets/ERP-Project/11_feature_create_purchase_orders.png';
+import imgSupplyMonitoring from '../../assets/ERP-Project/12_feature_supply_monitoring.png';
+import imgMfgPlanning from '../../assets/ERP-Project/13_hero_manufacturing_planning.png';
+import imgSupplySelection from '../../assets/ERP-Project/14_feature_supply_request_selection.png';
+import imgMaterialPlanning from '../../assets/ERP-Project/15_feature_material_planning.png';
+import imgMODocuments from '../../assets/ERP-Project/16_feature_mo_documents_generated.png';
+import imgSupplyHero from '../../assets/ERP-Project/17_hero_supply_monitoring.png';
+import imgExceptionsOverview from '../../assets/ERP-Project/18_feature_exceptions_overview.png';
+import imgOrderTracking from '../../assets/ERP-Project/19_hero_sales_order_tracking.png';
+import imgFulfillmentJourney from '../../assets/ERP-Project/20_feature_order_fulfillment_journey.png';
+import imgOrderTimeline from '../../assets/ERP-Project/21_feature_order_timeline.png';
+import imgQuoteAndPOPdf from '../../assets/ERP-Project/quote_and_po_pdfs.png';
 
 const AMERP = () => {
   const containerRef = useRef(null);

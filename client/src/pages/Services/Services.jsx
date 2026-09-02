@@ -38,10 +38,10 @@ import {
 } from 'lucide-react';
 
 // Client Logos
-import emeraldLogo from '../../assets/emerland.avif';
-import aesLogo from '../../assets/AES.avif';
-import propelLogo from '../../assets/propel.avif';
-import autotexLogo from '../../assets/Autotex-Logo1.png';
+import emeraldLogo from '../../assets/Clients/emerland.avif';
+import aesLogo from '../../assets/Clients/AES.avif';
+import propelLogo from '../../assets/Clients/propel.avif';
+import autotexLogo from '../../assets/Clients/Autotex-Logo1.png';
 
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState('all');

@@ -27,9 +27,9 @@ import {
 } from 'lucide-react';
 
 // Product Logo Assets
-import dataDriftLogo from '../../assets/data drift logo.avif';
-import batchMeLogo from '../../assets/BatchMe-logo.avif';
-import productFinderLogo from '../../assets/product_finder logo.avif';
+import dataDriftLogo from '../../assets/Partnerships/data drift logo.avif';
+import batchMeLogo from '../../assets/Partnerships/BatchMe-logo.avif';
+import productFinderLogo from '../../assets/Partnerships/product_finder logo.avif';
 
 const Products = () => {
   const [activeTab, setActiveTab] = useState('all');
