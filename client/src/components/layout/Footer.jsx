@@ -38,6 +38,7 @@ const Footer = () => {
     { name: 'AppExchange Products', path: '/products' },
     { name: 'AM ERP', path: '/AMERP', external: true },
     { name: 'Services', path: '/services' },
+    { name: 'AI Implementations', path: '/ai-implementations' },
     // { name: 'Industries', path: '/industries' },
     { name: 'Team', path: '/team' },
     // { name: 'Blog', path: '/blog' },
@@ -86,7 +87,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-[#0A1128] via-[#0D1B3E] to-[#070D1E] text-white pt-16 pb-8 border-t border-white/[0.08]">
+    <footer className="relative z-30 w-full bg-[#070D1E] bg-gradient-to-b from-[#0A1128] via-[#0D1B3E] to-[#070D1E] text-white pt-16 pb-8 border-t border-white/[0.08] shadow-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main 3-Column Enterprise Grid */}

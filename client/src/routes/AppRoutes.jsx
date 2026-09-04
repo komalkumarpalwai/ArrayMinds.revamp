@@ -15,6 +15,10 @@ import Team from '../pages/Team/Team';
 import Industries from '../pages/Industries/Industries';
 import Careers from '../pages/Careers/Careers';
 import About from '../pages/About/About';
+import AIImplementations from '../pages/AIImplementations/AIImplementations';
+import VDProjekte from '../pages/AIImplementations/VDProjekte';
+import AgentforceERP from '../pages/AIImplementations/AgentforceERP';
+import AiGency from '../pages/AIImplementations/AiGency';
 import Contact from '../pages/Contact/Contact';
 import Blog from '../pages/Blog/Blog';
 import BlogDetails from '../pages/Blog/BlogDetails';
@@ -41,6 +45,11 @@ const AppRoutes = () => {
         <Route path="/AMERP" element={<AMERP />} />
         <Route path="/amerp" element={<AMERP />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/ai-implementations" element={<AIImplementations />} />
+        <Route path="/ai-implementations/vd-projekte" element={<VDProjekte />} />
+        <Route path="/ai-implementations/vdprojects" element={<VDProjekte />} />
+        <Route path="/ai-implementations/agentforce" element={<AgentforceERP />} />
+        <Route path="/ai-implementations/aigency" element={<AiGency />} />
         <Route path="/team" element={<Team />} />
         <Route path="/industries" element={<Industries />} />
         <Route path="/careers" element={<Careers />} />
