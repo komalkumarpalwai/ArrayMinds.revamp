@@ -34,6 +34,8 @@ import emeraldLogo from '../../assets/Clients/emerland.avif';
 import aesLogo from '../../assets/Clients/AES.avif';
 import propelLogo from '../../assets/Clients/propel.avif';
 import autotexLogo from '../../assets/Clients/Autotex-Logo1.png';
+import SEO from '../../components/common/SEO';
+import { seoRoutes } from '../../utils/seoConfig';
 
 const About = () => {
   // Testimonials Carousel State
@@ -160,6 +162,7 @@ const About = () => {
 
   return (
     <div ref={containerRef} className="w-full bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
+      <SEO {...seoRoutes.about} />
       
       {/* ========================================================================= */}
       {/* 1. HERO SECTION */}

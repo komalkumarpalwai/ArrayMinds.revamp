@@ -1,5 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -34,19 +39,250 @@ import {
   LineChart,
   ChevronDown
 } from 'lucide-react';
-import { smoothScrollTo } from '../../components/common/SmoothScroll';
+import { smoothScrollTo, getLenis } from '../../components/common/SmoothScroll';
 import FloatingScrollTop from '../../components/common/FloatingScrollTop';
 
 // Assets
 import aigencyLogo from '../../assets/Ai-Implementations/aigency-logo-optimized.webp';
 import arrayMindsLogo from '../../assets/Company Logos/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
 import openclawLogo from '../../assets/Ai-Implementations/openclaw.webp';
-import salesforceLogo from '../../assets/Partnerships/salesforce logo.png';
 import aigencyBgVideo from '../../assets/Ai-Implementations/Aiagency-bg-video.mp4';
+import SEO from '../../components/common/SEO';
+import { seoRoutes } from '../../utils/seoConfig';
 
 const AiGency = () => {
+  const containerRef = useRef(null);
+  const modalContentRef = useRef(null);
   // Active implementation detail modal / expand state
   const [selectedImpl, setSelectedImpl] = useState(null);
+
+  // Auto-scroll to popup and manage scroll locking
+  useEffect(() => {
+    const lenis = getLenis();
+    if (selectedImpl) {
+      document.body.style.overflow = 'hidden';
+      if (lenis) lenis.stop();
+
+      // Smoothly auto-scroll viewport and popup into center view
+      requestAnimationFrame(() => {
+        if (modalContentRef.current) {
+          modalContentRef.current.scrollTop = 0;
+          modalContentRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    } else {
+      document.body.style.overflow = '';
+      if (lenis) lenis.start();
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      if (lenis) lenis.start();
+    };
+  }, [selectedImpl]);
+
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && selectedImpl) {
+        setSelectedImpl(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImpl]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Hero Elements Entrance
+      gsap.fromTo(
+        '.gsap-aigency-hero-item',
+        { opacity: 0, y: 25 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out', clearProps: 'all' }
+      );
+
+      // 2. Partnership 4-Stage Pipeline Cards
+      gsap.fromTo(
+        '.gsap-aigency-partner-step',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#partnership',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 3. Problem Section Cluster
+      gsap.fromTo(
+        '.gsap-aigency-problem-box',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#problem',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 4. Technical Capabilities Cards
+      gsap.fromTo(
+        '.gsap-aigency-cap-card',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#capabilities',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 5. Implementation Showcase Cards
+      gsap.fromTo(
+        '.gsap-aigency-impl-card',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#implementations',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 6. Architecture 7-Step Horizontal Flow
+      gsap.fromTo(
+        '.gsap-aigency-arch-step',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.06,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#architecture',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 7. Ecosystem Tools
+      gsap.fromTo(
+        '.gsap-aigency-eco-item',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.06,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#ecosystem',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 8. Governance Columns
+      gsap.fromTo(
+        '.gsap-aigency-gov-box',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#governance',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 9. Delivery 5-Stage Lifecycle
+      gsap.fromTo(
+        '.gsap-aigency-delivery-step',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#delivery',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 10. Value Collaborative Block
+      gsap.fromTo(
+        '.gsap-aigency-value-box',
+        { opacity: 0, scale: 0.98, y: 25 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#value',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 11. Final CTA
+      gsap.fromTo(
+        '.gsap-aigency-cta',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#cta',
+            start: 'top 85%'
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   // Real implementation showcase projects (extensible data structure)
   const implementationProjects = [
@@ -141,7 +377,8 @@ const AiGency = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#070B19] text-white selection:bg-[#00C2CB]/30 selection:text-[#7FE4EA] relative overflow-x-hidden">
+    <div ref={containerRef} className="min-h-screen bg-[#070B19] text-white selection:bg-[#00C2CB]/30 selection:text-[#7FE4EA] relative overflow-x-hidden">
+      <SEO {...seoRoutes.aigency} />
       
       {/* Background Video Layer - Full Frame with Symmetrical Cinematic Edge Fades */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -180,14 +417,14 @@ const AiGency = () => {
           {/* Top navigation back link */}
           <Link
             to="/ai-implementations"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#8A99B5] hover:text-[#7FE4EA] transition-colors mb-8 group"
+            className="gsap-aigency-hero-item inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#8A99B5] hover:text-[#7FE4EA] transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to AI Implementations</span>
           </Link>
 
           {/* Strategic Partnership Header Pill: ArrayMinds x AiGency Global */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
+          <div className="gsap-aigency-hero-item flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.04] border border-[#00C2CB]/30 backdrop-blur-md shadow-sm">
               <div className="flex items-center gap-2">
                 <img 
@@ -214,7 +451,7 @@ const AiGency = () => {
           </div>
 
           {/* Main Hero Title */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.12] max-w-4xl">
+          <h1 className="gsap-aigency-hero-item text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.12] max-w-4xl">
             Building the AI Workforce Behind{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00C2CB] via-[#7FE4EA] to-cyan-300">
               AiGency
@@ -222,12 +459,12 @@ const AiGency = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 text-base sm:text-xl text-[#C7CDDA] max-w-3xl leading-relaxed font-normal">
+          <p className="gsap-aigency-hero-item mt-6 text-base sm:text-xl text-[#C7CDDA] max-w-3xl leading-relaxed font-normal">
             How ArrayMinds works with AiGency Global to design, build and deploy AI-powered business workflows across CRM, marketing, sales and operations.
           </p>
 
           {/* Value Highlights Strip */}
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
+          <div className="gsap-aigency-hero-item mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
             <div className="p-3.5 rounded-xl bg-[#0D152E]/80 border border-white/[0.08] text-center">
               <span className="text-[11px] uppercase tracking-wider font-bold text-[#7FE4EA] block">AI Agents</span>
               <span className="text-xs text-[#94A3B8] mt-0.5 block">Role-Specialized</span>
@@ -247,7 +484,7 @@ const AiGency = () => {
           </div>
 
           {/* Hero CTAs with Smooth Scroll */}
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="gsap-aigency-hero-item mt-8 flex flex-wrap items-center gap-4">
             <button
               type="button"
               onClick={() => smoothScrollTo('#implementations')}
@@ -294,7 +531,7 @@ const AiGency = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-6 relative">
               
               {/* Step 1 */}
-              <div className="p-5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col justify-between relative group hover:border-[#00C2CB]/40 transition-colors">
+              <div className="gsap-aigency-partner-step p-5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col justify-between relative group hover:border-[#00C2CB]/40 transition-colors">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-[11px] font-mono font-bold text-[#8A99B5] tracking-wider uppercase">Stage 01</span>
@@ -311,7 +548,7 @@ const AiGency = () => {
               </div>
 
               {/* Step 2 */}
-              <div className="p-5 rounded-xl bg-[#00C2CB]/5 border border-[#00C2CB]/20 flex flex-col justify-between relative group hover:border-[#00C2CB]/50 transition-colors">
+              <div className="gsap-aigency-partner-step p-5 rounded-xl bg-[#00C2CB]/5 border border-[#00C2CB]/20 flex flex-col justify-between relative group hover:border-[#00C2CB]/50 transition-colors">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-[11px] font-mono font-bold text-[#00C2CB] tracking-wider uppercase">Stage 02</span>
@@ -328,7 +565,7 @@ const AiGency = () => {
               </div>
 
               {/* Step 3 */}
-              <div className="p-5 rounded-xl bg-gradient-to-b from-[#00C2CB]/10 to-transparent border border-[#00C2CB]/40 flex flex-col justify-between relative shadow-lg shadow-[#00C2CB]/5">
+              <div className="gsap-aigency-partner-step p-5 rounded-xl bg-gradient-to-b from-[#00C2CB]/10 to-transparent border border-[#00C2CB]/40 flex flex-col justify-between relative shadow-lg shadow-[#00C2CB]/5">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-[11px] font-mono font-bold text-[#7FE4EA] tracking-wider uppercase">Stage 03</span>
@@ -345,7 +582,7 @@ const AiGency = () => {
               </div>
 
               {/* Step 4 */}
-              <div className="p-5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col justify-between relative group hover:border-emerald-400/40 transition-colors">
+              <div className="gsap-aigency-partner-step p-5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col justify-between relative group hover:border-emerald-400/40 transition-colors">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-[11px] font-mono font-bold text-emerald-400 tracking-wider uppercase">Stage 04</span>
@@ -398,7 +635,7 @@ const AiGency = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Business Systems Cluster */}
-            <div className="lg:col-span-6 space-y-3">
+            <div className="gsap-aigency-problem-box lg:col-span-6 space-y-3">
               <p className="text-xs font-bold uppercase tracking-wider text-[#8A99B5] mb-4">
                 Where Business Work Already Happens:
               </p>
@@ -424,7 +661,7 @@ const AiGency = () => {
             </div>
 
             {/* Connection Bridge Visual */}
-            <div className="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#0D152E]/90 to-[#131F42]/90 border border-[#00C2CB]/30 shadow-2xl backdrop-blur-md">
+            <div className="gsap-aigency-problem-box lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#0D152E]/90 to-[#131F42]/90 border border-[#00C2CB]/30 shadow-2xl backdrop-blur-md">
               <div className="flex items-center gap-3 mb-4">
                 <span className="p-2 rounded-lg bg-[#00C2CB]/10 text-[#00C2CB]">
                   <Zap className="w-5 h-5" />
@@ -478,7 +715,7 @@ const AiGency = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             {/* Area 1: AI Agents */}
-            <div className="p-6 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between">
+            <div className="gsap-aigency-cap-card p-6 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between">
               <div>
                 <div className="p-3 rounded-xl bg-[#00C2CB]/10 border border-[#00C2CB]/20 w-fit text-[#00C2CB] mb-4">
                   <Bot className="w-5 h-5" />
@@ -494,7 +731,7 @@ const AiGency = () => {
             </div>
 
             {/* Area 2: CRM Integrations */}
-            <div className="p-6 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between">
+            <div className="gsap-aigency-cap-card p-6 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between">
               <div>
                 <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 w-fit text-cyan-400 mb-4">
                   <Database className="w-5 h-5" />
@@ -510,7 +747,7 @@ const AiGency = () => {
             </div>
 
             {/* Area 3: Workflow Automation */}
-            <div className="p-6 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between">
+            <div className="gsap-aigency-cap-card p-6 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between">
               <div>
                 <div className="p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 w-fit text-indigo-400 mb-4">
                   <Workflow className="w-5 h-5" />
@@ -526,7 +763,7 @@ const AiGency = () => {
             </div>
 
             {/* Area 4: Tool & System Connectivity */}
-            <div className="p-6 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between">
+            <div className="gsap-aigency-cap-card p-6 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between">
               <div>
                 <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 w-fit text-emerald-400 mb-4">
                   <Network className="w-5 h-5" />
@@ -542,7 +779,7 @@ const AiGency = () => {
             </div>
 
             {/* Area 5: Custom AI Skills */}
-            <div className="p-6 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between lg:col-span-2">
+            <div className="gsap-aigency-cap-card p-6 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between lg:col-span-2">
               <div>
                 <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 w-fit text-amber-400 mb-4">
                   <FileCode className="w-5 h-5" />
@@ -590,7 +827,7 @@ const AiGency = () => {
             {implementationProjects.map((item, idx) => (
               <div 
                 key={item.id}
-                className="rounded-2xl bg-[#0D152E]/90 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/50 transition-all flex flex-col justify-between overflow-hidden group shadow-lg"
+                className="gsap-aigency-impl-card rounded-2xl bg-[#0D152E]/90 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/50 transition-all flex flex-col justify-between overflow-hidden group shadow-lg"
               >
                 {/* Visual Header / Mockup Banner */}
                 <div className="p-5 bg-gradient-to-b from-white/[0.04] to-transparent border-b border-white/[0.06] relative">
@@ -656,8 +893,15 @@ const AiGency = () => {
 
           {/* Interactive Modal / Drawer for Implementation Details */}
           {selectedImpl && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
+            <div 
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+              onClick={() => setSelectedImpl(null)}
+              role="dialog"
+              aria-modal="true"
+            >
               <div 
+                ref={modalContentRef}
+                onClick={(e) => e.stopPropagation()}
                 className="bg-[#0D152E] border border-[#00C2CB]/40 rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto"
                 data-lenis-prevent="true"
               >
@@ -665,6 +909,7 @@ const AiGency = () => {
                 <button
                   onClick={() => setSelectedImpl(null)}
                   className="absolute top-4 right-4 p-2 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] text-[#8A99B5] hover:text-white transition-colors cursor-pointer"
+                  aria-label="Close modal"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -762,7 +1007,7 @@ const AiGency = () => {
                 { step: '06', title: 'ACTION', sub: 'API Mutation', icon: <Workflow className="w-4 h-4 text-emerald-400" /> },
                 { step: '07', title: 'RESULT', sub: 'Structured Output', icon: <CheckCircle2 className="w-4 h-4 text-teal-300" /> }
               ].map((stage) => (
-                <div key={stage.title} className="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col justify-between hover:border-[#00C2CB]/40 transition-colors">
+                <div key={stage.title} className="gsap-aigency-arch-step p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col justify-between hover:border-[#00C2CB]/40 transition-colors">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[10px] font-mono text-[#8A99B5] font-bold">{stage.step}</span>
@@ -806,7 +1051,7 @@ const AiGency = () => {
             {techEcosystem.map((tech) => (
               <div 
                 key={tech.name}
-                className="p-5 rounded-xl bg-[#0D152E]/90 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-colors flex items-center justify-between"
+                className="gsap-aigency-eco-item p-5 rounded-xl bg-[#0D152E]/90 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-colors flex items-center justify-between"
               >
                 <div>
                   <h3 className="text-base font-bold text-white mb-0.5">{tech.name}</h3>
@@ -851,7 +1096,7 @@ const AiGency = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             {/* Automated Column */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-[#00C2CB]/30 shadow-xl">
+            <div className="gsap-aigency-gov-box p-6 sm:p-8 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-[#00C2CB]/30 shadow-xl">
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/[0.08]">
                 <div>
                   <span className="text-xs font-mono font-bold text-[#00C2CB] tracking-wider uppercase">Continuous Execution</span>
@@ -882,7 +1127,7 @@ const AiGency = () => {
             </div>
 
             {/* Human Oversight Column */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.1] shadow-xl">
+            <div className="gsap-aigency-gov-box p-6 sm:p-8 rounded-2xl bg-[#0D152E]/80 backdrop-blur-md border border-white/[0.1] shadow-xl">
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/[0.08]">
                 <div>
                   <span className="text-xs font-mono font-bold text-amber-400 tracking-wider uppercase">Strategic Oversight</span>
@@ -962,7 +1207,7 @@ const AiGency = () => {
             ].map((step) => (
               <div 
                 key={step.title}
-                className="p-5 rounded-2xl bg-[#0D152E]/90 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-colors flex flex-col justify-between shadow-lg"
+                className="gsap-aigency-delivery-step p-5 rounded-2xl bg-[#0D152E]/90 backdrop-blur-md border border-white/[0.08] hover:border-[#00C2CB]/40 transition-colors flex flex-col justify-between shadow-lg"
               >
                 <div>
                   <div className="w-2.5 h-2.5 rounded-full bg-[#00C2CB] mb-4" />
@@ -982,7 +1227,7 @@ const AiGency = () => {
       <section id="value" className="relative z-10 py-16 md:py-24 border-b border-white/[0.08]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#0D152E]/90 via-[#0E1738]/90 to-[#070B19]/90 backdrop-blur-md border border-white/[0.1] shadow-2xl">
+          <div className="gsap-aigency-value-box p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#0D152E]/90 via-[#0E1738]/90 to-[#070B19]/90 backdrop-blur-md border border-white/[0.1] shadow-2xl">
             
             <span className="text-xs font-bold tracking-widest text-[#00C2CB] uppercase block mb-3">
               The Collaborative Advantage
@@ -1031,7 +1276,7 @@ const AiGency = () => {
           11. FINAL CTA SECTION
           ================================================== */}
       <section id="cta" className="relative z-10 py-20 bg-[#070B19]/90 backdrop-blur-md">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <div className="gsap-aigency-cta max-w-4xl mx-auto px-4 text-center">
           
           <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#00C2CB]/15 text-[#7FE4EA] border border-[#00C2CB]/30 uppercase tracking-wider mb-6 inline-block">
             Start Your Implementation
@@ -1076,3 +1321,4 @@ const AiGency = () => {
 };
 
 export default AiGency;
+

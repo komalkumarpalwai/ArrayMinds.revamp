@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 import { 
   ArrowUpRight, 
   ArrowRight, 
@@ -21,12 +26,31 @@ import vdPageBg from '../../assets/Ai-Implementations/vd-page Background.png';
 import agentforceLogo from '../../assets/Ai-Implementations/agentforce logo.png';
 import aigencyLogo from '../../assets/Ai-Implementations/aigency-logo-optimized.webp';
 import amerpThumbnail from '../../assets/Ai-Implementations/AMERP-Screenshots/AMERPThumbnail.png';
+import claudeforceImg from '../../assets/Ai-Implementations/Claudeforce.webp';
+import SEO from '../../components/common/SEO';
+import { seoRoutes } from '../../utils/seoConfig';
 
 /**
  * Scalable implementation data model.
  * Easy to append new case studies, implementations, and transformation projects.
  */
 const implementations = [
+  {
+    id: 'claudeforce',
+    company: 'Claudeforce',
+    category: 'AI IMPLEMENTATION · ANTHROPIC CLAUDE + SALESFORCE · MCP',
+    pillCategory: 'Claude + Salesforce',
+    title: 'Using Claude Effectively Inside Salesforce',
+    description:
+      'We integrate Anthropic Claude with Salesforce through MCP to bring AI-powered reasoning, automation, and agent capabilities into existing CRM workflows.',
+    ctaText: 'View Implementation',
+    href: '/ai-implementations/claudeforce',
+    isExternal: false,
+    image: claudeforceImg,
+    isCustomThumbnail: true,
+    workflowVisual: 'CRM Trigger / Query → Model Context Protocol (MCP) → Claude Reasoning → Automated Salesforce Action',
+    badge: 'Enterprise Integration',
+  },
   {
     id: 'vd-projekte',
     company: 'VD Projekte GmbH',
@@ -76,9 +100,10 @@ const implementations = [
   },
 ];
 
-const categories = ['All Solutions', 'AI Automation', 'AI + ERP', 'Strategic Partner'];
+const categories = ['All Solutions', 'Claude + Salesforce', 'AI Automation', 'AI + ERP', 'Strategic Partner'];
 
 const AIImplementations = () => {
+  const containerRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState('All Solutions');
 
   const filteredImplementations = implementations.filter((item) => {
@@ -86,8 +111,47 @@ const AIImplementations = () => {
     return item.pillCategory === selectedCategory;
   });
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Hero Elements Entrance
+      gsap.fromTo(
+        '.gsap-ai-hero-item',
+        { opacity: 0, y: 25 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out', clearProps: 'all' }
+      );
+
+      // 2. Showcase Frame Reveal
+      gsap.fromTo(
+        '.gsap-ai-showcase-frame',
+        { opacity: 0, scale: 0.96, y: 30 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.9, delay: 0.35, ease: 'power2.out', clearProps: 'all' }
+      );
+
+      // 3. Grid Cards Stagger Reveal
+      gsap.fromTo(
+        '.gsap-ai-card',
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#implementations',
+            start: 'top 85%',
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#070B19] text-white flex flex-col selection:bg-[#00C2CB]/30 selection:text-[#7FE4EA]">
+    <div ref={containerRef} className="min-h-screen bg-[#070B19] text-white flex flex-col selection:bg-[#00C2CB]/30 selection:text-[#7FE4EA]">
+      <SEO {...seoRoutes.aiImplementations} />
       
       {/* ==================================================
           1. HERO SECTION
@@ -109,7 +173,7 @@ const AIImplementations = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           
           {/* Eyebrow badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#00C2CB]/30 backdrop-blur-md mb-6 shadow-sm">
+          <div className="gsap-ai-hero-item inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#00C2CB]/30 backdrop-blur-md mb-6 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#00C2CB] animate-pulse" />
             <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-[#7FE4EA] uppercase">
               AI IMPLEMENTATIONS
@@ -117,7 +181,7 @@ const AIImplementations = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.15]">
+          <h1 className="gsap-ai-hero-item text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.15]">
             Real AI. Real Business Problems.{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00C2CB] via-[#7FE4EA] to-cyan-300">
               Real Implementations.
@@ -125,12 +189,12 @@ const AIImplementations = () => {
           </h1>
 
           {/* Supporting Text */}
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-[#C7CDDA] max-w-2xl mx-auto font-normal leading-relaxed">
+          <p className="gsap-ai-hero-item mt-6 text-base sm:text-lg md:text-xl text-[#C7CDDA] max-w-2xl mx-auto font-normal leading-relaxed">
             Explore AI implementations where ArrayMinds turns real business challenges into intelligent, production-ready workflows.
           </p>
 
           {/* Hero Action Buttons with Smooth Scroll */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <div className="gsap-ai-hero-item mt-8 flex flex-wrap items-center justify-center gap-4">
             <button
               type="button"
               onClick={() => smoothScrollTo('#implementations')}
@@ -149,7 +213,7 @@ const AIImplementations = () => {
           </div>
 
           {/* Featured Implementation Visual Showcase Frame */}
-          <div className="mt-12 max-w-5xl mx-auto rounded-2xl bg-[#0D152E]/90 border border-white/[0.12] p-2.5 sm:p-4 shadow-2xl overflow-hidden backdrop-blur-xl">
+          <div className="gsap-ai-showcase-frame mt-12 max-w-5xl mx-auto rounded-2xl bg-[#0D152E]/90 border border-white/[0.12] p-2.5 sm:p-4 shadow-2xl overflow-hidden backdrop-blur-xl">
             {/* Top Window Bar */}
             <div className="flex items-center justify-between px-3 py-2 border-b border-white/[0.08] mb-3 bg-[#0A1024] rounded-lg">
               <div className="flex items-center gap-2">
@@ -237,7 +301,7 @@ const AIImplementations = () => {
                 <CardWrapper
                   key={item.id}
                   {...linkProps}
-                  className="group flex flex-col rounded-2xl bg-[#0D152E]/80 hover:bg-[#101B3A] border border-white/[0.1] hover:border-[#00C2CB]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#00C2CB]/10 overflow-hidden text-left transform hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-[#00C2CB]/50"
+                  className="gsap-ai-card group flex flex-col rounded-2xl bg-[#0D152E]/80 hover:bg-[#101B3A] border border-white/[0.1] hover:border-[#00C2CB]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#00C2CB]/10 overflow-hidden text-left transform hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-[#00C2CB]/50"
                 >
                   
                   {/* Visual Media Header */}
@@ -326,9 +390,15 @@ const AIImplementations = () => {
                         <span>{item.ctaText}</span>
                         <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
                       </span>
-                      <span className="text-[10px] font-medium text-[#64748B] uppercase tracking-wider">
-                        {item.isExternal ? 'Opens new tab ↗' : 'View Case Study →'}
-                      </span>
+                      {item.isExternal ? (
+                        <span className="text-[10px] font-medium text-[#64748B] uppercase tracking-wider">
+                          Opens new tab ↗
+                        </span>
+                      ) : (
+                        <span className="text-[10px] font-medium text-[#8A99B5] px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08]">
+                          {item.badge || 'Project'}
+                        </span>
+                      )}
                     </div>
 
                   </div>

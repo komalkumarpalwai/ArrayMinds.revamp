@@ -14,6 +14,7 @@ import {
 import { useAuth } from '../../../context/AuthContext';
 import api from '../../../services/api';
 import logoImg from '../../../assets/Company Logos/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
+import SEO from '../../../components/common/SEO';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -46,6 +47,7 @@ const AdminLogin = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0A1128] via-[#10224A] to-[#1B3B6F] flex items-center justify-center p-4 sm:p-6 relative overflow-hidden text-white font-sans">
+      <SEO title="Admin Portal | ArrayMinds" noIndex={true} />
       
       {/* Background Decorative Glow Elements */}
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#00C2CB]/15 rounded-full blur-3xl pointer-events-none"></div>

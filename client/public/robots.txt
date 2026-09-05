@@ -1,0 +1,22 @@
+# Search engine crawler configuration for ArrayMinds
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+
+# Explicit crawler optimization
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# XML Sitemap location
+Sitemap: https://www.arrayminds.in/sitemap.xml

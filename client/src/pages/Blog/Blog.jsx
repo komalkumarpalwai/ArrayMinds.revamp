@@ -11,8 +11,9 @@ import {
   Sparkles,
   Inbox
 } from 'lucide-react';
-import api from '../../services/api';
 import LogoLoader from '../../components/common/LogoLoader';
+import SEO from '../../components/common/SEO';
+import { seoRoutes, organizationSchema } from '../../utils/seoConfig';
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -49,6 +50,7 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans pb-20">
+      <SEO {...seoRoutes.blog} />
       
       {/* ========================================================================= */}
       {/* 1. HERO BANNER */}

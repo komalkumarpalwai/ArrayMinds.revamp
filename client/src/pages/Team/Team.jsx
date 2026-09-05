@@ -35,6 +35,8 @@ import kalyanImg from '../../assets/Team Pictures/kalyan-ceo.jpeg';
 import preethaImg from '../../assets/Team Pictures/Preetha.jfif';
 import saiImg from '../../assets/Team Pictures/sai3.png';
 import tharunImg from '../../assets/Team Pictures/tharun3.png';
+import SEO from '../../components/common/SEO';
+import { seoRoutes } from '../../utils/seoConfig';
 
 const Team = () => {
   const [activeDepartment, setActiveDepartment] = useState('all');
@@ -257,6 +259,7 @@ const Team = () => {
 
   return (
     <div ref={containerRef} className="w-full bg-[#F8F9FD] text-[#0F172A] overflow-hidden">
+      <SEO {...seoRoutes.team} />
       
       {/* ========================================================================= */}
       {/* 1. HERO SECTION */}

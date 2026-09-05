@@ -1,0 +1,21 @@
+{
+  "name": "ArrayMinds - Salesforce, Databricks & Enterprise AI Solutions",
+  "short_name": "ArrayMinds",
+  "description": "Official Salesforce & Databricks partner specializing in Next-Gen Architecture, AM ERP, Autonomous AI, and Custom Cloud Engineering.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070D1E",
+  "theme_color": "#00C2CB",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

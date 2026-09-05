@@ -42,6 +42,8 @@ import emeraldLogo from '../../assets/Clients/emerland.avif';
 import aesLogo from '../../assets/Clients/AES.avif';
 import propelLogo from '../../assets/Clients/propel.avif';
 import autotexLogo from '../../assets/Clients/Autotex-Logo1.png';
+import SEO from '../../components/common/SEO';
+import { seoRoutes } from '../../utils/seoConfig';
 
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -488,6 +490,7 @@ const Services = () => {
 
   return (
     <div ref={containerRef} className="w-full bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
+      <SEO {...seoRoutes.services} />
       
       {/* ========================================================================= */}
       {/* 1. HERO HEADER SECTION */}

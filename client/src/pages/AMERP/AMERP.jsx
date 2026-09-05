@@ -71,6 +71,8 @@ import imgOrderTracking from '../../assets/ERP-Project/19_hero_sales_order_track
 import imgFulfillmentJourney from '../../assets/ERP-Project/20_feature_order_fulfillment_journey.png';
 import imgOrderTimeline from '../../assets/ERP-Project/21_feature_order_timeline.png';
 import imgQuoteAndPOPdf from '../../assets/ERP-Project/quote_and_po_pdfs.png';
+import SEO from '../../components/common/SEO';
+import { seoRoutes } from '../../utils/seoConfig';
 
 const AMERP = () => {
   const containerRef = useRef(null);
@@ -746,6 +748,7 @@ const AMERP = () => {
 
   return (
     <div ref={containerRef} className="w-full bg-[#F8FAFC] text-slate-900 font-sans antialiased">
+      <SEO {...seoRoutes.amerp} />
       
       {/* ========================================================================= */}
       {/* 1. HERO SECTION */}

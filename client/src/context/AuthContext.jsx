@@ -4,11 +4,16 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [admin, setAdmin] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem('adminToken') || null);
+  const [token, setToken] = useState(() => {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('adminToken') || null;
+    }
+    return null;
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (token) {
+    if (token && typeof localStorage !== 'undefined') {
       // Token exists, setup admin user state
       const storedAdmin = localStorage.getItem('adminUser');
       if (storedAdmin) {

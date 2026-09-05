@@ -25,6 +25,8 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import api from '../../services/api';
+import SEO from '../../components/common/SEO';
+import { seoRoutes } from '../../utils/seoConfig';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -164,6 +166,7 @@ const Contact = () => {
 
   return (
     <div ref={containerRef} className="w-full bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
+      <SEO {...seoRoutes.contact} />
       
       {/* ========================================================================= */}
       {/* 1. HERO HEADER SECTION */}

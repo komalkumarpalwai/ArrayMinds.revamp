@@ -30,6 +30,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import api from '../../services/api';
 import LogoLoader from '../../components/common/LogoLoader';
 import { getLenis } from '../../components/common/SmoothScroll';
+import SEO from '../../components/common/SEO';
+import { seoRoutes, organizationSchema, SITE_DOMAIN } from '../../utils/seoConfig';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -214,8 +216,34 @@ const Careers = () => {
     return () => ctx.revert();
   }, []);
 
+  const careerSchemas = [
+    organizationSchema,
+    ...careers.map((job) => ({
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      title: job.title,
+      description: job.description || `${job.title} at ArrayMinds.`,
+      datePosted: job.createdAt || new Date().toISOString().split('T')[0],
+      validThrough: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      employmentType: job.employmentType || 'FULL_TIME',
+      hiringOrganization: organizationSchema,
+      jobLocation: {
+        '@type': 'Place',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: job.location || 'Coimbatore',
+          addressCountry: job.location?.includes('UK') ? 'GB' : 'IN'
+        }
+      }
+    }))
+  ];
+
   return (
     <div ref={containerRef} className="w-full bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
+      <SEO
+        {...seoRoutes.careers}
+        structuredData={careerSchemas}
+      />
       
       {/* ========================================================================= */}
       {/* 1. HERO HEADER SECTION */}

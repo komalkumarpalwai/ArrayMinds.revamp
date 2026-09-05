@@ -1,5 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -35,8 +40,11 @@ import FloatingScrollTop from '../../components/common/FloatingScrollTop';
 import vdProjekteImg from '../../assets/Ai-Implementations/VD-1.png';
 import vdPageBg from '../../assets/Ai-Implementations/vd-page Background.png';
 import vdHeroVideo from '../../assets/Ai-Implementations/VD Projekte GmbH.mp4';
+import SEO from '../../components/common/SEO';
+import { seoRoutes } from '../../utils/seoConfig';
 
 const VDProjekte = () => {
+  const containerRef = useRef(null);
   // State for interactive 8-stage stepper
   const [activeStage, setActiveStage] = useState(0);
 
@@ -45,6 +53,166 @@ const VDProjekte = () => {
 
   // State for Before vs After tab switcher
   const [comparisonMode, setComparisonMode] = useState('after'); // 'before' | 'after' | 'side-by-side'
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Hero Elements Entrance
+      gsap.fromTo(
+        '.gsap-vd-hero-item',
+        { opacity: 0, y: 25 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out', clearProps: 'all' }
+      );
+
+      // 2. Media Showcase Frame Reveal
+      gsap.fromTo(
+        '.gsap-vd-media-frame',
+        { opacity: 0, scale: 0.96, y: 30 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.9, delay: 0.3, ease: 'power2.out', clearProps: 'all' }
+      );
+
+      // 3. Challenge Section Cards
+      gsap.fromTo(
+        '.gsap-vd-challenge-card',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#challenge',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 4. Solution Capabilities
+      gsap.fromTo(
+        '.gsap-vd-solution-item',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#solution',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 5. Interactive Stepper Container
+      gsap.fromTo(
+        '.gsap-vd-stepper-box',
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#interactive-workflow',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 6. Architecture Stack Layers
+      gsap.fromTo(
+        '.gsap-vd-arch-row',
+        { opacity: 0, x: -20 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#architecture',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 7. Human in the Loop Slack Card
+      gsap.fromTo(
+        '.gsap-vd-slack-card',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#human-in-the-loop',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 8. Comparison Mode Box
+      gsap.fromTo(
+        '.gsap-vd-compare-box',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#comparison',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 9. Impact & Results Metric Cards
+      gsap.fromTo(
+        '.gsap-vd-impact-card',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#impact',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 10. Final CTA
+      gsap.fromTo(
+        '.gsap-vd-cta',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#cta',
+            start: 'top 85%'
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const workflowStages = [
     {
@@ -252,7 +420,8 @@ const VDProjekte = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#081026] text-white selection:bg-[#00C2CB]/30 selection:text-[#7FE4EA] relative overflow-x-hidden">
+    <div ref={containerRef} className="min-h-screen bg-[#081026] text-white selection:bg-[#00C2CB]/30 selection:text-[#7FE4EA] relative overflow-x-hidden">
+      <SEO {...seoRoutes.vdProjekte} />
       
       {/* Background Video Layer - Full Frame with Symmetrical Cinematic Edge Fades */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -289,14 +458,14 @@ const VDProjekte = () => {
           {/* Back Navigation */}
           <Link
             to="/ai-implementations"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#8A99B5] hover:text-[#7FE4EA] transition-colors mb-8 group"
+            className="gsap-vd-hero-item inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#8A99B5] hover:text-[#7FE4EA] transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to AI Implementations</span>
           </Link>
 
           {/* Badges & Meta */}
-          <div className="flex flex-wrap items-center gap-3 mb-6">
+          <div className="gsap-vd-hero-item flex flex-wrap items-center gap-3 mb-6">
             <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#00C2CB]/15 text-[#7FE4EA] border border-[#00C2CB]/30 tracking-wider uppercase flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#00C2CB]" />
               <span>AI IMPLEMENTATION · AI AGENTS · CONSTRUCTION</span>
@@ -308,7 +477,7 @@ const VDProjekte = () => {
           </div>
 
           {/* Main Title */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.15] max-w-4xl">
+          <h1 className="gsap-vd-hero-item text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.15] max-w-4xl">
             From Manual Quote Research to{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00C2CB] via-[#7FE4EA] to-cyan-300">
               AI-Powered Quote Automation
@@ -316,12 +485,12 @@ const VDProjekte = () => {
           </h1>
 
           {/* Short Hero Description */}
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-[#C7CDDA] max-w-3xl leading-relaxed">
+          <p className="gsap-vd-hero-item mt-6 text-base sm:text-lg md:text-xl text-[#C7CDDA] max-w-3xl leading-relaxed">
             How ArrayMinds used Claude, Salesforce, MCP and custom AI skills to automate a previously manual construction quotation workflow.
           </p>
 
           {/* Quick Specification Pill Bar */}
-          <div className="mt-8 p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+          <div className="gsap-vd-hero-item mt-8 p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
             <div>
               <p className="text-[10px] font-mono text-[#8A99B5] uppercase">Client / Domain</p>
               <p className="text-xs sm:text-sm font-bold text-white mt-0.5">VD Projekte (Building Renovation)</p>
@@ -341,7 +510,7 @@ const VDProjekte = () => {
           </div>
 
           {/* Hero Actions with Smooth Scroll */}
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="gsap-vd-hero-item mt-8 flex flex-wrap items-center gap-4">
             <button
               type="button"
               onClick={() => smoothScrollTo('#interactive-workflow')}
@@ -369,7 +538,7 @@ const VDProjekte = () => {
           </div>
 
           {/* Hero Implementation Visual Frame */}
-          <div className="mt-14 rounded-2xl bg-[#0D152E] border border-white/[0.12] p-2.5 sm:p-4 shadow-2xl overflow-hidden">
+          <div className="gsap-vd-media-frame mt-14 rounded-2xl bg-[#0D152E] border border-white/[0.12] p-2.5 sm:p-4 shadow-2xl overflow-hidden">
             {/* Top Browser Bar */}
             <div className="flex items-center justify-between px-3 py-2 border-b border-white/[0.08] mb-3 bg-[#0A1024] rounded-lg">
               <div className="flex items-center gap-2">
@@ -445,7 +614,7 @@ const VDProjekte = () => {
                 'Quote Preparation',
                 'Customer'
               ].map((step, idx, arr) => (
-                <div key={step} className="flex flex-col items-center text-center p-3.5 rounded-xl bg-white/[0.04] border border-white/[0.06] relative">
+                <div key={step} className="gsap-vd-challenge-card flex flex-col items-center text-center p-3.5 rounded-xl bg-white/[0.04] border border-white/[0.06] relative">
                   <span className="text-[10px] font-mono text-[#8A99B5] mb-1">Step {idx + 1}</span>
                   <span className="text-xs font-semibold text-white/90">{step}</span>
                   {idx < arr.length - 1 && (
@@ -500,7 +669,7 @@ const VDProjekte = () => {
                 'Create the appropriate quotation line items',
                 'Prepare the quote for review'
               ].map((cap) => (
-                <div key={cap} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                <div key={cap} className="gsap-vd-solution-item flex items-start gap-3 p-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
                   <CheckCircle2 className="w-4 h-4 text-[#00C2CB] shrink-0 mt-0.5" />
                   <span className="text-xs sm:text-sm text-white/90 font-medium">{cap}</span>
                 </div>
@@ -581,7 +750,7 @@ const VDProjekte = () => {
           </div>
 
           {/* Active Stage Simulation Inspector Box */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-[#0A122A]/90 backdrop-blur-xl border border-[#00C2CB]/30 shadow-2xl relative overflow-hidden">
+          <div className="gsap-vd-stepper-box p-6 sm:p-8 rounded-3xl bg-[#0A122A]/90 backdrop-blur-xl border border-[#00C2CB]/30 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#00C2CB]/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-white/[0.08] mb-6">
@@ -684,7 +853,7 @@ const VDProjekte = () => {
             {techStack.map((tech, idx) => (
               <div
                 key={tech.name}
-                className="p-4 sm:p-5 rounded-xl bg-[#0E1A38]/85 backdrop-blur-md border border-white/[0.09] hover:border-[#00C2CB]/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg"
+                className="gsap-vd-arch-row p-4 sm:p-5 rounded-xl bg-[#0E1A38]/85 backdrop-blur-md border border-white/[0.09] hover:border-[#00C2CB]/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg"
               >
                 <div className="flex items-center gap-3.5">
                   <div className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] shrink-0">
@@ -745,7 +914,7 @@ const VDProjekte = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* Interactive Chat Frame */}
-            <div className="lg:col-span-7 rounded-3xl bg-[#091126]/90 backdrop-blur-xl border border-white/[0.12] p-5 sm:p-6 shadow-2xl">
+            <div className="gsap-vd-slack-card lg:col-span-7 rounded-3xl bg-[#091126]/90 backdrop-blur-xl border border-white/[0.12] p-5 sm:p-6 shadow-2xl">
               
               {/* Slack / Chat Channel Header */}
               <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/[0.08]">
@@ -926,7 +1095,7 @@ const VDProjekte = () => {
           </div>
 
           {/* Comparative Cards Grid */}
-          <div className={`grid gap-6 ${comparisonMode === 'side-by-side' ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
+          <div className={`gsap-vd-compare-box grid gap-6 ${comparisonMode === 'side-by-side' ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
             
             {/* BEFORE COLUMN */}
             {(comparisonMode === 'before' || comparisonMode === 'side-by-side') && (
@@ -1004,7 +1173,7 @@ const VDProjekte = () => {
             {businessImpacts.map((impact) => (
               <div 
                 key={impact.title}
-                className="p-6 rounded-2xl bg-[#0E1A38]/85 backdrop-blur-md border border-white/[0.09] flex flex-col justify-between hover:border-[#00C2CB]/40 transition-colors shadow-lg"
+                className="gsap-vd-impact-card p-6 rounded-2xl bg-[#0E1A38]/85 backdrop-blur-md border border-white/[0.09] flex flex-col justify-between hover:border-[#00C2CB]/40 transition-colors shadow-lg"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-3">
@@ -1029,7 +1198,7 @@ const VDProjekte = () => {
       {/* ==================================================
           FINAL CTA
           ================================================== */}
-      <section id="cta" className="relative z-10 py-20 bg-gradient-to-b from-[#081026]/85 via-[#0A1432]/90 to-[#0D1C44]/95 backdrop-blur-md">
+      <section id="cta" className="gsap-vd-cta relative z-10 py-20 bg-gradient-to-b from-[#081026]/85 via-[#0A1432]/90 to-[#0D1C44]/95 backdrop-blur-md">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">

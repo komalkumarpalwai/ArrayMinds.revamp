@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 import api from '../../services/api';
 import LogoLoader from '../../components/common/LogoLoader';
+import SEO from '../../components/common/SEO';
+import { organizationSchema, SITE_DOMAIN, DEFAULT_OG_IMAGE } from '../../utils/seoConfig';
 
 const BlogDetails = () => {
   const { slug } = useParams();
@@ -83,8 +85,36 @@ const BlogDetails = () => {
     );
   }
 
+  const articleSchema = blog ? {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: blog.title,
+    description: blog.excerpt || blog.title,
+    image: blog.coverImage || DEFAULT_OG_IMAGE,
+    datePublished: blog.publishedAt || blog.createdAt,
+    dateModified: blog.updatedAt || blog.publishedAt || blog.createdAt,
+    author: {
+      '@type': 'Person',
+      name: blog.author || 'ArrayMinds Editorial'
+    },
+    publisher: organizationSchema,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_DOMAIN}/blog/${slug}`
+    }
+  } : null;
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans pb-24">
+      <SEO
+        title={`${blog.title} | ArrayMinds Tech Insights`}
+        description={blog.excerpt || `Read ${blog.title} on the ArrayMinds blog covering Salesforce, Databricks, and Enterprise AI.`}
+        keywords={`${blog.title}, Salesforce, Databricks, Enterprise AI, ArrayMinds`}
+        canonicalPath={`/blog/${slug}`}
+        ogImage={blog.coverImage || DEFAULT_OG_IMAGE}
+        ogType="article"
+        structuredData={articleSchema}
+      />
       
       {/* ========================================================================= */}
       {/* 1. ARTICLE HEADER */}

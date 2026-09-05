@@ -30,6 +30,8 @@ import {
 import dataDriftLogo from '../../assets/Partnerships/data drift logo.avif';
 import batchMeLogo from '../../assets/Partnerships/BatchMe-logo.avif';
 import productFinderLogo from '../../assets/Partnerships/product_finder logo.avif';
+import SEO from '../../components/common/SEO';
+import { seoRoutes } from '../../utils/seoConfig';
 
 const Products = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -225,6 +227,7 @@ const Products = () => {
 
   return (
     <div ref={containerRef} className="w-full bg-[#F8FAFC] text-[#0F172A] overflow-hidden">
+      <SEO {...seoRoutes.products} />
       
       {/* ========================================================================= */}
       {/* 1. HERO HEADER SECTION */}

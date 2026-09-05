@@ -19,6 +19,7 @@ import AIImplementations from '../pages/AIImplementations/AIImplementations';
 import VDProjekte from '../pages/AIImplementations/VDProjekte';
 import AgentforceERP from '../pages/AIImplementations/AgentforceERP';
 import AiGency from '../pages/AIImplementations/AiGency';
+import Claudeforce from '../pages/AIImplementations/Claudeforce';
 import Contact from '../pages/Contact/Contact';
 import Blog from '../pages/Blog/Blog';
 import BlogDetails from '../pages/Blog/BlogDetails';
@@ -46,6 +47,7 @@ const AppRoutes = () => {
         <Route path="/amerp" element={<AMERP />} />
         <Route path="/services" element={<Services />} />
         <Route path="/ai-implementations" element={<AIImplementations />} />
+        <Route path="/ai-implementations/claudeforce" element={<Claudeforce />} />
         <Route path="/ai-implementations/vd-projekte" element={<VDProjekte />} />
         <Route path="/ai-implementations/vdprojects" element={<VDProjekte />} />
         <Route path="/ai-implementations/agentforce" element={<AgentforceERP />} />

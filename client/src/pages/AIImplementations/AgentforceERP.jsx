@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -46,11 +51,212 @@ import humanApprovalPlanImg from '../../assets/Ai-Implementations/AMERP-Screensh
 import agentforceLogo from '../../assets/Ai-Implementations/agentforce logo.png';
 import salesforceLogo from '../../assets/Partnerships/salesforce logo.png';
 import arrayMindsLogo from '../../assets/Company Logos/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
+import SEO from '../../components/common/SEO';
+import { seoRoutes } from '../../utils/seoConfig';
 
 const AgentforceERP = () => {
+  const containerRef = useRef(null);
   // Active callout pill highlight in Screen Showcase
   const [activeCallout, setActiveCallout] = useState(null);
   const [activeScreenTab, setActiveScreenTab] = useState('main');
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Hero Left Elements Entrance
+      gsap.fromTo(
+        '.gsap-amerp-hero-item',
+        { opacity: 0, y: 25 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out', clearProps: 'all' }
+      );
+
+      // 2. Hero Right Mockup Frame
+      gsap.fromTo(
+        '.gsap-amerp-mockup-frame',
+        { opacity: 0, scale: 0.96, x: 20 },
+        { opacity: 1, scale: 1, x: 0, duration: 0.9, delay: 0.25, ease: 'power2.out', clearProps: 'all' }
+      );
+
+      // 3. Overview Strip 5 Metric Cards
+      gsap.fromTo(
+        '.gsap-amerp-metric-item',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#overview-strip',
+            start: 'top 90%'
+          }
+        }
+      );
+
+      // 4. Problem Points
+      gsap.fromTo(
+        '.gsap-amerp-problem-card',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#business-problem',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 5. Workflow Step Cards
+      gsap.fromTo(
+        '.gsap-amerp-workflow-step',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.07,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#workflow-steps',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 6. Architecture Steps
+      gsap.fromTo(
+        '.gsap-amerp-arch-step',
+        { opacity: 0, x: -20 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          stagger: 0.07,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#architecture-section',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 7. Screen Showcase Frame
+      gsap.fromTo(
+        '.gsap-amerp-screen-box',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#screen-showcase',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 8. Transformation Before/After
+      gsap.fromTo(
+        '.gsap-amerp-compare-box',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#transformation-section',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 9. Exceptions Automation Cards
+      gsap.fromTo(
+        '.gsap-amerp-exception-card',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.09,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#exceptions-section',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 10. Business Impact Blocks
+      gsap.fromTo(
+        '.gsap-amerp-impact-card',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#impact-section',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 11. Tech Stack Cards
+      gsap.fromTo(
+        '.gsap-amerp-tech-card',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#tech-stack-section',
+            start: 'top 85%'
+          }
+        }
+      );
+
+      // 12. Final CTA
+      gsap.fromTo(
+        '.gsap-amerp-cta',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all',
+          scrollTrigger: {
+            trigger: '#final-cta',
+            start: 'top 85%'
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   // 1. Implementation Overview Metrics
   const overviewMetrics = [
@@ -170,18 +376,17 @@ const AgentforceERP = () => {
   const currentTab = screenTabs.find(t => t.id === activeScreenTab) || screenTabs[0];
 
   return (
-    <div className="min-h-screen bg-[#070B19] text-white selection:bg-[#00C2CB]/30 selection:text-[#7FE4EA] relative">
+    <div ref={containerRef} className="min-h-screen bg-[#070B19] text-white selection:bg-[#00C2CB]/30 selection:text-[#7FE4EA] relative overflow-x-hidden">
+      <SEO {...seoRoutes.agentforce} />
       
-      {/* ==================================================
-          CINEMATIC BACKGROUND VIDEO WITH ENTERPRISE OVERLAYS
-          ================================================== */}
-      <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+      {/* Background Video Layer - Full Frame with Symmetrical Cinematic Edge Fades */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-70 filter brightness-105 contrast-105 saturate-110"
+          className="w-full h-full object-cover opacity-80 filter brightness-105 contrast-105 saturate-110"
         >
           <source src={amerpBgVideo} type="video/mp4" />
         </video>
@@ -213,7 +418,7 @@ const AgentforceERP = () => {
           {/* Back Navigation */}
           <Link
             to="/ai-implementations"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#8A99B5] hover:text-[#7FE4EA] transition-colors mb-8 group"
+            className="gsap-amerp-hero-item inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#8A99B5] hover:text-[#7FE4EA] transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to AI Implementations</span>
@@ -225,7 +430,7 @@ const AgentforceERP = () => {
             <div className="lg:col-span-6 space-y-6 text-left">
               
               {/* Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#00C2CB]/30 backdrop-blur-md shadow-sm">
+              <div className="gsap-amerp-hero-item inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#00C2CB]/30 backdrop-blur-md shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#00C2CB] animate-pulse" />
                 <span className="text-[11px] font-bold tracking-widest text-[#7FE4EA] uppercase">
                   AI IMPLEMENTATION · AGENTFORCE · MANUFACTURING
@@ -233,7 +438,7 @@ const AgentforceERP = () => {
               </div>
 
               {/* Main Heading */}
-              <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.12]">
+              <h1 className="gsap-amerp-hero-item text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.12]">
                 AI-Powered Manufacturing &{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00C2CB] via-[#7FE4EA] to-cyan-300">
                   Production Planning
@@ -241,12 +446,12 @@ const AgentforceERP = () => {
               </h1>
 
               {/* Description */}
-              <p className="text-base sm:text-lg text-[#C7CDDA] leading-relaxed max-w-xl font-normal">
+              <p className="gsap-amerp-hero-item text-base sm:text-lg text-[#C7CDDA] leading-relaxed max-w-xl font-normal">
                 Used Agentforce to simplify and automate manufacturing and production planning — connecting demand, inventory, materials, and production workflows in one intelligent system.
               </p>
 
               {/* Action Buttons */}
-              <div className="pt-2 flex flex-wrap items-center gap-4">
+              <div className="gsap-amerp-hero-item pt-2 flex flex-wrap items-center gap-4">
                 <a
                   href="/AMERP"
                   target="_blank"
@@ -270,7 +475,7 @@ const AgentforceERP = () => {
 
             {/* Right Column: Premium Enterprise ERP Mockup Frame (Main Planning Screen) */}
             <div className="lg:col-span-6">
-              <div className="rounded-2xl bg-[#0D152E]/95 border border-white/[0.12] p-3 sm:p-4 shadow-2xl shadow-cyan-950/40 backdrop-blur-xl relative overflow-hidden group">
+              <div className="gsap-amerp-mockup-frame rounded-2xl bg-[#0D152E]/95 border border-white/[0.12] p-3 sm:p-4 shadow-2xl shadow-cyan-950/40 backdrop-blur-xl relative overflow-hidden group">
                 
                 {/* Browser / App Header Chrome */}
                 <div className="flex items-center justify-between px-3 py-2 border-b border-white/[0.08] mb-3 bg-[#0A1024] rounded-lg">
@@ -312,14 +517,14 @@ const AgentforceERP = () => {
       {/* ==================================================
           2. IMPLEMENTATION OVERVIEW STRIP
           ================================================== */}
-      <section className="py-10 border-b border-white/[0.08] bg-[#0A122A]/60 backdrop-blur-md">
+      <section id="overview-strip" className="py-10 border-b border-white/[0.08] bg-[#0A122A]/60 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {overviewMetrics.map((m) => (
               <div
                 key={m.label}
-                className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col justify-between"
+                className="gsap-amerp-metric-item p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] flex flex-col justify-between"
               >
                 <span className="text-[10px] font-mono font-bold tracking-widest text-[#00C2CB] uppercase block mb-1">
                   {m.label}
@@ -340,7 +545,7 @@ const AgentforceERP = () => {
       {/* ==================================================
           3. THE BUSINESS PROBLEM
           ================================================== */}
-      <section className="py-16 md:py-24 border-b border-white/[0.08]">
+      <section id="business-problem" className="py-16 md:py-24 border-b border-white/[0.08]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex items-center gap-2 mb-2">
@@ -385,7 +590,7 @@ const AgentforceERP = () => {
               </p>
 
               {problemPoints.map((pt, idx, arr) => (
-                <div key={pt.id} className="relative">
+                <div key={pt.id} className="gsap-amerp-problem-card relative">
                   
                   <div className="p-4 rounded-xl bg-[#0D152E]/80 border border-white/[0.08] hover:border-red-500/30 transition-colors flex items-start gap-3.5 shadow-sm">
                     <div className="w-7 h-7 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center shrink-0 text-xs font-mono font-bold">
@@ -415,7 +620,7 @@ const AgentforceERP = () => {
       {/* ==================================================
           4. WHAT WE BUILT (FROM DEMAND TO PRODUCTION)
           ================================================== */}
-      <section className="py-16 md:py-24 border-b border-white/[0.08] bg-[#0A122A]/40 backdrop-blur-sm">
+      <section id="workflow-steps" className="py-16 md:py-24 border-b border-white/[0.08] bg-[#0A122A]/40 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12">
@@ -438,7 +643,7 @@ const AgentforceERP = () => {
             {workflowSteps.map((step) => (
               <div
                 key={step.num}
-                className="p-4 rounded-xl bg-[#0D152E]/90 border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between group shadow-md"
+                className="gsap-amerp-workflow-step p-4 rounded-xl bg-[#0D152E]/90 border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between group shadow-md"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
@@ -542,7 +747,7 @@ const AgentforceERP = () => {
       {/* ==================================================
           5. AI-POWERED PLANNING (AGENTFORCE REASONING)
           ================================================== */}
-      <section className="py-16 md:py-24 border-b border-white/[0.08]">
+      <section id="architecture-section" className="py-16 md:py-24 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12">
@@ -603,7 +808,7 @@ const AgentforceERP = () => {
 
               <div className="space-y-3">
                 {architecturePipeline.map((pipe, idx, arr) => (
-                  <div key={pipe.name} className="relative">
+                  <div key={pipe.name} className="gsap-amerp-arch-step relative">
                     
                     <div className={`p-3.5 sm:p-4 rounded-xl border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2 ${
                       pipe.isAi
@@ -753,7 +958,7 @@ const AgentforceERP = () => {
           )}
 
           {/* Large Screen Container */}
-          <div className="rounded-2xl bg-[#0D152E] border border-white/[0.12] p-3 sm:p-5 shadow-2xl overflow-hidden">
+          <div className="gsap-amerp-screen-box rounded-2xl bg-[#0D152E] border border-white/[0.12] p-3 sm:p-5 shadow-2xl overflow-hidden">
             <div className="flex items-center justify-between px-3 py-2 border-b border-white/[0.08] mb-3 bg-[#0A1024] rounded-lg">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
@@ -783,7 +988,7 @@ const AgentforceERP = () => {
       {/* ==================================================
           7. BEFORE → AFTER (CLEAN SPLIT LAYOUT)
           ================================================== */}
-      <section className="py-16 md:py-24 border-b border-white/[0.08]">
+      <section id="transformation-section" className="py-16 md:py-24 border-b border-white/[0.08]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12">
@@ -804,7 +1009,7 @@ const AgentforceERP = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             {/* BEFORE COLUMN */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#0D152E]/70 border border-red-500/20 shadow-xl">
+            <div className="gsap-amerp-compare-box p-6 sm:p-8 rounded-2xl bg-[#0D152E]/70 border border-red-500/20 shadow-xl">
               <div className="flex items-center justify-between pb-4 mb-6 border-b border-red-500/20">
                 <span className="text-xs font-mono font-bold text-red-400 uppercase tracking-wider">
                   TRADITIONAL APPROACH
@@ -834,7 +1039,7 @@ const AgentforceERP = () => {
             </div>
 
             {/* AFTER COLUMN */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#0D152E]/90 border border-emerald-500/30 shadow-xl shadow-emerald-500/5">
+            <div className="gsap-amerp-compare-box p-6 sm:p-8 rounded-2xl bg-[#0D152E]/90 border border-emerald-500/30 shadow-xl shadow-emerald-500/5">
               <div className="flex items-center justify-between pb-4 mb-6 border-b border-emerald-500/20">
                 <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
                   ARRAYMINDS + AGENTFORCE
@@ -871,7 +1076,7 @@ const AgentforceERP = () => {
       {/* ==================================================
           8. EXCEPTIONS & AUTOMATION (SURFACE EXCEPTIONS. ACT FASTER)
           ================================================== */}
-      <section className="py-16 md:py-24 border-b border-white/[0.08] bg-[#0A122A]/40 backdrop-blur-sm">
+      <section id="exceptions-section" className="py-16 md:py-24 border-b border-white/[0.08] bg-[#0A122A]/40 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12">
@@ -914,7 +1119,7 @@ const AgentforceERP = () => {
             {exceptions.map((ex) => (
               <div
                 key={ex.title}
-                className="p-6 rounded-2xl bg-[#0D152E] border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between shadow-xl"
+                className="gsap-amerp-exception-card p-6 rounded-2xl bg-[#0D152E] border border-white/[0.08] hover:border-[#00C2CB]/40 transition-all flex flex-col justify-between shadow-xl"
               >
                 <div>
                   
@@ -972,7 +1177,7 @@ const AgentforceERP = () => {
       {/* ==================================================
           9. BUSINESS IMPACT (4 LARGE IMPACT BLOCKS)
           ================================================== */}
-      <section className="py-16 md:py-24 border-b border-white/[0.08]">
+      <section id="impact-section" className="py-16 md:py-24 border-b border-white/[0.08]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12">
@@ -994,7 +1199,7 @@ const AgentforceERP = () => {
             {impacts.map((imp) => (
               <div
                 key={imp.title}
-                className="p-7 sm:p-8 rounded-2xl bg-[#0D152E]/80 border border-white/[0.08] hover:border-[#00C2CB]/40 transition-colors flex flex-col justify-between shadow-xl"
+                className="gsap-amerp-impact-card p-7 sm:p-8 rounded-2xl bg-[#0D152E]/80 border border-white/[0.08] hover:border-[#00C2CB]/40 transition-colors flex flex-col justify-between shadow-xl"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -1022,7 +1227,7 @@ const AgentforceERP = () => {
       {/* ==================================================
           10. TECHNOLOGY STACK (BUILT WITH)
           ================================================== */}
-      <section className="py-16 md:py-20 border-b border-white/[0.08] bg-[#0A122A]/30">
+      <section id="tech-stack-section" className="py-16 md:py-20 border-b border-white/[0.08] bg-[#0A122A]/30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           <span className="text-xs font-bold tracking-widest text-[#00C2CB] uppercase block mb-2">
@@ -1035,7 +1240,7 @@ const AgentforceERP = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* 1. ArrayMinds ERP */}
-            <div className="p-6 rounded-2xl bg-[#0D152E] border border-white/[0.08] flex flex-col items-center text-center shadow-lg">
+            <div className="gsap-amerp-tech-card p-6 rounded-2xl bg-[#0D152E] border border-white/[0.08] flex flex-col items-center text-center shadow-lg">
               <div className="h-14 flex items-center justify-center mb-4">
                 <img
                   src={arrayMindsLogo}
@@ -1050,7 +1255,7 @@ const AgentforceERP = () => {
             </div>
 
             {/* 2. Salesforce */}
-            <div className="p-6 rounded-2xl bg-[#0D152E] border border-white/[0.08] flex flex-col items-center text-center shadow-lg">
+            <div className="gsap-amerp-tech-card p-6 rounded-2xl bg-[#0D152E] border border-white/[0.08] flex flex-col items-center text-center shadow-lg">
               <div className="h-14 flex items-center justify-center mb-4">
                 <img
                   src={salesforceLogo}
@@ -1065,7 +1270,7 @@ const AgentforceERP = () => {
             </div>
 
             {/* 3. Salesforce Agentforce */}
-            <div className="p-6 rounded-2xl bg-[#0D152E] border border-white/[0.08] flex flex-col items-center text-center shadow-lg">
+            <div className="gsap-amerp-tech-card p-6 rounded-2xl bg-[#0D152E] border border-white/[0.08] flex flex-col items-center text-center shadow-lg">
               <div className="h-14 flex items-center justify-center mb-4">
                 <img
                   src={agentforceLogo}
@@ -1087,7 +1292,7 @@ const AgentforceERP = () => {
       {/* ==================================================
           11. FINAL CTA SECTION
           ================================================== */}
-      <section className="py-20 bg-[#070B19] relative">
+      <section id="final-cta" className="gsap-amerp-cta py-20 bg-[#070B19] relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#00C2CB]/15 text-[#7FE4EA] border border-[#00C2CB]/30 uppercase tracking-wider mb-6 inline-block">
