@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://www.arrayminds.in/</loc>
+    <loc>https://arrayminds.in/</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -10,7 +10,7 @@
 
   <!-- AppExchange Products -->
   <url>
-    <loc>https://www.arrayminds.in/products</loc>
+    <loc>https://arrayminds.in/products</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -18,7 +18,7 @@
 
   <!-- AM ERP (ArrayMinds ERP Cloud) -->
   <url>
-    <loc>https://www.arrayminds.in/amerp</loc>
+    <loc>https://arrayminds.in/amerp</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -26,7 +26,7 @@
 
   <!-- Services & Consulting -->
   <url>
-    <loc>https://www.arrayminds.in/services</loc>
+    <loc>https://arrayminds.in/services</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -34,7 +34,7 @@
 
   <!-- AI Implementations Hub -->
   <url>
-    <loc>https://www.arrayminds.in/ai-implementations</loc>
+    <loc>https://arrayminds.in/ai-implementations</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -42,7 +42,7 @@
 
   <!-- AI Implementations: Claudeforce (Claude + Salesforce MCP) -->
   <url>
-    <loc>https://www.arrayminds.in/ai-implementations/claudeforce</loc>
+    <loc>https://arrayminds.in/ai-implementations/claudeforce</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -50,7 +50,7 @@
 
   <!-- AI Implementations: VD Projekte -->
   <url>
-    <loc>https://www.arrayminds.in/ai-implementations/vd-projekte</loc>
+    <loc>https://arrayminds.in/ai-implementations/vd-projekte</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -58,7 +58,7 @@
 
   <!-- AI Implementations: Agentforce ERP -->
   <url>
-    <loc>https://www.arrayminds.in/ai-implementations/agentforce</loc>
+    <loc>https://arrayminds.in/ai-implementations/agentforce</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -66,7 +66,7 @@
 
   <!-- AI Implementations: AiGency Multi-Agent System -->
   <url>
-    <loc>https://www.arrayminds.in/ai-implementations/aigency</loc>
+    <loc>https://arrayminds.in/ai-implementations/aigency</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -74,7 +74,7 @@
 
   <!-- Industries -->
   <url>
-    <loc>https://www.arrayminds.in/industries</loc>
+    <loc>https://arrayminds.in/industries</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -82,7 +82,7 @@
 
   <!-- About Us -->
   <url>
-    <loc>https://www.arrayminds.in/about</loc>
+    <loc>https://arrayminds.in/about</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -90,7 +90,7 @@
 
   <!-- Leadership & Team -->
   <url>
-    <loc>https://www.arrayminds.in/team</loc>
+    <loc>https://arrayminds.in/team</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -98,7 +98,7 @@
 
   <!-- Careers -->
   <url>
-    <loc>https://www.arrayminds.in/careers</loc>
+    <loc>https://arrayminds.in/careers</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -106,7 +106,7 @@
 
   <!-- Contact & Global Offices -->
   <url>
-    <loc>https://www.arrayminds.in/contact</loc>
+    <loc>https://arrayminds.in/contact</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -114,7 +114,7 @@
 
   <!-- Tech Insights & Blog -->
   <url>
-    <loc>https://www.arrayminds.in/blog</loc>
+    <loc>https://arrayminds.in/blog</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>

@@ -1,9 +1,9 @@
 /**
  * Centralized SEO & Structured Data (JSON-LD) Configuration for ArrayMinds
- * Domain: https://www.arrayminds.in
+ * Domain: https://arrayminds.in
  */
 
-export const SITE_DOMAIN = 'https://www.arrayminds.in';
+export const SITE_DOMAIN = 'https://arrayminds.in';
 export const DEFAULT_OG_IMAGE = `${SITE_DOMAIN}/logo.png`;
 export const SITE_NAME = 'ArrayMinds';
 

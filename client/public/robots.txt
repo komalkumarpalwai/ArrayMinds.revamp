@@ -19,4 +19,4 @@ User-agent: DuckDuckBot
 Allow: /
 
 # XML Sitemap location
-Sitemap: https://www.arrayminds.in/sitemap.xml
+Sitemap: https://arrayminds.in/sitemap.xml
