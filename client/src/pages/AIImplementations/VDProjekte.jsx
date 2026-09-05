@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, 
@@ -9,27 +9,27 @@ import {
   Search, 
   Calculator, 
   UserCheck, 
-  Building2,
-  ExternalLink,
-  ShieldCheck,
-  Check,
-  X,
-  Workflow,
-  Cpu,
-  Layers,
-  Bot,
-  MessageSquare,
-  Send,
-  Database,
-  ArrowDown,
-  Terminal,
-  Activity,
-  Play,
-  RotateCcw,
-  Smartphone,
-  CheckCircle,
-  AlertCircle
+  Building2, 
+  ExternalLink, 
+  ShieldCheck, 
+  Check, 
+  Workflow, 
+  Cpu, 
+  Layers, 
+  Bot, 
+  MessageSquare, 
+  Send, 
+  Database, 
+  ArrowDown, 
+  Terminal, 
+  Activity, 
+  RotateCcw, 
+  CheckCircle, 
+  AlertCircle,
+  ChevronDown
 } from 'lucide-react';
+import { smoothScrollTo } from '../../components/common/SmoothScroll';
+import FloatingScrollTop from '../../components/common/FloatingScrollTop';
 
 // Assets
 import vdProjekteImg from '../../assets/Ai-Implementations/VD-1.png';
@@ -280,7 +280,7 @@ const VDProjekte = () => {
       {/* ==================================================
           HERO SECTION
           ================================================== */}
-      <section className="relative z-10 pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden border-b border-white/[0.08]">
+      <section id="hero" className="relative z-10 pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden border-b border-white/[0.08]">
         {/* Ambient Lighting */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[340px] bg-gradient-to-tr from-[#00C2CB]/20 via-[#1B3B6F]/30 to-blue-800/20 blur-[140px] rounded-full pointer-events-none -z-0" />
 
@@ -340,11 +340,19 @@ const VDProjekte = () => {
             </div>
           </div>
 
-          {/* Hero Actions */}
+          {/* Hero Actions with Smooth Scroll */}
           <div className="mt-8 flex flex-wrap items-center gap-4">
+            <button
+              type="button"
+              onClick={() => smoothScrollTo('#interactive-workflow')}
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-bold text-[#032B2E] bg-[#00C2CB] hover:bg-[#7FE4EA] transition-all duration-300 shadow-xl shadow-[#00C2CB]/25 hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <span>Explore 8-Stage Simulator</span>
+              <ArrowDown className="w-4 h-4 animate-bounce" />
+            </button>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-bold text-[#032B2E] bg-[#00C2CB] hover:bg-[#7FE4EA] transition-all duration-200 shadow-xl shadow-[#00C2CB]/20 hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-[#C7CDDA] hover:text-white bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 transition-colors"
             >
               <span>Talk to ArrayMinds</span>
               <ArrowRight className="w-4 h-4" />
@@ -392,10 +400,11 @@ const VDProjekte = () => {
         </div>
       </section>
 
+
       {/* ==================================================
           THE CHALLENGE
           ================================================== */}
-      <section className="relative z-10 py-16 md:py-20 border-b border-white/[0.08]">
+      <section id="challenge" className="relative z-10 py-16 md:py-20 border-b border-white/[0.08]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex items-center gap-2 mb-2">
@@ -455,7 +464,7 @@ const VDProjekte = () => {
       {/* ==================================================
           THE ARRAYMINDS SOLUTION
           ================================================== */}
-      <section className="relative z-10 py-16 md:py-20 border-b border-white/[0.08] bg-[#0A1432]/40 backdrop-blur-sm">
+      <section id="solution" className="relative z-10 py-16 md:py-20 border-b border-white/[0.08] bg-[#0A1432]/40 backdrop-blur-sm">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex items-center gap-2 mb-2">
@@ -515,7 +524,7 @@ const VDProjekte = () => {
       {/* ==================================================
           HOW IT WORKS (INTERACTIVE 8-STAGE WORKFLOW PIPELINE)
           ================================================== */}
-      <section className="relative z-10 py-16 md:py-24 border-b border-white/[0.08]">
+      <section id="interactive-workflow" className="relative z-10 py-16 md:py-24 border-b border-white/[0.08]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex items-center gap-2 mb-2">
@@ -549,7 +558,7 @@ const VDProjekte = () => {
                   key={stage.num}
                   type="button"
                   onClick={() => setActiveStage(idx)}
-                  className={`p-3.5 rounded-xl text-left transition-all duration-200 flex flex-col justify-between border ${
+                  className={`p-3.5 rounded-xl text-left transition-all duration-200 flex flex-col justify-between border cursor-pointer ${
                     isSelected
                       ? 'bg-[#00C2CB]/20 border-[#00C2CB] ring-2 ring-[#00C2CB]/30 shadow-lg shadow-[#00C2CB]/15 -translate-y-1 backdrop-blur-md'
                       : 'bg-[#0E1A38]/80 backdrop-blur-sm border-white/[0.08] hover:bg-[#122248] hover:border-white/20'
@@ -600,7 +609,7 @@ const VDProjekte = () => {
                   type="button"
                   disabled={activeStage === 0}
                   onClick={() => setActiveStage((prev) => Math.max(0, prev - 1))}
-                  className="px-3 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] disabled:opacity-30 disabled:pointer-events-none text-xs font-semibold text-white transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] disabled:opacity-30 disabled:pointer-events-none text-xs font-semibold text-white transition-colors cursor-pointer"
                 >
                   ← Previous
                 </button>
@@ -608,7 +617,7 @@ const VDProjekte = () => {
                   type="button"
                   disabled={activeStage === workflowStages.length - 1}
                   onClick={() => setActiveStage((prev) => Math.min(workflowStages.length - 1, prev + 1))}
-                  className="px-3 py-1.5 rounded-lg bg-[#00C2CB] hover:bg-[#7FE4EA] disabled:opacity-30 disabled:pointer-events-none text-xs font-bold text-[#032B2E] transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-[#00C2CB] hover:bg-[#7FE4EA] disabled:opacity-30 disabled:pointer-events-none text-xs font-bold text-[#032B2E] transition-colors cursor-pointer"
                 >
                   Next Step →
                 </button>
@@ -652,7 +661,7 @@ const VDProjekte = () => {
       {/* ==================================================
           THE TECHNOLOGY ARCHITECTURE
           ================================================== */}
-      <section className="relative z-10 py-16 md:py-20 border-b border-white/[0.08] bg-[#0A1432]/40 backdrop-blur-sm">
+      <section id="architecture" className="relative z-10 py-16 md:py-20 border-b border-white/[0.08] bg-[#0A1432]/40 backdrop-blur-sm">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex items-center gap-2 mb-2">
@@ -706,7 +715,7 @@ const VDProjekte = () => {
       {/* ==================================================
           HUMAN IN THE LOOP (INTERACTIVE SLACK / WHATSAPP APPROVAL WIDGET)
           ================================================== */}
-      <section className="relative z-10 py-16 md:py-24 border-b border-white/[0.08]">
+      <section id="human-in-the-loop" className="relative z-10 py-16 md:py-24 border-b border-white/[0.08]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex items-center gap-2 mb-2">
@@ -782,7 +791,7 @@ const VDProjekte = () => {
                   <button
                     type="button"
                     onClick={() => setApprovalStatus('approved')}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                       approvalStatus === 'approved'
                         ? 'bg-emerald-500 text-black shadow-lg shadow-emerald-500/30'
                         : 'bg-emerald-600/90 hover:bg-emerald-500 text-white'
@@ -795,7 +804,7 @@ const VDProjekte = () => {
                   <button
                     type="button"
                     onClick={() => setApprovalStatus('adjust')}
-                    className={`px-3.5 py-2 rounded-xl text-xs font-medium transition-all ${
+                    className={`px-3.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                       approvalStatus === 'adjust'
                         ? 'bg-amber-500 text-black font-bold'
                         : 'bg-white/[0.06] hover:bg-white/[0.1] text-[#C7CDDA]'
@@ -807,7 +816,7 @@ const VDProjekte = () => {
                   <button
                     type="button"
                     onClick={() => setApprovalStatus('pending')}
-                    className="p-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#8A99B5] hover:text-white text-xs"
+                    className="p-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#8A99B5] hover:text-white text-xs cursor-pointer"
                     title="Reset Simulator"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
@@ -869,7 +878,7 @@ const VDProjekte = () => {
       {/* ==================================================
           BEFORE VS AFTER (INTERACTIVE COMPARISON)
           ================================================== */}
-      <section className="relative z-10 py-16 md:py-20 border-b border-white/[0.08] bg-[#0A1432]/40 backdrop-blur-sm">
+      <section id="comparison" className="relative z-10 py-16 md:py-20 border-b border-white/[0.08] bg-[#0A1432]/40 backdrop-blur-sm">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex items-center gap-2 mb-2">
@@ -889,7 +898,7 @@ const VDProjekte = () => {
               <button
                 type="button"
                 onClick={() => setComparisonMode('after')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
                   comparisonMode === 'after' ? 'bg-[#00C2CB] text-[#032B2E]' : 'text-[#C7CDDA] hover:text-white'
                 }`}
               >
@@ -898,7 +907,7 @@ const VDProjekte = () => {
               <button
                 type="button"
                 onClick={() => setComparisonMode('before')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
                   comparisonMode === 'before' ? 'bg-red-500/80 text-white' : 'text-[#C7CDDA] hover:text-white'
                 }`}
               >
@@ -907,7 +916,7 @@ const VDProjekte = () => {
               <button
                 type="button"
                 onClick={() => setComparisonMode('side-by-side')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
                   comparisonMode === 'side-by-side' ? 'bg-white/20 text-white' : 'text-[#C7CDDA] hover:text-white'
                 }`}
               >
@@ -977,7 +986,7 @@ const VDProjekte = () => {
       {/* ==================================================
           BUSINESS IMPACT
           ================================================== */}
-      <section className="relative z-10 py-16 md:py-20 border-b border-white/[0.08]">
+      <section id="impact" className="relative z-10 py-16 md:py-20 border-b border-white/[0.08]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex items-center gap-2 mb-2">
@@ -1020,7 +1029,7 @@ const VDProjekte = () => {
       {/* ==================================================
           FINAL CTA
           ================================================== */}
-      <section className="relative z-10 py-20 bg-gradient-to-b from-[#081026]/85 via-[#0A1432]/90 to-[#0D1C44]/95 backdrop-blur-md">
+      <section id="cta" className="relative z-10 py-20 bg-gradient-to-b from-[#081026]/85 via-[#0A1432]/90 to-[#0D1C44]/95 backdrop-blur-md">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -1049,6 +1058,9 @@ const VDProjekte = () => {
 
         </div>
       </section>
+
+      {/* Floating Smooth Scroll to Top */}
+      <FloatingScrollTop />
 
     </div>
   );
