@@ -20,7 +20,7 @@ import aiPageBg from '../../assets/Ai-Implementations/AI-page-Bg.png';
 import vdPageBg from '../../assets/Ai-Implementations/vd-page Background.png';
 import agentforceLogo from '../../assets/Ai-Implementations/agentforce logo.png';
 import aigencyLogo from '../../assets/Ai-Implementations/aigency-logo-optimized.webp';
-import erpPlanningImg from '../../assets/ERP-Project/13_hero_manufacturing_planning.png';
+import amerpThumbnail from '../../assets/Ai-Implementations/AMERP-Screenshots/AMERPThumbnail.png';
 
 /**
  * Scalable implementation data model.
@@ -53,8 +53,8 @@ const implementations = [
     ctaText: 'View Implementation',
     href: '/ai-implementations/agentforce',
     isExternal: false,
-    image: erpPlanningImg,
-    logoOverlay: agentforceLogo,
+    image: amerpThumbnail,
+    isCustomThumbnail: true,
     workflowVisual: 'Demand Signals → Agentforce Planning → Materials → Production',
     badge: 'AI Implementation',
   },
@@ -241,8 +241,17 @@ const AIImplementations = () => {
                 >
                   
                   {/* Visual Media Header */}
-                  <div className="relative w-full h-52 sm:h-56 bg-[#090E20] border-b border-white/[0.08] overflow-hidden flex items-center justify-center p-4">
-                    {item.isLogoHero ? (
+                  <div className="relative w-full h-52 sm:h-56 bg-[#090E20] border-b border-white/[0.08] overflow-hidden flex items-center justify-center p-3 sm:p-4">
+                    {item.isCustomThumbnail ? (
+                      /* Dedicated Designed Card Thumbnail */
+                      <div className="relative w-full h-full rounded-xl overflow-hidden bg-black/40 border border-white/[0.06] flex items-center justify-center">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    ) : item.isLogoHero ? (
                       /* Clean Platform Graphic for AiGency */
                       <div className="w-full h-full flex flex-col items-center justify-center p-6 rounded-xl bg-gradient-to-b from-white/[0.04] to-transparent border border-white/[0.05]">
                         <img 
@@ -277,12 +286,14 @@ const AIImplementations = () => {
                       </div>
                     )}
 
-                    {/* Top Badge */}
-                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#0A1128]/90 border border-white/10 backdrop-blur-md">
-                      <span className="text-[10px] font-bold tracking-wider uppercase text-[#7FE4EA]">
-                        {item.pillCategory}
-                      </span>
-                    </div>
+                    {/* Top Badge (when not custom thumbnail) */}
+                    {!item.isCustomThumbnail && (
+                      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#0A1128]/90 border border-white/10 backdrop-blur-md">
+                        <span className="text-[10px] font-bold tracking-wider uppercase text-[#7FE4EA]">
+                          {item.pillCategory}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Card Body */}
