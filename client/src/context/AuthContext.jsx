@@ -24,12 +24,6 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('adminUser', JSON.stringify(res.data.admin));
           }
         }
-      } else {
-        // Check if HTTP-only cookie session exists on server
-        const res = await api.get('/auth/me');
-        if (res.data?.admin) {
-          setAdmin(res.data.admin);
-        }
       }
     } catch (e) {
       // Session expired or invalid

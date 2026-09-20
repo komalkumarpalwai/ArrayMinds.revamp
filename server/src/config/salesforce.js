@@ -7,16 +7,9 @@ export const salesforceConfig = {
   clientSecret: process.env.SALESFORCE_CLIENT_SECRET || '',
   username: process.env.SALESFORCE_USERNAME || '',
   password: process.env.SALESFORCE_PASSWORD || '',
-  redirectUri: process.env.SALESFORCE_REDIRECT_URI || '',
   apiVersion: process.env.SALESFORCE_API_VERSION || 'v59.0',
-  instanceUrl: process.env.SALESFORCE_INSTANCE_URL || '',
-  accessToken: process.env.SALESFORCE_ACCESS_TOKEN || '',
-  refreshToken: process.env.SALESFORCE_REFRESH_TOKEN || '',
 };
 
 export const isSalesforceConfigured = () => {
-  return (
-    (!!salesforceConfig.clientId && !!salesforceConfig.clientSecret) ||
-    (!!salesforceConfig.accessToken && !!salesforceConfig.instanceUrl)
-  );
+  return !!salesforceConfig.clientId && !!salesforceConfig.clientSecret;
 };

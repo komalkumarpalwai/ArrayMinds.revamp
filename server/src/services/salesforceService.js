@@ -1,98 +1,14 @@
-import fs from 'fs';
-import path from 'path';
-import crypto from 'crypto';
 import { salesforceConfig } from '../config/salesforce.js';
 
 class SalesforceService {
   constructor() {
-    this.accessToken = salesforceConfig.accessToken || null;
-    this.instanceUrl = salesforceConfig.instanceUrl || null;
-    this.refreshToken = process.env.SALESFORCE_REFRESH_TOKEN || null;
+    this.accessToken = null;
+    this.instanceUrl = null;
     this.tokenExpiresAt = null;
-    this.codeVerifier = null;
   }
 
   /**
-   * Generates the 1-click Salesforce OAuth Login URL with PKCE.
-   */
-  getAuthorizeUrl(redirectUri = 'http://localhost:5000/api/auth/salesforce/callback') {
-    const { loginUrl, clientId } = salesforceConfig;
-    const base = loginUrl.replace(/\/+$/, '');
-    const encodedRedirect = encodeURIComponent(redirectUri);
-
-    // Generate PKCE code_verifier and code_challenge
-    this.codeVerifier = crypto.randomBytes(32).toString('base64url');
-    const codeChallenge = crypto.createHash('sha256').update(this.codeVerifier).digest('base64url');
-
-    return `${base}/services/oauth2/authorize?response_type=code&client_id=${clientId}&redirect_uri=${encodedRedirect}&scope=api%20refresh_token%20full%20offline_access&prompt=consent&code_challenge=${codeChallenge}&code_challenge_method=S256`;
-  }
-
-  /**
-   * Exchanges an OAuth Authorization Code for an Access Token & Refresh Token using PKCE.
-   */
-  async handleCallback(code, redirectUri = 'http://localhost:5000/api/auth/salesforce/callback') {
-    const { loginUrl, clientId, clientSecret } = salesforceConfig;
-    const tokenUrl = `${loginUrl.replace(/\/+$/, '')}/services/oauth2/token`;
-
-    const params = new URLSearchParams();
-    params.append('grant_type', 'authorization_code');
-    params.append('client_id', clientId);
-    params.append('client_secret', clientSecret);
-    params.append('redirect_uri', redirectUri);
-    params.append('code', code);
-    if (this.codeVerifier) {
-      params.append('code_verifier', this.codeVerifier);
-    }
-
-    const response = await fetch(tokenUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: params.toString(),
-    });
-
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(`OAuth Callback Failed (${response.status}): ${data.error_description || data.error}`);
-    }
-
-    this.accessToken = data.access_token;
-    this.instanceUrl = data.instance_url;
-    this.refreshToken = data.refresh_token || this.refreshToken;
-    this.tokenExpiresAt = Date.now() + 110 * 60 * 1000;
-
-    if (data.refresh_token) {
-      this.saveRefreshToken(data.refresh_token);
-    }
-
-    return {
-      connected: true,
-      instanceUrl: this.instanceUrl,
-      hasRefreshToken: !!this.refreshToken,
-    };
-  }
-
-  saveRefreshToken(token) {
-    try {
-      const serverEnvPath = path.resolve(process.cwd(), '.env');
-      const rootEnvPath = path.resolve(process.cwd(), '..', '.env');
-      [serverEnvPath, rootEnvPath].forEach((envPath) => {
-        if (fs.existsSync(envPath)) {
-          let envContent = fs.readFileSync(envPath, 'utf8');
-          if (envContent.includes('SALESFORCE_REFRESH_TOKEN=')) {
-            envContent = envContent.replace(/SALESFORCE_REFRESH_TOKEN=.*/g, `SALESFORCE_REFRESH_TOKEN=${token}`);
-          } else {
-            envContent += `\nSALESFORCE_REFRESH_TOKEN=${token}\n`;
-          }
-          fs.writeFileSync(envPath, envContent);
-        }
-      });
-    } catch (e) {
-      console.warn('Could not auto-write refresh token to .env:', e.message);
-    }
-  }
-
-  /**
-   * Obtain or refresh Salesforce OAuth access token.
+   * Obtain fresh Salesforce access token using Client Credentials (client_id & client_secret)
    */
   async getAccessToken(forceRefresh = false) {
     if (
@@ -107,46 +23,11 @@ class SalesforceService {
     const { loginUrl, clientId, clientSecret, username, password } = salesforceConfig;
     const tokenUrl = `${loginUrl.replace(/\/+$/, '')}/services/oauth2/token`;
 
-    // 1. If we have a Refresh Token, use standard Refresh Token Flow
-    const activeRefreshToken = this.refreshToken || salesforceConfig.refreshToken || process.env.SALESFORCE_REFRESH_TOKEN;
-    if (activeRefreshToken && clientId && clientSecret) {
-      try {
-        const params = new URLSearchParams();
-        params.append('grant_type', 'refresh_token');
-        params.append('client_id', clientId);
-        params.append('client_secret', clientSecret);
-        params.append('refresh_token', activeRefreshToken);
-
-        const res = await fetch(tokenUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: params.toString(),
-        });
-
-        const data = await res.json();
-
-        if (res.ok) {
-          this.accessToken = data.access_token;
-          this.instanceUrl = data.instance_url || this.instanceUrl;
-          if (data.refresh_token) {
-            this.refreshToken = data.refresh_token;
-            this.saveRefreshToken(data.refresh_token);
-          }
-          this.tokenExpiresAt = Date.now() + 110 * 60 * 1000;
-          return { accessToken: this.accessToken, instanceUrl: this.instanceUrl };
-        } else {
-          console.warn('⚠️ Salesforce Refresh Token Error:', data.error_description || data.error);
-        }
-      } catch (err) {
-        console.warn('Refresh token attempt warning:', err.message);
-      }
-    }
-
-    // 2. Try Client Credentials Flow (Enterprise External Client App standard)
     if (!clientId || !clientSecret) {
-      throw new Error('Salesforce credentials missing in server/.env');
+      throw new Error('Salesforce clientId or clientSecret missing in configuration');
     }
 
+    // 1. Primary: Direct Client Credentials Flow using client_id and client_secret
     try {
       const ccParams = new URLSearchParams();
       ccParams.append('grant_type', 'client_credentials');
@@ -166,50 +47,41 @@ class SalesforceService {
         this.instanceUrl = ccData.instance_url || salesforceConfig.loginUrl;
         this.tokenExpiresAt = Date.now() + 110 * 60 * 1000;
         return { accessToken: this.accessToken, instanceUrl: this.instanceUrl };
-      } else if (username && password) {
-        console.warn('Client credentials failed, falling back to password flow:', ccData.error_description || ccData.error);
-      } else {
-        const errorDesc = ccData.error_description || ccData.error || ccRes.statusText;
-        throw new Error(`Salesforce OAuth Authentication Failed (${ccRes.status}): ${errorDesc}`);
       }
-    } catch (ccErr) {
-      if (!username || !password) {
-        throw ccErr;
-      }
-    }
 
-    // 3. Fallback to Username-Password flow if configured
-    if (username && password) {
-      const params = new URLSearchParams();
-      params.append('grant_type', 'password');
-      params.append('client_id', clientId);
-      params.append('client_secret', clientSecret);
-      params.append('username', username);
-      params.append('password', password);
+      // If client credentials flow returns error and username/password is configured, fallback
+      if (username && password) {
+        const pParams = new URLSearchParams();
+        pParams.append('grant_type', 'password');
+        pParams.append('client_id', clientId);
+        pParams.append('client_secret', clientSecret);
+        pParams.append('username', username);
+        pParams.append('password', password);
 
-      try {
-        const response = await fetch(tokenUrl, {
+        const pRes = await fetch(tokenUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: params.toString(),
+          body: pParams.toString(),
         });
 
-        const data = await response.json();
+        const pData = await pRes.json();
 
-        if (!response.ok) {
-          const errorDesc = data.error_description || data.error || response.statusText;
-          throw new Error(`Salesforce OAuth Authentication Failed (${response.status}): ${errorDesc}`);
+        if (pRes.ok && pData.access_token) {
+          this.accessToken = pData.access_token;
+          this.instanceUrl = pData.instance_url || salesforceConfig.loginUrl;
+          this.tokenExpiresAt = Date.now() + 110 * 60 * 1000;
+          return { accessToken: this.accessToken, instanceUrl: this.instanceUrl };
         }
 
-        this.accessToken = data.access_token;
-        this.instanceUrl = data.instance_url || salesforceConfig.loginUrl;
-        this.tokenExpiresAt = Date.now() + 110 * 60 * 1000;
-
-        return { accessToken: this.accessToken, instanceUrl: this.instanceUrl };
-      } catch (error) {
-        console.error('❌ Salesforce Token Retrieval Error:', error.message);
-        throw error;
+        const errorDesc = pData.error_description || pData.error || pRes.statusText;
+        throw new Error(`Salesforce Authentication Failed (${pRes.status}): ${errorDesc}`);
       }
+
+      const ccError = ccData.error_description || ccData.error || ccRes.statusText;
+      throw new Error(`Salesforce Authentication Failed (${ccRes.status}): ${ccError}`);
+    } catch (error) {
+      console.error('❌ Salesforce Token Retrieval Error:', error.message);
+      throw error;
     }
   }
 
