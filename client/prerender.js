@@ -86,15 +86,23 @@ async function prerender() {
       html = html.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
 
       // 8. Determine File Destination
-      const filePath = url === '/' 
-        ? 'dist/index.html' 
-        : `dist${url}/index.html`;
+      if (url === '/') {
+        const absFilePath = toAbsolute('dist/index.html');
+        fs.writeFileSync(absFilePath, html, 'utf-8');
+        console.log(`  ✓ Pre-rendered: / -> dist/index.html (${(html.length / 1024).toFixed(1)} KB)`);
+      } else {
+        // Output /route/index.html
+        const dirFilePath = toAbsolute(`dist${url}/index.html`);
+        fs.mkdirSync(path.dirname(dirFilePath), { recursive: true });
+        fs.writeFileSync(dirFilePath, html, 'utf-8');
 
-      const absFilePath = toAbsolute(filePath);
-      fs.mkdirSync(path.dirname(absFilePath), { recursive: true });
-      fs.writeFileSync(absFilePath, html, 'utf-8');
+        // Also output /route.html for servers matching direct clean URLs
+        const cleanFilePath = toAbsolute(`dist${url}.html`);
+        fs.mkdirSync(path.dirname(cleanFilePath), { recursive: true });
+        fs.writeFileSync(cleanFilePath, html, 'utf-8');
 
-      console.log(`  ✓ Pre-rendered: ${url} -> ${filePath} (${(html.length / 1024).toFixed(1)} KB)`);
+        console.log(`  ✓ Pre-rendered: ${url} -> dist${url}/index.html & dist${url}.html (${(html.length / 1024).toFixed(1)} KB)`);
+      }
     } catch (err) {
       console.error(`  ✗ Error pre-rendering ${url}:`, err);
     }
