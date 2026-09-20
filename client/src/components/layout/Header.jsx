@@ -56,7 +56,7 @@ const Header = () => {
     { name: 'AI Implementations', path: '/ai-implementations' },
     // { name: 'Industries', path: '/industries' },
     { name: 'Team', path: '/team' },
-    // { name: 'Blog', path: '/blog' },
+    { name: 'Blogs', path: '/blogs' },
     { name: 'Careers', path: '/careers' },
     { name: 'About Us', path: '/about' },
   ];
@@ -146,7 +146,7 @@ const Header = () => {
 
                       {/* Item 2: AM ERP (Opens in New Window/Tab) */}
                       <a
-                        href="/AMERP"
+                        href="/amerp"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => setProductsDropdownOpen(false)}
@@ -257,7 +257,7 @@ const Header = () => {
                   <span>AppExchange Products</span>
                 </Link>
                 <a
-                  href="/AMERP"
+                  href="/amerp"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}

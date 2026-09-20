@@ -7,37 +7,54 @@ import {
   Briefcase, 
   FileText, 
   ChevronRight,
-  Sparkles
+  ShieldCheck,
+  UserCog
 } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 
 const AdminSidebar = () => {
-  const navItems = [
+  const { hasPermission } = useAuth();
+
+  const allNavItems = [
     {
       name: 'Dashboard',
       path: '/admin/dashboard',
-      icon: <LayoutDashboard className="w-4 h-4" />
+      icon: <LayoutDashboard className="w-4 h-4" />,
+      visible: true,
     },
     {
-      name: 'Contact Submissions (Leads)',
+      name: 'User Administration',
+      path: '/admin/users',
+      icon: <UserCog className="w-4 h-4" />,
+      visible: hasPermission('USER_VIEW'),
+    },
+    {
+      name: 'Contact Leads',
       path: '/admin/contact-submissions',
-      icon: <MessageSquare className="w-4 h-4" />
+      icon: <MessageSquare className="w-4 h-4" />,
+      visible: hasPermission('CONTACT_VIEW'),
     },
     {
-      name: 'Career Submissions',
+      name: 'Career Applications',
       path: '/admin/career-submissions',
-      icon: <Users className="w-4 h-4" />
+      icon: <Users className="w-4 h-4" />,
+      visible: hasPermission('APPLICATION_VIEW'),
     },
     {
       name: 'Career Postings',
       path: '/admin/careers',
-      icon: <Briefcase className="w-4 h-4" />
+      icon: <Briefcase className="w-4 h-4" />,
+      visible: hasPermission('CAREER_VIEW'),
     },
     {
       name: 'Blog Management',
       path: '/admin/blogs',
-      icon: <FileText className="w-4 h-4" />
-    }
+      icon: <FileText className="w-4 h-4" />,
+      visible: hasPermission('BLOG_VIEW'),
+    },
   ];
+
+  const visibleNavItems = allNavItems.filter((item) => item.visible);
 
   return (
     <aside className="w-64 bg-[#0A1128] text-white flex-shrink-0 min-h-[calc(100vh-4rem)] p-4 border-r border-white/10 hidden md:block">
@@ -45,10 +62,10 @@ const AdminSidebar = () => {
         
         <div>
           <p className="text-[10px] font-bold uppercase tracking-wider text-[#8A99B5] px-3 mb-2">
-            Navigation
+            Modules & Access
           </p>
           <nav className="space-y-1.5">
-            {navItems.map((item) => (
+            {visibleNavItems.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
@@ -74,10 +91,10 @@ const AdminSidebar = () => {
         <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2 mt-8">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="text-[11px] font-bold text-white">Salesforce Integration</span>
+            <span className="text-[11px] font-bold text-white">Salesforce Connected</span>
           </div>
           <p className="text-[10px] text-[#8A99B5] leading-relaxed font-mono">
-            REST API & SOQL Live
+            RBAC & Auth Active
           </p>
         </div>
 

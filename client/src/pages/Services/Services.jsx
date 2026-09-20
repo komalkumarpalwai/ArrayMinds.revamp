@@ -102,6 +102,7 @@ const Services = () => {
     { id: 'all', name: 'All Services' },
     { id: 'salesforce', name: 'Salesforce & Multi-Cloud' },
     { id: 'databricks', name: 'Databricks & Lakehouse AI' },
+    { id: 'freshworks', name: 'Freshworks & ITSM' },
     { id: 'crm-platforms', name: 'HubSpot & Zoho CRM' },
     { id: 'messaging', name: 'WhatsApp, Telegram & CTI' },
     { id: 'integrations', name: 'Integrations, SAP & APIs' },
@@ -449,6 +450,60 @@ const Services = () => {
         'Multi-app integrations across Zoho Books, Desk & ERP'
       ],
       techStack: ['Zoho CRM', 'Zoho One', 'Deluge Scripting', 'Zoho Creator', 'Zoho Desk']
+    },
+
+    // 20. Freshdesk & Freshservice ITSM Implementation
+    {
+      id: 'freshdesk-freshservice',
+      title: 'Freshdesk & Freshservice ITSM Implementation',
+      category: 'freshworks',
+      tag: 'Freshworks Partner',
+      icon: <Headphones className="w-6 h-6 text-[#F26522]" />,
+      shortDesc: 'Omnichannel customer support ticketing, ITIL-compliant service desk, automated SLA workflows, and IT asset tracking.',
+      fullDesc: 'Empower customer support and internal IT operations with end-to-end Freshworks deployment. As an official Freshworks Partner, Array Minds implements Freshdesk and Freshservice with custom ticket lifecycle automations, multi-tiered SLA governance, self-service knowledge bases, and ITIL-aligned change and asset management.',
+      deliverables: [
+        'Omnichannel support routing (Email, Web, Chat, Social, Phone)',
+        'ITIL-compliant Service Desk with incident, problem & change management',
+        'Custom SLA escalation policies and automated workload distribution',
+        'IT Asset Management (ITAM) and automated hardware/software discovery'
+      ],
+      techStack: ['Freshdesk', 'Freshservice', 'Freshworks Neo Platform', 'ITIL Framework']
+    },
+
+    // 21. Freshsales CRM & Freddy AI Automation
+    {
+      id: 'freshsales-freddy-ai',
+      title: 'Freshsales CRM & Freddy AI Automation',
+      category: 'freshworks',
+      tag: 'Freshsales & AI',
+      icon: <Bot className="w-6 h-6 text-[#FF5959]" />,
+      shortDesc: 'AI-driven lead scoring, visual deal pipelines, intelligent sales sequences, and Freddy Copilot conversational automation.',
+      fullDesc: 'Modernize your revenue operations with Freshsales and Freddy AI. We deploy full-funnel sales pipelines, predictive AI contact scoring, automated omnichannel sales sequences, and Freddy Copilot to provide your sales teams with actionable insights and automated communication workflows.',
+      deliverables: [
+        'Visual multi-pipeline sales stages with custom probability metrics',
+        'Freddy AI predictive deal insights and automated contact scoring',
+        'Automated multi-channel sales sequences (Email, SMS, Call tasks)',
+        'Revenue forecasting dashboards and real-time rep activity tracking'
+      ],
+      techStack: ['Freshsales', 'Freddy AI Copilot', 'Sales Sequences', 'Neo Analytics']
+    },
+
+    // 22. Freshworks Cross-Platform & WhatsApp Integration
+    {
+      id: 'freshworks-integrations',
+      title: 'Freshworks CRM, WhatsApp & ERP Integration',
+      category: 'freshworks',
+      tag: 'Freshworks Integrations',
+      icon: <Workflow className="w-6 h-6 text-[#F26522]" />,
+      shortDesc: 'Turnkey API pipelines connecting Freshworks with Salesforce, WhatsApp Business, Databricks, and enterprise ERP backends.',
+      fullDesc: 'Eliminate data silos between Freshworks and your enterprise ecosystem. We engineer robust bidirectional middleware connecting Freshworks with Salesforce Customer 360, WhatsApp Business API, SAP/ERP backends, and data warehouses for automated customer synchronization and real-time service desk resolution.',
+      deliverables: [
+        'Bidirectional Freshworks to Salesforce Account & Contact sync',
+        'Official WhatsApp Business API integration for customer support',
+        'ERP order status lookups directly inside Freshdesk ticket sidebars',
+        'Custom Freshworks Marketplace apps and webhook orchestration'
+      ],
+      techStack: ['Freshworks API', 'Freshworks Marketplace SDK', 'WhatsApp Cloud API', 'Webhooks']
     }
   ];
 

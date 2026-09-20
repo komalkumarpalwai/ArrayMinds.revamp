@@ -10,12 +10,21 @@ import {
   BookOpen,
   Clock,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  Linkedin,
+  ExternalLink
 } from 'lucide-react';
 import api from '../../services/api';
 import LogoLoader from '../../components/common/LogoLoader';
 import SEO from '../../components/common/SEO';
 import { organizationSchema, SITE_DOMAIN, DEFAULT_OG_IMAGE } from '../../utils/seoConfig';
+
+const ensureUrl = (url) => {
+  if (!url) return '';
+  const trimmed = url.trim();
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  return `https://${trimmed}`;
+};
 
 const BlogDetails = () => {
   const { slug } = useParams();
@@ -74,7 +83,7 @@ const BlogDetails = () => {
             </p>
           </div>
           <Link
-            to="/blog"
+            to="/blogs"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#2D1B54] text-white text-xs font-bold shadow-md hover:bg-[#381D66] transition-all w-full"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -107,11 +116,11 @@ const BlogDetails = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans pb-24">
       <SEO
-        title={`${blog.title} | ArrayMinds Tech Insights`}
-        description={blog.excerpt || `Read ${blog.title} on the ArrayMinds blog covering Salesforce, Databricks, and Enterprise AI.`}
-        keywords={`${blog.title}, Salesforce, Databricks, Enterprise AI, ArrayMinds`}
+        title={`${blog.seoTitle || blog.title} | ArrayMinds Tech Insights`}
+        description={blog.seoDescription || blog.excerpt || `Read ${blog.title} on the ArrayMinds blog covering Salesforce, Databricks, and Enterprise AI.`}
+        keywords={blog.tags && blog.tags.length > 0 ? (Array.isArray(blog.tags) ? blog.tags.join(', ') : blog.tags) : `${blog.title}, Salesforce, Databricks, Enterprise AI, ArrayMinds`}
         canonicalPath={`/blog/${slug}`}
-        ogImage={blog.coverImage || DEFAULT_OG_IMAGE}
+        ogImage={blog.featuredImage || DEFAULT_OG_IMAGE}
         ogType="article"
         structuredData={articleSchema}
       />
@@ -127,7 +136,7 @@ const BlogDetails = () => {
           {/* Back Link & Share */}
           <div className="flex items-center justify-between">
             <Link
-              to="/blog"
+              to="/blogs"
               className="inline-flex items-center gap-2 text-xs font-semibold text-[#7FE4EA] hover:text-white transition-colors group"
             >
               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
@@ -159,9 +168,41 @@ const BlogDetails = () => {
           <div className="flex flex-wrap items-center gap-6 pt-4 border-t border-white/15 text-xs text-[#C7CDDA]">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center font-bold text-white border border-white/20">
-                {blog.author ? blog.author.charAt(0) : 'A'}
+                {blog.author ? blog.author.charAt(0).toUpperCase() : 'A'}
               </div>
-              <span className="font-semibold text-white">{blog.author}</span>
+              <span className="font-semibold text-white">{blog.author || 'Array-Minds Editorial'}</span>
+
+              {/* Quick Header Social Icons */}
+              {(blog.authorLinkedInUrl || blog.authorXUrl) && (
+                <div className="flex items-center gap-2 ml-3 pl-3 border-l border-white/20">
+                  {blog.authorLinkedInUrl && (
+                    <a
+                      href={ensureUrl(blog.authorLinkedInUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1 rounded-md bg-white/10 hover:bg-[#0A66C2] text-white transition-colors"
+                      title="Author LinkedIn Profile"
+                      aria-label="Author LinkedIn"
+                    >
+                      <Linkedin className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  {blog.authorXUrl && (
+                    <a
+                      href={ensureUrl(blog.authorXUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1 rounded-md bg-white/10 hover:bg-black text-white transition-colors"
+                      title="Author X Profile"
+                      aria-label="Author X"
+                    >
+                      <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
 
             <span className="flex items-center gap-1.5">
@@ -196,13 +237,74 @@ const BlogDetails = () => {
         )}
 
         {/* Content Card */}
-        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-gray-200 shadow-xl space-y-6">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-gray-200 shadow-xl space-y-8">
           <div className="prose max-w-none text-gray-800 leading-relaxed font-sans text-sm sm:text-base whitespace-pre-wrap">
             {blog.content}
           </div>
 
+          {/* ========================================================================= */}
+          {/* AUTHOR PROFILE & SOCIAL LINKS (BELOW ARTICLE) */}
+          {/* ========================================================================= */}
+          <div className="pt-8 border-t border-gray-200">
+            <div className="p-6 sm:p-7 rounded-2xl bg-[#F8F9FD] border border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#2D1B54] to-[#6C4AB6] text-white flex items-center justify-center font-black text-xl shadow-md shadow-[#2D1B54]/20 flex-shrink-0">
+                  {blog.author ? blog.author.charAt(0).toUpperCase() : 'A'}
+                </div>
+                <div className="space-y-1">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-[#6C4AB6]">
+                    Written By
+                  </p>
+                  <h3 className="text-base sm:text-lg font-black text-[#0A1128]">
+                    {blog.author || 'Array-Minds Editorial'}
+                  </h3>
+                  <p className="text-xs text-gray-500">
+                    Enterprise Cloud, Salesforce & AI Practice at Array Minds
+                  </p>
+                </div>
+              </div>
+
+              {/* Public Author Links: Author_LinkedIn_URL__c & Author_X_URL__c */}
+              {(blog.authorLinkedInUrl || blog.authorXUrl) && (
+                <div className="flex flex-wrap items-center gap-3 sm:self-center">
+                  {blog.authorLinkedInUrl && (
+                    <a
+                      href={ensureUrl(blog.authorLinkedInUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold shadow-md shadow-[#0A66C2]/20 transition-all transform hover:-translate-y-0.5"
+                      aria-label={`Connect with ${blog.author} on LinkedIn`}
+                    >
+                      <Linkedin className="w-4 h-4 fill-current" />
+                      <span>LinkedIn Profile</span>
+                      <ExternalLink className="w-3 h-3 opacity-80" />
+                    </a>
+                  )}
+
+                  {blog.authorXUrl && (
+                    <a
+                      href={ensureUrl(blog.authorXUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0F1419] hover:bg-black text-white text-xs font-bold shadow-md shadow-black/20 transition-all transform hover:-translate-y-0.5"
+                      aria-label={`Follow ${blog.author} on X`}
+                    >
+                      <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
+                      <span>Follow on X</span>
+                      <ExternalLink className="w-3 h-3 opacity-80" />
+                    </a>
+                  )}
+                </div>
+              )}
+
+            </div>
+          </div>
+
           {/* End-of-article Box */}
-          <div className="pt-8 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="space-y-1 text-center sm:text-left">
               <p className="text-xs font-bold uppercase tracking-wider text-gray-500">
                 Array Minds Advisory & Solutions

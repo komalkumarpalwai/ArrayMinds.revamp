@@ -1,12 +1,22 @@
 import express from 'express';
-import { loginAdmin, getAdminProfile } from '../controllers/authController.js';
+import {
+  loginAdmin,
+  logoutAdmin,
+  getAdminProfile,
+  forgotPassword,
+  resetPassword,
+} from '../controllers/authController.js';
 import { protectAdmin } from '../middleware/authMiddleware.js';
 import salesforceService from '../services/salesforceService.js';
 
 const router = express.Router();
 
+// Authentication Endpoints
 router.post('/login', loginAdmin);
+router.post('/logout', logoutAdmin);
 router.get('/me', protectAdmin, getAdminProfile);
+router.post('/forgot-password', forgotPassword);
+router.post('/reset-password', resetPassword);
 
 // 1-Click Salesforce OAuth Connect
 router.get('/salesforce/connect', (req, res) => {

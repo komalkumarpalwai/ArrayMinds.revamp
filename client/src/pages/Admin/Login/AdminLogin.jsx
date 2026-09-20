@@ -133,6 +133,12 @@ const AdminLogin = () => {
                 <label className="text-xs font-bold uppercase tracking-wider text-[#C7CDDA]">
                   Password
                 </label>
+                <Link
+                  to="/admin/forgot-password"
+                  className="text-xs text-[#00C2CB] hover:text-[#7FE4EA] font-semibold hover:underline transition-colors"
+                >
+                  Forgot Password?
+                </Link>
               </div>
               <div className="relative">
                 <Lock className="w-4 h-4 text-[#8A99B5] absolute left-4 top-1/2 transform -translate-y-1/2 pointer-events-none" />

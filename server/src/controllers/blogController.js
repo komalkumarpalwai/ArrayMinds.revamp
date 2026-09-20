@@ -1,5 +1,29 @@
 import salesforceService from '../services/salesforceService.js';
 
+let cachedBlogFields = null;
+let lastFieldFetchTime = 0;
+
+export const getBlogFieldNames = async (forceRefresh = false) => {
+  const now = Date.now();
+  if (forceRefresh || !cachedBlogFields || (now - lastFieldFetchTime) > 10000) {
+    try {
+      const desc = await salesforceService.request('/sobjects/Website_Blog__c/describe');
+      cachedBlogFields = new Set(desc.fields.map(f => f.name));
+      lastFieldFetchTime = now;
+    } catch {
+      if (!cachedBlogFields) {
+        cachedBlogFields = new Set([
+          'Id', 'Name', 'Title__c', 'Slug__c', 'Status__c', 'Excerpt__c', 'Content__c', 
+          'Featured_Image_URL__c', 'Published_Date__c', 'Category__c', 'Tags__c', 
+          'Reading_Time__c', 'Is_Featured__c', 'Article_Author__c', 'Author_LinkedIn_URL__c', 
+          'Author_X_URL__c', 'SEO_Title__c', 'SEO_Description__c'
+        ]);
+      }
+    }
+  }
+  return cachedBlogFields;
+};
+
 /**
  * Format Salesforce Website_Blog__c record to standard API response
  */
@@ -14,12 +38,34 @@ const formatBlogRecord = (record) => {
     excerpt: record.Excerpt__c || '',
     content: record.Content__c || '',
     featuredImage: record.Featured_Image_URL__c || '',
-    author: record.Author__c || 'Array-Minds Team',
+    category: record.Category__c || 'Technology',
+    tags: record.Tags__c ? record.Tags__c.split(',').map(t => t.trim()) : [],
+    readingTime: record.Reading_Time__c || 5,
+    isFeatured: !!record.Is_Featured__c,
+    author: record.Article_Author__c || 'Array-Minds Editorial Team',
+    articleAuthor: record.Article_Author__c || '',
+    authorLinkedInUrl: record.Author_LinkedIn_URL__c || '',
+    authorXUrl: record.Author_X_URL__c || '',
+    seoTitle: record.SEO_Title__c || '',
+    seoDescription: record.SEO_Description__c || '',
     status: (record.Status__c || 'Draft').toLowerCase(),
     rawStatus: record.Status__c || 'Draft',
     publishedAt: record.Published_Date__c || record.CreatedDate,
     createdAt: record.CreatedDate,
+    updatedAt: record.LastModifiedDate || record.CreatedDate,
   };
+};
+
+const getSoqlFields = async () => {
+  const fields = await getBlogFieldNames();
+  const authorField = fields.has('Article_Author__c') ? 'Article_Author__c, ' : '';
+  return `
+    Id, Name, Title__c, Slug__c, Status__c, Excerpt__c, Content__c, 
+    Featured_Image_URL__c, Published_Date__c, Category__c, Tags__c, 
+    Reading_Time__c, Is_Featured__c, ${authorField}Author_LinkedIn_URL__c, Author_X_URL__c,
+    SEO_Title__c, SEO_Description__c,
+    CreatedDate, LastModifiedDate
+  `;
 };
 
 // @desc    Get all blogs (Published for public, all for admin)
@@ -28,9 +74,10 @@ const formatBlogRecord = (record) => {
 export const getBlogs = async (req, res) => {
   try {
     const includeAll = req.query.all === 'true' || req.admin;
+    const soqlFields = await getSoqlFields();
     
     let soql = `
-      SELECT Id, Name, Title__c, Slug__c, Status__c, CreatedDate
+      SELECT ${soqlFields}
       FROM Website_Blog__c
     `;
 
@@ -57,11 +104,12 @@ export const getBlogs = async (req, res) => {
 // @access  Public
 export const getBlogBySlug = async (req, res) => {
   try {
-    const { slug } = req.params;
+    const slug = req.params.slug || req.params.id;
     const sanitizedSlug = slug.replace(/'/g, "\\'");
+    const soqlFields = await getSoqlFields();
 
     let soql = `
-      SELECT Id, Name, Title__c, Slug__c, Status__c, CreatedDate
+      SELECT ${soqlFields}
       FROM Website_Blog__c
       WHERE Slug__c = '${sanitizedSlug}'
       LIMIT 1
@@ -71,7 +119,7 @@ export const getBlogBySlug = async (req, res) => {
 
     if (records.length === 0 && /^[a-zA-Z0-9]{15,18}$/.test(slug)) {
       soql = `
-        SELECT Id, Name, Title__c, Slug__c, Status__c, CreatedDate
+        SELECT ${soqlFields}
         FROM Website_Blog__c
         WHERE Id = '${sanitizedSlug}'
         LIMIT 1
@@ -98,7 +146,25 @@ export const getBlogBySlug = async (req, res) => {
 // @access  Private/Admin
 export const createBlog = async (req, res) => {
   try {
-    const { title, slug, status } = req.body;
+    const { 
+      title, 
+      slug, 
+      status, 
+      excerpt, 
+      content, 
+      featuredImage, 
+      category, 
+      tags, 
+      readingTime, 
+      isFeatured,
+      author,
+      authorLinkedInUrl,
+      authorXUrl,
+      authorLinkedIn,
+      authorX,
+      seoTitle,
+      seoDescription
+    } = req.body;
 
     if (!title) {
       return res.status(400).json({ message: 'Title is required' });
@@ -110,12 +176,50 @@ export const createBlog = async (req, res) => {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
 
+    const normalizedStatus = status === 'published' || status === 'Published' 
+      ? 'Published' 
+      : status === 'archived' || status === 'Archived' 
+      ? 'Archived' 
+      : 'Draft';
+
+    // IMPORTANT: Never send "Name" as it is an auto-number field in Salesforce
     const salesforcePayload = {
       Title__c: title,
-      Name: title.length > 80 ? title.substring(0, 77) + '...' : title,
       Slug__c: generatedSlug,
-      Status__c: status === 'published' ? 'Published' : status === 'archived' ? 'Archived' : 'Draft',
+      Status__c: normalizedStatus,
     };
+
+    if (excerpt) salesforcePayload.Excerpt__c = excerpt;
+    if (content) salesforcePayload.Content__c = content;
+    if (featuredImage) salesforcePayload.Featured_Image_URL__c = featuredImage;
+    if (category) salesforcePayload.Category__c = category;
+    if (tags) salesforcePayload.Tags__c = Array.isArray(tags) ? tags.join(', ') : tags;
+    if (readingTime) salesforcePayload.Reading_Time__c = parseFloat(readingTime) || 5;
+    if (isFeatured !== undefined) salesforcePayload.Is_Featured__c = !!isFeatured;
+    
+    let sfFields = await getBlogFieldNames();
+    
+    // Strictly use Article_Author__c (Text(255)) for author name
+    const authorVal = req.body.articleAuthor || author;
+    if (authorVal) {
+      const trimmed = typeof authorVal === 'string' ? authorVal.trim().slice(0, 255) : '';
+      if (!sfFields.has('Article_Author__c')) {
+        // Refresh cache in case Article_Author__c was just created in Salesforce
+        sfFields = await getBlogFieldNames(true);
+      }
+      if (sfFields.has('Article_Author__c') && trimmed) {
+        salesforcePayload.Article_Author__c = trimmed;
+      }
+    }
+
+    if (authorLinkedInUrl || authorLinkedIn) salesforcePayload.Author_LinkedIn_URL__c = authorLinkedInUrl || authorLinkedIn;
+    if (authorXUrl || authorX) salesforcePayload.Author_X_URL__c = authorXUrl || authorX;
+    if (seoTitle) salesforcePayload.SEO_Title__c = seoTitle;
+    if (seoDescription) salesforcePayload.SEO_Description__c = seoDescription;
+
+    if (normalizedStatus === 'Published') {
+      salesforcePayload.Published_Date__c = new Date().toISOString();
+    }
 
     const result = await salesforceService.createRecord('Website_Blog__c', salesforcePayload);
     const createdRecord = await salesforceService.getRecord('Website_Blog__c', result.id);
@@ -123,7 +227,7 @@ export const createBlog = async (req, res) => {
   } catch (error) {
     console.error('Error creating blog in Salesforce:', error);
     res.status(400).json({ 
-      message: 'Failed to create blog post in Salesforce',
+      message: 'Failed to create blog post in Salesforce: ' + error.message,
       error: error.message 
     });
   }
@@ -134,18 +238,74 @@ export const createBlog = async (req, res) => {
 // @access  Private/Admin
 export const updateBlog = async (req, res) => {
   try {
-    const { id } = req.params;
-    const { title, slug, status } = req.body;
+    const id = req.params.id || req.params.slug;
+    const { 
+      title, 
+      slug, 
+      status, 
+      excerpt, 
+      content, 
+      featuredImage, 
+      category, 
+      tags, 
+      readingTime, 
+      isFeatured,
+      author,
+      authorLinkedInUrl,
+      authorXUrl,
+      authorLinkedIn,
+      authorX,
+      seoTitle,
+      seoDescription
+    } = req.body;
 
     const salesforcePayload = {};
-    if (title !== undefined) {
-      salesforcePayload.Title__c = title;
-      salesforcePayload.Name = title.length > 80 ? title.substring(0, 77) + '...' : title;
-    }
+    if (title !== undefined) salesforcePayload.Title__c = title;
     if (slug !== undefined) salesforcePayload.Slug__c = slug;
+    
     if (status !== undefined) {
-      salesforcePayload.Status__c = status === 'published' ? 'Published' : status === 'archived' ? 'Archived' : 'Draft';
+      salesforcePayload.Status__c = status === 'published' || status === 'Published' 
+        ? 'Published' 
+        : status === 'archived' || status === 'Archived' 
+        ? 'Archived' 
+        : 'Draft';
+      
+      if (salesforcePayload.Status__c === 'Published') {
+        salesforcePayload.Published_Date__c = new Date().toISOString();
+      }
     }
+
+    if (excerpt !== undefined) salesforcePayload.Excerpt__c = excerpt;
+    if (content !== undefined) salesforcePayload.Content__c = content;
+    if (featuredImage !== undefined) salesforcePayload.Featured_Image_URL__c = featuredImage;
+    if (category !== undefined) salesforcePayload.Category__c = category;
+    if (tags !== undefined) salesforcePayload.Tags__c = Array.isArray(tags) ? tags.join(', ') : tags;
+    if (readingTime !== undefined) salesforcePayload.Reading_Time__c = parseFloat(readingTime) || 5;
+    if (isFeatured !== undefined) salesforcePayload.Is_Featured__c = !!isFeatured;
+
+    let sfFields = await getBlogFieldNames();
+
+    // Strictly use Article_Author__c (Text(255)) for author name
+    const authorVal = req.body.articleAuthor !== undefined ? req.body.articleAuthor : author;
+    if (authorVal !== undefined) {
+      const trimmed = typeof authorVal === 'string' ? authorVal.trim().slice(0, 255) : '';
+      if (!sfFields.has('Article_Author__c')) {
+        // Refresh cache in case Article_Author__c was just created in Salesforce
+        sfFields = await getBlogFieldNames(true);
+      }
+      if (sfFields.has('Article_Author__c')) {
+        salesforcePayload.Article_Author__c = trimmed;
+      }
+    }
+
+    if (authorLinkedInUrl !== undefined || authorLinkedIn !== undefined) {
+      salesforcePayload.Author_LinkedIn_URL__c = authorLinkedInUrl !== undefined ? authorLinkedInUrl : authorLinkedIn;
+    }
+    if (authorXUrl !== undefined || authorX !== undefined) {
+      salesforcePayload.Author_X_URL__c = authorXUrl !== undefined ? authorXUrl : authorX;
+    }
+    if (seoTitle !== undefined) salesforcePayload.SEO_Title__c = seoTitle;
+    if (seoDescription !== undefined) salesforcePayload.SEO_Description__c = seoDescription;
 
     await salesforceService.updateRecord('Website_Blog__c', id, salesforcePayload);
     const updatedRecord = await salesforceService.getRecord('Website_Blog__c', id);
@@ -153,18 +313,19 @@ export const updateBlog = async (req, res) => {
   } catch (error) {
     console.error('Error updating blog in Salesforce:', error);
     res.status(400).json({ 
-      message: 'Failed to update blog post in Salesforce',
+      message: 'Failed to update blog post in Salesforce: ' + error.message,
       error: error.message 
     });
   }
 };
+
 
 // @desc    Delete a blog post
 // @route   DELETE /api/blogs/:id
 // @access  Private/Admin
 export const deleteBlog = async (req, res) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id || req.params.slug;
     await salesforceService.deleteRecord('Website_Blog__c', id);
     res.json({ message: 'Blog post removed successfully from Salesforce', id });
   } catch (error) {

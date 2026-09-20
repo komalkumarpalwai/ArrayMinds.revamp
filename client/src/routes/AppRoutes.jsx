@@ -24,9 +24,14 @@ import Contact from '../pages/Contact/Contact';
 import Blog from '../pages/Blog/Blog';
 import BlogDetails from '../pages/Blog/BlogDetails';
 
-// Admin Pages
+// Admin Auth Pages
 import AdminLogin from '../pages/Admin/Login/AdminLogin';
+import ForgotPassword from '../pages/Admin/Login/ForgotPassword';
+import ResetPassword from '../pages/Admin/Login/ResetPassword';
+
+// Admin Protected Pages
 import AdminDashboard from '../pages/Admin/Dashboard/AdminDashboard';
+import UserManagement from '../pages/Admin/Users/UserManagement';
 import BlogManagement from '../pages/Admin/Blogs/BlogManagement';
 import CreateBlog from '../pages/Admin/Blogs/CreateBlog';
 import EditBlog from '../pages/Admin/Blogs/EditBlog';
@@ -57,25 +62,60 @@ const AppRoutes = () => {
         <Route path="/careers" element={<Careers />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/blogs" element={<Blog />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blogs/:slug" element={<BlogDetails />} />
         <Route path="/blog/:slug" element={<BlogDetails />} />
       </Route>
 
-      {/* Admin Login Route */}
+      {/* Admin Public Authentication Routes */}
       <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin/forgot-password" element={<ForgotPassword />} />
+      <Route path="/admin/reset-password" element={<ResetPassword />} />
 
       {/* Protected Admin Routes */}
       <Route element={<ProtectedRoute />}>
         <Route element={<AdminLayout />}>
+          
+          {/* General Dashboard (All authenticated roles) */}
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/blogs" element={<BlogManagement />} />
-          <Route path="/admin/blogs/create" element={<CreateBlog />} />
-          <Route path="/admin/blogs/edit/:id" element={<EditBlog />} />
-          <Route path="/admin/careers" element={<CareerManagement />} />
-          <Route path="/admin/careers/create" element={<CreateCareer />} />
-          <Route path="/admin/careers/edit/:id" element={<EditCareer />} />
-          <Route path="/admin/career-submissions" element={<CareerSubmissions />} />
-          <Route path="/admin/contact-submissions" element={<ContactSubmissions />} />
+
+          {/* User Administration (USER_VIEW permission required) */}
+          <Route element={<ProtectedRoute requiredPermission="USER_VIEW" />}>
+            <Route path="/admin/users" element={<UserManagement />} />
+          </Route>
+
+          {/* Blog Management (BLOG_VIEW permission required) */}
+          <Route element={<ProtectedRoute requiredPermission="BLOG_VIEW" />}>
+            <Route path="/admin/blogs" element={<BlogManagement />} />
+          </Route>
+          <Route element={<ProtectedRoute requiredPermission="BLOG_CREATE" />}>
+            <Route path="/admin/blogs/create" element={<CreateBlog />} />
+          </Route>
+          <Route element={<ProtectedRoute requiredPermission="BLOG_EDIT" />}>
+            <Route path="/admin/blogs/edit/:id" element={<EditBlog />} />
+          </Route>
+
+          {/* Careers & Applications (HR / Admin) */}
+          <Route element={<ProtectedRoute requiredPermission="CAREER_VIEW" />}>
+            <Route path="/admin/careers" element={<CareerManagement />} />
+          </Route>
+          <Route element={<ProtectedRoute requiredPermission="CAREER_CREATE" />}>
+            <Route path="/admin/careers/create" element={<CreateCareer />} />
+          </Route>
+          <Route element={<ProtectedRoute requiredPermission="CAREER_EDIT" />}>
+            <Route path="/admin/careers/edit/:id" element={<EditCareer />} />
+          </Route>
+          <Route element={<ProtectedRoute requiredPermission="APPLICATION_VIEW" />}>
+            <Route path="/admin/career-submissions" element={<CareerSubmissions />} />
+          </Route>
+
+          {/* Contact Leads */}
+          <Route element={<ProtectedRoute requiredPermission="CONTACT_VIEW" />}>
+            <Route path="/admin/contact-submissions" element={<ContactSubmissions />} />
+          </Route>
+
         </Route>
       </Route>
     </Routes>

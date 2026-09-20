@@ -1,0 +1,488 @@
+BEGIN:VCALENDAR
+CALSCALE:GREGORIAN
+VERSION:2.0
+PRODID:-//Events Calendar//iCal4j 1.0//EN
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+LAST-MODIFIED:20260721T092906Z
+TZURL:https://www.tzurl.org/zoneinfo/America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+X-PROLEPTIC-TZNAME:LMT
+BEGIN:STANDARD
+TZNAME:PST
+TZOFFSETFROM:-075258
+TZOFFSETTO:-0800
+DTSTART:18831118T120702
+END:STANDARD
+BEGIN:DAYLIGHT
+TZNAME:PDT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+DTSTART:19180331T020000
+RRULE:FREQ=YEARLY;UNTIL=19190330T100000Z;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZNAME:PST
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+DTSTART:19181027T020000
+RRULE:FREQ=YEARLY;UNTIL=19191026T090000Z;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+BEGIN:DAYLIGHT
+TZNAME:PWT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+DTSTART:19420209T020000
+END:DAYLIGHT
+BEGIN:DAYLIGHT
+TZNAME:PPT
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0700
+DTSTART:19450814T160000
+END:DAYLIGHT
+BEGIN:STANDARD
+TZNAME:PST
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+DTSTART:19450930T020000
+RDATE:19490101T020000
+END:STANDARD
+BEGIN:DAYLIGHT
+TZNAME:PDT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+DTSTART:19480314T020100
+RDATE:19740106T020000
+RDATE:19750223T020000
+END:DAYLIGHT
+BEGIN:DAYLIGHT
+TZNAME:PDT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+DTSTART:19500430T010000
+RRULE:FREQ=YEARLY;UNTIL=19660424T090000Z;BYMONTH=4;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZNAME:PST
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+DTSTART:19500924T020000
+RRULE:FREQ=YEARLY;UNTIL=19610924T090000Z;BYMONTH=9;BYDAY=-1SU
+END:STANDARD
+BEGIN:STANDARD
+TZNAME:PST
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+DTSTART:19621028T020000
+RRULE:FREQ=YEARLY;UNTIL=20061029T090000Z;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+BEGIN:DAYLIGHT
+TZNAME:PDT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+DTSTART:19670430T020000
+RRULE:FREQ=YEARLY;UNTIL=19730429T100000Z;BYMONTH=4;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:DAYLIGHT
+TZNAME:PDT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+DTSTART:19760425T020000
+RRULE:FREQ=YEARLY;UNTIL=19860427T100000Z;BYMONTH=4;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:DAYLIGHT
+TZNAME:PDT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+DTSTART:19870405T020000
+RRULE:FREQ=YEARLY;UNTIL=20060402T100000Z;BYMONTH=4;BYDAY=1SU
+END:DAYLIGHT
+BEGIN:DAYLIGHT
+TZNAME:PDT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+DTSTART:20070311T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZNAME:PST
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+DTSTART:20071104T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20260907T034746Z
+DTSTART;TZID=America/Los_Angeles:20260916T000000
+DTEND;TZID=America/Los_Angeles:20261015T000000
+SUMMARY:Databricks Advanced Learning Festival: September 16 - October 14 20
+ 26
+LAST-MODIFIED:20260907T034746Z
+LOCATION:
+TZID:America/Los_Angeles
+UID:message-10191
+DESCRIPTION:Click the link below to go to the event page:\nhttps://communit
+ y.databricks.com/t5/learning-events/databricks-advanced-learning-festival-
+ september-16-october-14/ec-p/166157#M10191\n\nDatabricks Advanced Learning
+  Festival September 16 – October 14\, 2026 Join us for a four-week event d
+ edicated to learning\, upskilling\, and advancing your career in data engi
+ neering\, analytics\, machine learning\, and generative AI. Whether you ar
+ e new to the field or aiming to deepen your knowledge\, this is a great op
+ portunity to invest in your professional development alongside a global co
+ mmunity. ️ Finish all modules in at least one learning pathway during the 
+ event window to receive:  50% OFF any Databricks Certification 20% OFF a y
+ early Databricks Academy Labs subscription  Incentives distributed: to the
+  email associated with your Customer Academy account on October 19\, 2026\
+ , after the event concludes. Important: ensure every component of a course
+  is marked complete (including any introduction sections) within the eligi
+ bility window so your pathway is properly recorded.  Registering to redeem
+  your voucher When you register for your WebAssessor account\, please use 
+ the same email address associated with your Databricks Customer Academy ac
+ count. Vouchers for this event are scoped to that email and can only be re
+ deemed by it. If you already have a WebAssessor account under a different 
+ email\, you can add your Academy email as a secondary email on your existi
+ ng account. Choose Your Learning Pathway Start exploring your options belo
+ w and enroll through Customer Academy.  ️ Associate Data Engineering Compl
+ ete all 4 modules from the Data Engineer Learning Plan:  Data Ingestion wi
+ th Lakeflow Connect Deploy Workloads with Lakeflow Jobs Build Data Pipelin
+ es with Lakeflow Spark Declarative Pipelines DevOps Essentials for Data En
+ gineering  Professional Data Engineering Complete all 4 modules from the D
+ ata Engineer Learning Plan:  Advanced Techniques with Spark Declarative Pi
+ pelines Databricks Data Privacy Databricks Performance Optimization Automa
+ ted Deployment with Declarative Automation Bundles  Data Analysts Complete
+  both modules from the Data Analyst Learning Plan:  AI/BI for Data Analyst
+ s SQL Analytics on Databricks  Associate ML Practitioners Complete all 4 m
+ odules from the Machine Learning Practitioner Learning Plan:  Data Prepara
+ tion for Machine Learning Machine Learning Model Development Machine Learn
+ ing Model Deployment Machine Learning Operations  🧠 Professional ML Pract
+ itioners Complete both modules from the Machine Learning Practitioner Lear
+ ning Plan:  Machine Learning at Scale Advanced Machine Learning Operations
+   Generative AI Engineering Complete all 4 modules from the Generative AI 
+ Engineering Learning Plan:  Building RAG Agents with Databricks Building A
+ gentic Applications on Databricks Agent Evaluation on Databricks Deploying
+  and Monitoring Agent Applications on Databricks  Apache Spark™ Developer 
+ Complete all 4 modules from the Apache Spark™ Developer Learning Plan:  In
+ troduction to Apache Spark™ Developing Applications with Apache Spark™ Str
+ eam Processing and Analysis with Apache Spark™ Monitoring and Optimizing A
+ pache Spark™ Workloads on Databricks  ️ Data Warehousing Practitioner Comp
+ lete all 4 modules from the Data Warehousing Practitioner Learning Plan:  
+ SQL Programming and Procedural Logic in Databricks Data Modelling Strategi
+ es Building Semantic Models in Databricks with UC Metric Views Architectin
+ g Data Warehouses for Large-Scale Deployments Read the full FAQ → Happy le
+ arning! 🧑‍
+X-ALT-DESC;FMTTYPE=text/html:<P>Click the link below to go to the event pag
+ e:</P><BR><A href="https://community.databricks.com/t5/learning-events/dat
+ abricks-advanced-learning-festival-september-16-october-14/ec-p/166157#M10
+ 191">https://community.databricks.com/t5/learning-events/databricks-advanc
+ ed-learning-festival-september-16-october-14/ec-p/166157#M10191</A><BR><BR
+ ><DIV style="font-family: 'DM Sans'\,Helvetica\,Arial\,sans-serif\; max-wi
+ dth: 860px\; margin: 0 auto\; color: #1b3139\; line-height: 1.55\;">\n<DIV
+  style="background: linear-gradient(135deg\,#FF3621 0%\,#FF5F46 45%\,#FF9F
+ 36 100%)\; color: #ffffff\; padding: 40px 36px\; border-radius: 16px\; tex
+ t-align: center\; box-shadow: 0 8px 24px rgba(255\,54\,33\,0.25)\;">\n<P s
+ tyle="margin: 0 0 8px\; font-size: 14px\; letter-spacing: 2px\; text-trans
+ form: uppercase\; opacity: 0.9\;">Databricks</P>\n<H1 style="margin: 0\; f
+ ont-size: 32px\; font-weight: 800\; line-height: 1.2\;" id="toc-hId-181818
+ 6499">Advanced Learning Festival</H1>\n<DIV style="display: inline-block\;
+  margin-top: 16px\; background: rgba(255\,255\,255\,0.18)\; padding: 8px 2
+ 0px\; border-radius: 30px\; font-size: 17px\; font-weight: 600\;"><img cla
+ ss="lia-deferred-image lia-image-emoji" src="https://community.databricks.
+ com/html/@81A727AB16165E6FF90648D205AA7DF6/emoticons/1f4c5.png" alt=":cale
+ ndar:" title=":calendar:" /> September 16 – October 14\, 2026</DIV>\n</DIV
+ >\n<P style="font-size: 16px\; margin: 28px 4px\;"><img class="lia-deferre
+ d-image lia-image-emoji" src="https://community.databricks.com/html/@6A185
+ 4BAC66BD56C105C7F858C35741E/emoticons/1f389.png" alt=":party_popper:" titl
+ e=":party_popper:" /> Join us for a <STRONG>four-week event</STRONG> dedic
+ ated to learning\, upskilling\, and advancing your career in data engineer
+ ing\, analytics\, machine learning\, and generative AI. Whether you are ne
+ w to the field or aiming to deepen your knowledge\, this is a great opport
+ unity to invest in your professional development alongside a global commun
+ ity.</P>\n<P style="font-size: 16px\; font-weight: bold\; margin: 0 4px 14
+ px\;"><img class="lia-deferred-image lia-image-emoji" src="https://communi
+ ty.databricks.com/html/@CC7021C3AE93595BC6036CF463D635AC/emoticons/1f39f.p
+ ng" alt=":admission_tickets:" title=":admission_tickets:" />️ Finish all m
+ odules in at least one learning pathway during the event window to receive
+ :</P>\n<DIV style="margin-bottom: 12px\;">\n<DIV style="background: #EAF6E
+ F\; border: 1px solid #B7E4C7\; border-left: 6px solid #00A972\; border-ra
+ dius: 10px\; padding: 18px 22px\; margin-bottom: 12px\;"><STRONG>50% OFF <
+ /STRONG><SPAN>any Databricks Certification</SPAN></DIV>\n<DIV style="backg
+ round: #EAF1F8\; border: 1px solid #B9D3EC\; border-left: 6px solid #2272B
+ 4\; border-radius: 10px\; padding: 18px 22px\;"><STRONG>20% OFF</STRONG> <
+ SPAN>a yearly Databricks Academy Labs subscription</SPAN></DIV>\n</DIV>\n<
+ DIV style="background: #1B3139\; color: #ffffff\; border-radius: 12px\; pa
+ dding: 22px 26px\; margin: 22px 0\;">\n<P style="margin: 0 0 10px\; font-s
+ ize: 15px\;"><img class="lia-deferred-image lia-image-emoji" src="https://
+ community.databricks.com/html/@92AF09ACC1C8C787E206B0EA2B3B2CB7/emoticons/
+ 1f4ac.png" alt=":speech_balloon:" title=":speech_balloon:" /> <FONT color=
+ "#FFFFFF"><STRONG>Incentives distributed:</STRONG> to the email associated
+  with your Customer Academy account on <STRONG>October 19\, 2026</STRONG>\
+ , after the event concludes.</FONT></P>\n<P style="margin: 0\; font-size: 
+ 15px\;"><img class="lia-deferred-image lia-image-emoji" src="https://commu
+ nity.databricks.com/html/@1487852FACFEBA33106A2987FAD7F4F6/emoticons/26a0.
+ png" alt=":warning:" title=":warning:" /> <FONT color="#FFFFFF"><STRONG>Im
+ portant:</STRONG> ensure every component of a course is marked complete (i
+ ncluding any introduction sections) within the eligibility window so your 
+ pathway is properly recorded.</FONT></P>\n</DIV>\n<DIV style="background: 
+ #FFF4F2\; border: 1px solid #FFD9D2\; border-radius: 12px\; padding: 20px 
+ 24px\; margin-bottom: 28px\;">\n<P style="margin: 0 0 6px\; font-weight: 8
+ 00\; color: #ff3621\; font-size: 16px\;"><img class="lia-deferred-image li
+ a-image-emoji" src="https://community.databricks.com/html/@E5D0683990C085C
+ 20A6AC0A171D9CAF6/emoticons/1f511.png" alt=":key:" title=":key:" /> Regist
+ ering to redeem your voucher</P>\n<P style="margin: 0\; font-size: 15px\;"
+ >When you register for your WebAssessor account\, please use the <STRONG>s
+ ame email address associated with your Databricks Customer Academy account
+ </STRONG>. Vouchers for this event are scoped to that email and can only b
+ e redeemed by it. If you already have a WebAssessor account under a differ
+ ent email\, you can add your Academy email as a secondary email on your ex
+ isting account.</P>\n</DIV>\n<H2 style="font-size: 24px\; font-weight: 800
+ \; text-align: center\; margin: 8px 0 4px\;" id="toc-hId--930483967">Choos
+ e Your Learning Pathway</H2>\n<P style="text-align: center\; color: #5a6b7
+ 2\; margin: 0 0 24px\; font-size: 15px\;">Start exploring your options bel
+ ow and enroll through Customer Academy.</P>\n<DIV style="border: 1px solid
+  #E4E7E9\; border-top: 5px solid #FF3621\; border-radius: 12px\; padding: 
+ 20px 24px\; margin-bottom: 16px\; box-shadow: 0 2px 8px rgba(27\,49\,57\,0
+ .06)\;">\n<H3 style="margin: 0 0 4px\; font-size: 18px\; color: #ff3621\;"
+  id="toc-hId-615812863"><img class="lia-deferred-image lia-image-emoji" sr
+ c="https://community.databricks.com/html/@4BBFE0EB607209C788FA3F55C21200FC
+ /emoticons/1f6e0.png" alt=":hammer_and_wrench:" title=":hammer_and_wrench:
+ " />️ Associate Data Engineering</H3>\n<P style="margin: 0 0 10px\; font-s
+ ize: 14px\; color: #5a6b72\;">Complete all 4 modules from the Data Enginee
+ r Learning Plan:</P>\n<UL style="margin: 0\; padding-left: 20px\; font-siz
+ e: 15px\;">\n<LI><A style="color: #2272b4\; text-decoration: none\; font-w
+ eight: 600\;" href="https://customer-academy.databricks.com/learn/course/2
+ 963/data-ingestion-with-delta-lake?utm_source=daiwt_1_event&amp\;utm_mediu
+ m=community&amp\;utm_content=dewd" target="_blank" rel="noopener nofollow 
+ noreferrer">Data Ingestion with Lakeflow Connect</A></LI>\n<LI><A style="c
+ olor: #2272b4\; text-decoration: none\; font-weight: 600\;" href="https://
+ customer-academy.databricks.com/learn/course/1365/deploy-workloads-with-da
+ tabricks-workflows?generated_by=917425&amp\;hash=164692a81c1d823de50dca7be
+ 864f18b51805056&amp\;utm_source=daiwt_1_event&amp\;utm_medium=community&am
+ p\;utm_content=dewd" target="_blank" rel="noopener nofollow noreferrer">De
+ ploy Workloads with Lakeflow Jobs</A></LI>\n<LI><A style="color: #2272b4\;
+  text-decoration: none\; font-weight: 600\;" href="https://customer-academ
+ y.databricks.com/learn/course/2971/build-data-pipelines-with-delta-live-ta
+ bles?generated_by=917425&amp\;hash=42214e83957b1ce8046ff9b122afcffb4ad1aa4
+ 5&amp\;utm_source=daiwt_1_event&amp\;utm_medium=community&amp\;utm_content
+ =dewd" target="_blank" rel="noopener nofollow noreferrer">Build Data Pipel
+ ines with Lakeflow Spark Declarative Pipelines</A></LI>\n<LI><A style="col
+ or: #2272b4\; text-decoration: none\; font-weight: 600\;" href="https://cu
+ stomer-academy.databricks.com/learn/courses/3640/devops-essentials-for-dat
+ a-engineering?hash=487d17916b082e70449b9159e47d7ef6e4d3ab68&amp\;generated
+ _by=409740&amp\;utm_source=daiwt_1_event&amp\;utm_medium=community&amp\;ut
+ m_content=dewd" target="_blank" rel="noopener nofollow noreferrer">DevOps 
+ Essentials for Data Engineering</A></LI>\n</UL>\n</DIV>\n<DIV style="borde
+ r: 1px solid #E4E7E9\; border-top: 5px solid #C62828\; border-radius: 12px
+ \; padding: 20px 24px\; margin-bottom: 16px\; box-shadow: 0 2px 8px rgba(2
+ 7\,49\,57\,0.06)\;">\n<H3 style="margin: 0 0 4px\; font-size: 18px\; color
+ : #c62828\;" id="toc-hId--1936344098"><img class="lia-deferred-image lia-i
+ mage-emoji" src="https://community.databricks.com/html/@70C46E4E4767BC13AE
+ CB2F3C60005D30/emoticons/2699.png" alt=":gear:" title=":gear:" /> Professi
+ onal Data Engineering</H3>\n<P style="margin: 0 0 10px\; font-size: 14px\;
+  color: #5a6b72\;">Complete all 4 modules from the Data Engineer Learning 
+ Plan:</P>\n<UL style="margin: 0\; padding-left: 20px\; font-size: 15px\;">
+ \n<LI><A style="color: #2272b4\; text-decoration: none\; font-weight: 600\
+ ;" href="https://customer-academy.databricks.com/learn/courses/2972/databr
+ icks-streaming-and-delta-live-tables?hash=20a8704dba227b3a27bb9dea4eae1c90
+ 28559b67&amp\;generated_by=409740&amp\;utm_source=daiwt_1_event&amp\;utm_m
+ edium=community&amp\;utm_content=adewd" target="_blank" rel="noopener nofo
+ llow noreferrer">Advanced Techniques with Spark Declarative Pipelines</A><
+ /LI>\n<LI><A style="color: #2272b4\; text-decoration: none\; font-weight: 
+ 600\;" href="https://customer-academy.databricks.com/learn/courses/3767/da
+ tabricks-data-privacy?hash=d4feadec00c13195c1020a59639e0eebcba82dc9&amp\;g
+ enerated_by=409740&amp\;utm_source=daiwt_1_event&amp\;utm_medium=community
+ &amp\;utm_content=adewd" target="_blank" rel="noopener nofollow noreferrer
+ ">Databricks Data Privacy</A></LI>\n<LI><A style="color: #2272b4\; text-de
+ coration: none\; font-weight: 600\;" href="https://customer-academy.databr
+ icks.com/learn/courses/2967/databricks-performance-optimization?hash=df812
+ a5406d1ca3658abd61006867acec77fe0ef&amp\;generated_by=409740&amp\;utm_sour
+ ce=daiwt_1_event&amp\;utm_medium=community&amp\;utm_content=adewd" target=
+ "_blank" rel="noopener nofollow noreferrer">Databricks Performance Optimiz
+ ation</A></LI>\n<LI><A style="color: #2272b4\; text-decoration: none\; fon
+ t-weight: 600\;" href="https://customer-academy.databricks.com/learn/cours
+ es/3489/automated-deployment-with-databricks-asset-bundles?hash=437159b86d
+ ad5af4d4de6a45a780444dc7daca24&amp\;generated_by=409740&amp\;utm_source=da
+ iwt_1_event&amp\;utm_medium=community&amp\;utm_content=adewd" target="_bla
+ nk" rel="noopener nofollow noreferrer">Automated Deployment with Declarati
+ ve Automation Bundles</A></LI>\n</UL>\n</DIV>\n<DIV style="border: 1px sol
+ id #E4E7E9\; border-top: 5px solid #00A972\; border-radius: 12px\; padding
+ : 20px 24px\; margin-bottom: 16px\; box-shadow: 0 2px 8px rgba(27\,49\,57\
+ ,0.06)\;">\n<H3 style="margin: 0 0 4px\; font-size: 18px\; color: #00875a\
+ ;" id="toc-hId--193533763"><img class="lia-deferred-image lia-image-emoji"
+  src="https://community.databricks.com/html/@005AC2CC8A768980FDB458080DED3
+ B1C/emoticons/1f4ca.png" alt=":bar_chart:" title=":bar_chart:" /> Data Ana
+ lysts</H3>\n<P style="margin: 0 0 10px\; font-size: 14px\; color: #5a6b72\
+ ;">Complete both modules from the Data Analyst Learning Plan:</P>\n<UL sty
+ le="margin: 0\; padding-left: 20px\; font-size: 15px\;">\n<LI><A style="co
+ lor: #2272b4\; text-decoration: none\; font-weight: 600\;" href="https://c
+ ustomer-academy.databricks.com/learn/courses/3707/aibi-for-data-analysts?h
+ ash=1350c11089b464e269d181411408083c55e36f31&amp\;generated_by=409740&amp\
+ ;utm_source=daiwt_1_event&amp\;utm_medium=community&amp\;utm_content=dawd"
+  target="_blank" rel="noopener nofollow noreferrer">AI/BI for Data Analyst
+ s</A></LI>\n<LI><A style="color: #2272b4\; text-decoration: none\; font-we
+ ight: 600\;" href="https://customer-academy.databricks.com/learn/courses/3
+ 928/sql-analytics-on-databricks?hash=3339397ce5161239baef1e8fa36e4c454bf22
+ 2c0&amp\;generated_by=409740&amp\;utm_source=daiwt_1_event&amp\;utm_medium
+ =community&amp\;utm_content=dawd" target="_blank" rel="noopener nofollow n
+ oreferrer">SQL Analytics on Databricks</A></LI>\n</UL>\n</DIV>\n<DIV style
+ ="border: 1px solid #E4E7E9\; border-top: 5px solid #2272B4\; border-radiu
+ s: 12px\; padding: 20px 24px\; margin-bottom: 16px\; box-shadow: 0 2px 8px
+  rgba(27\,49\,57\,0.06)\;">\n<H3 style="margin: 0 0 4px\; font-size: 18px\
+ ; color: #1b5a8f\;" id="toc-hId-1549276572"><img class="lia-deferred-image
+  lia-image-emoji" src="https://community.databricks.com/html/@972C5234FC40
+ C57BB407416E488027AD/emoticons/1f916.png" alt=":robot_face:" title=":robot
+ _face:" /> Associate ML Practitioners</H3>\n<P style="margin: 0 0 10px\; f
+ ont-size: 14px\; color: #5a6b72\;">Complete all 4 modules from the Machine
+  Learning Practitioner Learning Plan:</P>\n<UL style="margin: 0\; padding-
+ left: 20px\; font-size: 15px\;">\n<LI><A style="color: #2272b4\; text-deco
+ ration: none\; font-weight: 600\;" href="https://customer-academy.databric
+ ks.com/learn/course/2343/data-preparation-for-machine-learning?generated_b
+ y=917425&amp\;hash=c45cd7d518368d1dd0746ccc0a19826c68ff641c&amp\;utm_sourc
+ e=daiwt_1_event&amp\;utm_medium=community&amp\;utm_content=mlwd" target="_
+ blank" rel="noopener nofollow noreferrer">Data Preparation for Machine Lea
+ rning</A></LI>\n<LI><A style="color: #2272b4\; text-decoration: none\; fon
+ t-weight: 600\;" href="https://customer-academy.databricks.com/learn/cours
+ e/2390/machine-learning-model-development?generated_by=917425&amp\;hash=a8
+ b9605bfd10c599d7a8563a8cf9013e6f491f75&amp\;utm_source=daiwt_1_event&amp\;
+ utm_medium=community&amp\;utm_content=mlwd" target="_blank" rel="noopener 
+ nofollow noreferrer">Machine Learning Model Development</A></LI>\n<LI><A s
+ tyle="color: #2272b4\; text-decoration: none\; font-weight: 600\;" href="h
+ ttps://customer-academy.databricks.com/learn/course/2395/machine-learning-
+ model-deployment?generated_by=917425&amp\;hash=a19ea7e8cd9d9c2f76f4cb63f43
+ fd0b2a697ad93&amp\;utm_source=daiwt_1_event&amp\;utm_medium=community&amp\
+ ;utm_content=mlwd" target="_blank" rel="noopener nofollow noreferrer">Mach
+ ine Learning Model Deployment</A></LI>\n<LI><A style="color: #2272b4\; tex
+ t-decoration: none\; font-weight: 600\;" href="https://customer-academy.da
+ tabricks.com/learn/course/2400/machine-learning-operations?generated_by=91
+ 7425&amp\;hash=3fd9ee3f4bbb79c6585f27e2c60d56a9feb3e849&amp\;utm_source=da
+ iwt_1_event&amp\;utm_medium=community&amp\;utm_content=mlwd" target="_blan
+ k" rel="noopener nofollow noreferrer">Machine Learning Operations</A></LI>
+ \n</UL>\n</DIV>\n<DIV style="border: 1px solid #E4E7E9\; border-top: 5px s
+ olid #7B3FF2\; border-radius: 12px\; padding: 20px 24px\; margin-bottom: 1
+ 6px\; box-shadow: 0 2px 8px rgba(27\,49\,57\,0.06)\;">\n<H3 style="margin:
+  0 0 4px\; font-size: 18px\; color: #5b27c4\;" id="toc-hId--1002880389">🧠
+  Professional ML Practitioners</H3>\n<P style="margin: 0 0 10px\; font-siz
+ e: 14px\; color: #5a6b72\;">Complete both modules from the Machine Learnin
+ g Practitioner Learning Plan:</P>\n<UL style="margin: 0\; padding-left: 20
+ px\; font-size: 15px\;">\n<LI><A style="color: #2272b4\; text-decoration: 
+ none\; font-weight: 600\;" href="https://customer-academy.databricks.com/l
+ earn/course/3417/machine-learning-at-scale?generated_by=917425&amp\;hash=7
+ 171a462789cf4140019fbf6e6fa31ad66d8f7d3&amp\;utm_source=daiwt_1_event&amp\
+ ;utm_medium=community&amp\;utm_content=amlwd" target="_blank" rel="noopene
+ r nofollow noreferrer">Machine Learning at Scale</A></LI>\n<LI><A style="c
+ olor: #2272b4\; text-decoration: none\; font-weight: 600\;" href="https://
+ customer-academy.databricks.com/learn/course/3508/advanced-machine-learnin
+ g-operations?generated_by=917425&amp\;hash=e7792a3031915a96bc95537fc6b7dea
+ 36c9a6818&amp\;utm_source=daiwt_1_event&amp\;utm_medium=community&amp\;utm
+ _content=amlwd" target="_blank" rel="noopener nofollow noreferrer">Advance
+ d Machine Learning Operations</A></LI>\n</UL>\n</DIV>\n<DIV style="border:
+  1px solid #E4E7E9\; border-top: 5px solid #FF9F36\; border-radius: 12px\;
+  padding: 20px 24px\; margin-bottom: 16px\; box-shadow: 0 2px 8px rgba(27\
+ ,49\,57\,0.06)\;">\n<H3 style="margin: 0 0 4px\; font-size: 18px\; color: 
+ #cc7a1f\;" id="toc-hId-739929946"><img class="lia-deferred-image lia-image
+ -emoji" src="https://community.databricks.com/html/@A7F98D860BB18BB5818E1D
+ F04213DFCB/emoticons/2728.png" alt=":sparkles:" title=":sparkles:" /> Gene
+ rative AI Engineering</H3>\n<P style="margin: 0 0 10px\; font-size: 14px\;
+  color: #5a6b72\;">Complete all 4 modules from the Generative AI Engineeri
+ ng Learning Plan:</P>\n<UL style="margin: 0\; padding-left: 20px\; font-si
+ ze: 15px\;">\n<LI><A style="color: #2272b4\; text-decoration: none\; font-
+ weight: 600\;" href="https://customer-academy.databricks.com/learn/courses
+ /5857/building-rag-agents-with-agent-bricks?utm_source=daiwt_1_event&amp\;
+ utm_medium=community&amp\;utm_content=gaiwd" target="_blank" rel="noopener
+  nofollow noreferrer">Building RAG Agents with Databricks</A></LI>\n<LI><A
+  style="color: #2272b4\; text-decoration: none\; font-weight: 600\;" href=
+ "https://customer-academy.databricks.com/learn/courses/5856/building-agent
+ ic-applications-on-databricks?utm_source=daiwt_1_event&amp\;utm_medium=com
+ munity&amp\;utm_content=gaiwd" target="_blank" rel="noopener nofollow nore
+ ferrer">Building Agentic Applications on Databricks</A></LI>\n<LI><A style
+ ="color: #2272b4\; text-decoration: none\; font-weight: 600\;" href="https
+ ://customer-academy.databricks.com/learn/courses/5062/agent-evaluation-on-
+ databricks?utm_source=daiwt_1_event&amp\;utm_medium=community&amp\;utm_con
+ tent=gaiwd" target="_blank" rel="noopener nofollow noreferrer">Agent Evalu
+ ation on Databricks</A></LI>\n<LI><A style="color: #2272b4\; text-decorati
+ on: none\; font-weight: 600\;" href="https://customer-academy.databricks.c
+ om/learn/courses/5855/deploying-and-monitoring-agent-applications-on-datab
+ ricks?utm_source=daiwt_1_event&amp\;utm_medium=community&amp\;utm_content=
+ gaiwd" target="_blank" rel="noopener nofollow noreferrer">Deploying and Mo
+ nitoring Agent Applications on Databricks</A></LI>\n</UL>\n</DIV>\n<DIV st
+ yle="border: 1px solid #E4E7E9\; border-top: 5px solid #E65100\; border-ra
+ dius: 12px\; padding: 20px 24px\; margin-bottom: 16px\; box-shadow: 0 2px 
+ 8px rgba(27\,49\,57\,0.06)\;">\n<H3 style="margin: 0 0 4px\; font-size: 18
+ px\; color: #bf4400\;" id="toc-hId--1812227015"><img class="lia-deferred-i
+ mage lia-image-emoji" src="https://community.databricks.com/html/@3B8493F2
+ E24D122B8BF48E34C9F527C3/emoticons/1f525.png" alt=":fire:" title=":fire:" 
+ /> Apache Spark™ Developer</H3>\n<P style="margin: 0 0 10px\; font-size: 1
+ 4px\; color: #5a6b72\;">Complete all 4 modules from the Apache Spark™ Deve
+ loper Learning Plan:</P>\n<UL style="margin: 0\; padding-left: 20px\; font
+ -size: 15px\;">\n<LI><A style="color: #2272b4\; text-decoration: none\; fo
+ nt-weight: 600\;" href="https://customer-academy.databricks.com/learn/cour
+ ses/3901/introduction-to-apache-spark?hash=6788372f2d7294e77f5eb6191645568
+ ae747f68b&amp\;generated_by=409740&amp\;utm_source=daiwt_1_event&amp\;utm_
+ medium=community&amp\;utm_content=aspwd" target="_blank" rel="noopener nof
+ ollow noreferrer">Introduction to Apache Spark™</A></LI>\n<LI><A style="co
+ lor: #2272b4\; text-decoration: none\; font-weight: 600\;" href="https://c
+ ustomer-academy.databricks.com/learn/courses/3962/developing-applications-
+ with-apache-spark?hash=d2245ade317149fcb8f6d57ad991d9aa7f055f9f&amp\;gener
+ ated_by=409740&amp\;utm_source=daiwt_1_event&amp\;utm_medium=community&amp
+ \;utm_content=aspwd" target="_blank" rel="noopener nofollow noreferrer">De
+ veloping Applications with Apache Spark™</A></LI>\n<LI><A style="color: #2
+ 272b4\; text-decoration: none\; font-weight: 600\;" href="https://customer
+ -academy.databricks.com/learn/courses/3959/stream-processing-and-analysis-
+ with-apache-spark?hash=3e063f193bec2e8ca7cdf56ffbdced1657bcc087&amp\;gener
+ ated_by=409740&amp\;utm_source=daiwt_1_event&amp\;utm_medium=community&amp
+ \;utm_content=aspwd" target="_blank" rel="noopener nofollow noreferrer">St
+ ream Processing and Analysis with Apache Spark™</A></LI>\n<LI><A style="co
+ lor: #2272b4\; text-decoration: none\; font-weight: 600\;" href="https://c
+ ustomer-academy.databricks.com/learn/courses/3993/monitoring-and-optimizin
+ g-apache-spark-workloads-on-databricks?hash=ab93079e83ea33b616f97dc3100e8d
+ b490ec4e7a&amp\;generated_by=409740&amp\;utm_source=daiwt_1_event&amp\;utm
+ _medium=community&amp\;utm_content=aspwd" target="_blank" rel="noopener no
+ follow noreferrer">Monitoring and Optimizing Apache Spark™ Workloads on Da
+ tabricks</A></LI>\n</UL>\n</DIV>\n<DIV style="border: 1px solid #E4E7E9\; 
+ border-top: 5px solid #0E7490\; border-radius: 12px\; padding: 20px 24px\;
+  margin-bottom: 16px\; box-shadow: 0 2px 8px rgba(27\,49\,57\,0.06)\;">\n<
+ H3 style="margin: 0 0 4px\; font-size: 18px\; color: #0b5d73\;" id="toc-hI
+ d--69416680"><img class="lia-deferred-image lia-image-emoji" src="https://
+ community.databricks.com/html/@8F28D0CC7A94BC045C50FFEC1BE274C1/emoticons/
+ 1f3db.png" alt=":classical_building:" title=":classical_building:" />️ Dat
+ a Warehousing Practitioner</H3>\n<P style="margin: 0 0 10px\; font-size: 1
+ 4px\; color: #5a6b72\;">Complete all 4 modules from the Data Warehousing P
+ ractitioner Learning Plan:</P>\n<UL style="margin: 0\; padding-left: 20px\
+ ; font-size: 15px\;">\n<LI><A style="color: #2272b4\; text-decoration: non
+ e\; font-weight: 600\;" href="https://customer-academy.databricks.com/lear
+ n/courses/4214/sql-programming-and-procedural-logic?utm_source=daiwt_1_eve
+ nt&amp\;utm_medium=community&amp\;utm_content=dwp" target="_blank" rel="no
+ opener nofollow noreferrer">SQL Programming and Procedural Logic in Databr
+ icks</A></LI>\n<LI><A style="color: #2272b4\; text-decoration: none\; font
+ -weight: 600\;" href="https://customer-academy.databricks.com/learn/course
+ s/3742/data-modeling-strategies?utm_source=daiwt_1_event&amp\;utm_medium=c
+ ommunity&amp\;utm_content=dwp" target="_blank" rel="noopener nofollow nore
+ ferrer">Data Modelling Strategies</A></LI>\n<LI><A style="color: #2272b4\;
+  text-decoration: none\; font-weight: 600\;" href="https://customer-academ
+ y.databricks.com/learn/courses/4964/building-semantic-models-in-databricks
+ -with-uc-metric-views?utm_source=daiwt_1_event&amp\;utm_medium=community&a
+ mp\;utm_content=dwp" target="_blank" rel="noopener nofollow noreferrer">Bu
+ ilding Semantic Models in Databricks with UC Metric Views</A></LI>\n<LI><A
+  style="color: #2272b4\; text-decoration: none\; font-weight: 600\;" href=
+ "https://customer-academy.databricks.com/learn/courses/5401/architecting-d
+ ata-warehouses-for-large-scale-deployments?utm_source=daiwt_1_event&amp\;u
+ tm_medium=community&amp\;utm_content=dwp" target="_blank" rel="noopener no
+ follow noreferrer">Architecting Data Warehouses for Large-Scale Deployment
+ s</A></LI>\n</UL>\n</DIV>\n<DIV style="text-align: center\; margin: 28px 0
+  8px\;"><A style="display: inline-block\; background: #1B3139\; color: #ff
+ ffff\; padding: 12px 28px\; border-radius: 30px\; text-decoration: none\; 
+ font-weight: bold\; font-size: 15px\;" href="https://community.databricks.
+ com/t5/databricks-academy-learners/faq-for-advanced-learning-festival-sept
+ ember-16-october-14-2026/m-p/166151#M783" target="_blank">Read the full FA
+ Q →</A></DIV>\n<P style="text-align: center\; font-size: 20px\; font-weigh
+ t: bold\; margin: 18px 0\;">Happy learning! <img class="lia-deferred-image
+  lia-image-emoji" src="https://community.databricks.com/html/@8CDC6B312218
+ BCB27BB3A819537E0FB6/emoticons/1f4da.png" alt=":books:" title=":books:" />
+ <img class="lia-deferred-image lia-image-emoji" src="https://community.dat
+ abricks.com/html/@33B57669DA1061A533D5E2AEF40BAA72/emoticons/1f393.png" al
+ t=":graduation_cap:" title=":graduation_cap:" />🧑‍<img class="lia-deferre
+ d-image lia-image-emoji" src="https://community.databricks.com/html/@DC849
+ BE40276FB13BDBBD84A6153EBFC/emoticons/1f4bb.png" alt=":laptop_computer:" t
+ itle=":laptop_computer:" /></P>\n</DIV>
+END:VEVENT
+END:VCALENDAR

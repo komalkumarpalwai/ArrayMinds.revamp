@@ -112,7 +112,15 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Tech Insights & Blog -->
+  <!-- Tech Insights & Blogs -->
+  <url>
+    <loc>https://arrayminds.in/blogs</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Legacy alias for Search Console crawled queue -->
   <url>
     <loc>https://arrayminds.in/blog</loc>
     <lastmod>2026-09-05</lastmod>

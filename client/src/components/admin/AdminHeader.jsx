@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { LogOut, User, Globe, Shield, Sparkles } from 'lucide-react';
+import { LogOut, Globe, Shield, Sparkles } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import logoImg from '../../assets/Company Logos/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
 
@@ -8,9 +8,26 @@ const AdminHeader = () => {
   const { admin, logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     navigate('/admin/login');
+  };
+
+  const getRoleBadgeColor = (role) => {
+    switch (role?.toLowerCase()) {
+      case 'super admin':
+        return 'bg-purple-500/20 text-purple-300 border-purple-500/40';
+      case 'admin':
+        return 'bg-blue-500/20 text-blue-300 border-blue-500/40';
+      case 'digital marketing':
+        return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+      case 'hr':
+        return 'bg-rose-500/20 text-rose-300 border-rose-500/40';
+      case 'content editor':
+        return 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+      default:
+        return 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40';
+    }
   };
 
   return (
@@ -33,7 +50,7 @@ const AdminHeader = () => {
           </div>
 
           {/* User Profile & Actions */}
-          <div className="flex items-center gap-3 sm:gap-5">
+          <div className="flex items-center gap-3 sm:gap-4">
             
             {/* View Live Public Site */}
             <Link
@@ -46,17 +63,26 @@ const AdminHeader = () => {
               <span className="hidden sm:inline">Live Website</span>
             </Link>
 
-            {/* Admin User Info */}
+            {/* Admin User Info & Role Badge */}
             <div className="flex items-center gap-2.5 pl-3 border-l border-white/15">
               <div className="w-8 h-8 rounded-full bg-[#00C2CB] text-[#032B2E] flex items-center justify-center text-xs font-bold shadow-xs">
                 {admin?.name ? admin.name.charAt(0).toUpperCase() : 'A'}
               </div>
               <div className="hidden md:block text-left">
-                <p className="text-xs font-bold text-white leading-tight">
-                  {admin?.name || 'Administrator'}
-                </p>
+                <div className="flex items-center gap-2">
+                  <p className="text-xs font-bold text-white leading-tight">
+                    {admin?.name || 'Administrator'}
+                  </p>
+                  <span
+                    className={`text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full border ${getRoleBadgeColor(
+                      admin?.role
+                    )}`}
+                  >
+                    {admin?.role || 'Admin'}
+                  </span>
+                </div>
                 <p className="text-[10px] text-[#8A99B5] font-mono">
-                  {admin?.email || 'admin@arrayminds.com'}
+                  {admin?.email || 'admin@arrayminds.com'} • {admin?.department || 'Executive'}
                 </p>
               </div>
             </div>

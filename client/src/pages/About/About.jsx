@@ -30,6 +30,7 @@ import {
 // Brand & Client Logos
 import salesforceLogo from '../../assets/Partnerships/salesforce-logo2.png';
 import databricksLogo from '../../assets/Partnerships/databricks-logo2.png';
+import freshworksLogo from '../../assets/Partnerships/Freshworks..webp';
 import emeraldLogo from '../../assets/Clients/emerland.avif';
 import aesLogo from '../../assets/Clients/AES.avif';
 import propelLogo from '../../assets/Clients/propel.avif';
@@ -173,14 +174,14 @@ const About = () => {
 
         <div className="relative max-w-5xl mx-auto text-center space-y-8">
           
-          {/* Dual Partner Cards */}
-          <div className="gsap-about-hero flex flex-wrap items-center justify-center gap-6 sm:gap-10">
-            <div className="bg-white hover:bg-white/95 text-[#0A1128] p-5 sm:p-7 px-8 sm:px-12 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 min-w-[210px] sm:min-w-[250px]">
-              <div className="h-20 sm:h-24 w-full flex items-center justify-center py-1">
+          {/* Partner Badges */}
+          <div className="gsap-about-hero flex flex-wrap items-center justify-center gap-5 sm:gap-8 lg:gap-10">
+            <div className="bg-white hover:bg-white/95 text-[#0A1128] p-5 sm:p-7 px-7 sm:px-10 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 min-w-[190px] sm:min-w-[220px]">
+              <div className="h-16 sm:h-20 w-full flex items-center justify-center py-1">
                 <img 
                   src={salesforceLogo} 
                   alt="Salesforce" 
-                  className="h-full max-h-20 sm:max-h-24 w-auto max-w-[170px] sm:max-w-[210px] object-contain scale-110 sm:scale-125" 
+                  className="h-full max-h-16 sm:max-h-20 w-auto max-w-[150px] sm:max-w-[180px] object-contain scale-110 sm:scale-125" 
                 />
               </div>
               <span className="text-xs sm:text-sm font-black text-[#00A1E0] uppercase tracking-[0.25em] border-t border-gray-100 pt-2.5 w-full text-center">
@@ -188,15 +189,28 @@ const About = () => {
               </span>
             </div>
 
-            <div className="bg-white hover:bg-white/95 text-[#0A1128] p-5 sm:p-7 px-8 sm:px-12 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 min-w-[210px] sm:min-w-[250px]">
-              <div className="h-20 sm:h-24 w-full flex items-center justify-center py-1">
+            <div className="bg-white hover:bg-white/95 text-[#0A1128] p-5 sm:p-7 px-7 sm:px-10 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 min-w-[190px] sm:min-w-[220px]">
+              <div className="h-16 sm:h-20 w-full flex items-center justify-center py-1">
                 <img 
                   src={databricksLogo} 
                   alt="Databricks" 
-                  className="h-full max-h-20 sm:max-h-24 w-auto max-w-[170px] sm:max-w-[210px] object-contain scale-110 sm:scale-125" 
+                  className="h-full max-h-16 sm:max-h-20 w-auto max-w-[150px] sm:max-w-[180px] object-contain scale-110 sm:scale-125" 
                 />
               </div>
               <span className="text-xs sm:text-sm font-black text-[#FF3621] uppercase tracking-[0.25em] border-t border-gray-100 pt-2.5 w-full text-center">
+                PARTNER
+              </span>
+            </div>
+
+            <div className="bg-white hover:bg-white/95 text-[#0A1128] p-5 sm:p-7 px-7 sm:px-10 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 min-w-[190px] sm:min-w-[220px]">
+              <div className="h-16 sm:h-20 w-full flex items-center justify-center py-1">
+                <img 
+                  src={freshworksLogo} 
+                  alt="Freshworks" 
+                  className="h-full max-h-16 sm:max-h-20 w-auto max-w-[150px] sm:max-w-[180px] object-contain scale-110 sm:scale-125" 
+                />
+              </div>
+              <span className="text-xs sm:text-sm font-black text-[#F26522] uppercase tracking-[0.25em] border-t border-gray-100 pt-2.5 w-full text-center">
                 PARTNER
               </span>
             </div>

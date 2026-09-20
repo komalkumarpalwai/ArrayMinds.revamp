@@ -36,6 +36,7 @@ async function prerender() {
     { url: '/team', seoKey: 'team' },
     { url: '/careers', seoKey: 'careers' },
     { url: '/contact', seoKey: 'contact' },
+    { url: '/blogs', seoKey: 'blogs' },
     { url: '/blog', seoKey: 'blog' },
   ];
 

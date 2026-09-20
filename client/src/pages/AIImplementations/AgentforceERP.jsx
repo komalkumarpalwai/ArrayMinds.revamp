@@ -453,7 +453,7 @@ const AgentforceERP = () => {
               {/* Action Buttons */}
               <div className="gsap-amerp-hero-item pt-2 flex flex-wrap items-center gap-4">
                 <a
-                  href="/AMERP"
+                  href="/amerp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-[#032B2E] bg-[#00C2CB] hover:bg-[#7FE4EA] transition-all duration-200 shadow-xl shadow-[#00C2CB]/20 hover:scale-105 active:scale-95"

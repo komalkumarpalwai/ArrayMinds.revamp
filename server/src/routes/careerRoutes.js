@@ -7,16 +7,18 @@ import {
   deleteCareer,
 } from '../controllers/careerController.js';
 import { protectAdmin } from '../middleware/authMiddleware.js';
+import { requirePermission } from '../middleware/rbacMiddleware.js';
+import { PERMISSIONS } from '../config/rbacConfig.js';
 
 const router = express.Router();
 
 router.route('/')
   .get(getCareers)
-  .post(protectAdmin, createCareer);
+  .post(protectAdmin, requirePermission(PERMISSIONS.CAREER_CREATE), createCareer);
 
 router.route('/:id')
   .get(getCareerById)
-  .put(protectAdmin, updateCareer)
-  .delete(protectAdmin, deleteCareer);
+  .put(protectAdmin, requirePermission(PERMISSIONS.CAREER_EDIT), updateCareer)
+  .delete(protectAdmin, requirePermission(PERMISSIONS.CAREER_DELETE), deleteCareer);
 
 export default router;

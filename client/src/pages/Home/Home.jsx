@@ -38,6 +38,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Brand & Client Logos & Hero Video
 import salesforceLogo from '../../assets/Partnerships/salesforce-logo2.png';
 import databricksLogo from '../../assets/Partnerships/databricks-logo2.png';
+import freshworksLogo from '../../assets/Partnerships/Freshworks..webp';
 import emeraldLogo from '../../assets/Clients/emerland.avif';
 import aesLogo from '../../assets/Clients/AES.avif';
 import propelLogo from '../../assets/Clients/propel.avif';
@@ -279,6 +280,27 @@ const Home = () => {
       tag: "Zoho One",
       icon: <Layers className="w-6 h-6 text-[#1B3B6F]" />,
     },
+    {
+      title: "Freshdesk & Freshservice ITSM Implementation",
+      category: "freshworks",
+      desc: "Omnichannel customer support ticketing, ITIL-compliant service desk, automated SLA workflows, and multi-department service catalogs.",
+      tag: "Freshworks Partner",
+      icon: <Headphones className="w-6 h-6 text-[#F26522]" />,
+    },
+    {
+      title: "Freshsales CRM & Freddy AI Automation",
+      category: "freshworks",
+      desc: "AI-driven lead scoring, visual deal pipelines, intelligent email sequences, and Freddy Copilot conversational automation.",
+      tag: "Freshsales & Freddy AI",
+      icon: <Bot className="w-6 h-6 text-[#FF5959]" />,
+    },
+    {
+      title: "Freshworks Suite & Cross-Platform Integrations",
+      category: "freshworks",
+      desc: "Turnkey API pipelines connecting Freshworks with Salesforce, WhatsApp Business, Databricks, and enterprise ERP backends.",
+      tag: "Freshworks Integrations",
+      icon: <Workflow className="w-6 h-6 text-[#F26522]" />,
+    },
   ];
 
   const filteredServices = activeServiceTab === 'all' 
@@ -314,16 +336,16 @@ const Home = () => {
 
         <div className="relative max-w-6xl mx-auto text-center space-y-8">
           
-          {/* Official Dual Partner Badges (Big Images with PARTNER Label Underneath) */}
-          <div className="gsap-hero-item flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+          {/* Official Partner Badges (Big Images with PARTNER Label Underneath) */}
+          <div className="gsap-hero-item flex flex-wrap items-center justify-center gap-5 sm:gap-8 lg:gap-10">
             
             {/* Salesforce Partner Card */}
-            <div className="bg-white hover:bg-white/95 text-[#0A1128] p-5 sm:p-7 px-8 sm:px-12 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 min-w-[210px] sm:min-w-[250px]">
-              <div className="h-20 sm:h-24 w-full flex items-center justify-center py-1">
+            <div className="bg-white hover:bg-white/95 text-[#0A1128] p-5 sm:p-7 px-7 sm:px-10 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 min-w-[190px] sm:min-w-[220px]">
+              <div className="h-16 sm:h-20 w-full flex items-center justify-center py-1">
                 <img 
                   src={salesforceLogo} 
                   alt="Salesforce" 
-                  className="h-full max-h-20 sm:max-h-24 w-auto max-w-[170px] sm:max-w-[210px] object-contain scale-110 sm:scale-125"
+                  className="h-full max-h-16 sm:max-h-20 w-auto max-w-[150px] sm:max-w-[180px] object-contain scale-110 sm:scale-125"
                 />
               </div>
               <span className="text-xs sm:text-sm font-black text-[#00A1E0] uppercase tracking-[0.25em] border-t border-gray-100 pt-2.5 w-full text-center">
@@ -332,15 +354,29 @@ const Home = () => {
             </div>
 
             {/* Databricks Partner Card */}
-            <div className="bg-white hover:bg-white/95 text-[#0A1128] p-5 sm:p-7 px-8 sm:px-12 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 min-w-[210px] sm:min-w-[250px]">
-              <div className="h-20 sm:h-24 w-full flex items-center justify-center py-1">
+            <div className="bg-white hover:bg-white/95 text-[#0A1128] p-5 sm:p-7 px-7 sm:px-10 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 min-w-[190px] sm:min-w-[220px]">
+              <div className="h-16 sm:h-20 w-full flex items-center justify-center py-1">
                 <img 
                   src={databricksLogo} 
                   alt="Databricks" 
-                  className="h-full max-h-20 sm:max-h-24 w-auto max-w-[170px] sm:max-w-[210px] object-contain scale-110 sm:scale-125"
+                  className="h-full max-h-16 sm:max-h-20 w-auto max-w-[150px] sm:max-w-[180px] object-contain scale-110 sm:scale-125"
                 />
               </div>
               <span className="text-xs sm:text-sm font-black text-[#FF3621] uppercase tracking-[0.25em] border-t border-gray-100 pt-2.5 w-full text-center">
+                PARTNER
+              </span>
+            </div>
+
+            {/* Freshworks Partner Card */}
+            <div className="bg-white hover:bg-white/95 text-[#0A1128] p-5 sm:p-7 px-7 sm:px-10 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 min-w-[190px] sm:min-w-[220px]">
+              <div className="h-16 sm:h-20 w-full flex items-center justify-center py-1">
+                <img 
+                  src={freshworksLogo} 
+                  alt="Freshworks" 
+                  className="h-full max-h-16 sm:max-h-20 w-auto max-w-[150px] sm:max-w-[180px] object-contain scale-110 sm:scale-125"
+                />
+              </div>
+              <span className="text-xs sm:text-sm font-black text-[#F26522] uppercase tracking-[0.25em] border-t border-gray-100 pt-2.5 w-full text-center">
                 PARTNER
               </span>
             </div>
@@ -357,6 +393,7 @@ const Home = () => {
                     'Salesforce & Agentforce AI.',
                     'ArrayMinds Native ERP.',
                     'Databricks & Lakehouse BI.',
+                    'Freshworks CX & Service Desk.',
                     'Enterprise AI Automation.',
                     'Retail & Cloud Architecture.',
                   ]}
@@ -367,7 +404,7 @@ const Home = () => {
               </span>
             </h1>
             <p className="text-base sm:text-xl text-[#C7CDDA] font-light max-w-3xl mx-auto leading-relaxed">
-              We architect, implement, and scale the Salesforce Platform & Databricks Lakehouse with autonomous AI agents tailored to your business objectives.
+              We architect, implement, and scale the Salesforce Platform, Databricks Lakehouse, and Freshworks CX & ITSM with autonomous AI agents tailored to your business objectives.
             </p>
           </div>
 
@@ -524,7 +561,7 @@ const Home = () => {
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A1128] tracking-tight leading-tight">
-              Optimize Your Salesforce & Databricks Experience
+              Optimize Your Salesforce, Databricks & Freshworks Experience
             </h2>
 
             <div className="space-y-4 text-gray-700 text-base leading-relaxed">
@@ -532,7 +569,7 @@ const Home = () => {
                 At <strong>Array Minds</strong>, we acknowledge that the industry needs of each customer are distinct. An in-depth interpretation of your methods, system, and technology ecosystem is crucial to take well-informed pathways on your digital transformation journey.
               </p>
               <p>
-                As your <strong>Salesforce & Databricks Consulting Partner</strong>, we approach every task with curiosity, deep research, and consciousness during the discovery phase — providing tailor-made proposals, robust architectures, and future-proof implementations.
+                As your <strong>Salesforce, Databricks & Freshworks Consulting Partner</strong>, we approach every task with curiosity, deep research, and consciousness during the discovery phase — providing tailor-made proposals, robust architectures, and future-proof implementations.
               </p>
             </div>
 
@@ -563,10 +600,10 @@ const Home = () => {
               </div>
 
               <div className="p-4 rounded-xl bg-white border border-gray-200 shadow-sm flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#00C2CB] flex-shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-[#F26522] flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-sm text-[#0A1128]">On-Time Delivery</h4>
-                  <p className="text-xs text-gray-600">Agile sprints with transparent communication milestones.</p>
+                  <h4 className="font-bold text-sm text-[#0A1128]">Freshworks CX & ITSM</h4>
+                  <p className="text-xs text-gray-600">Modern customer service, Freddy AI, and IT desk automation.</p>
                 </div>
               </div>
             </div>
@@ -588,9 +625,9 @@ const Home = () => {
               <div className="absolute top-0 right-0 w-48 h-48 bg-[#00C2CB]/15 rounded-full blur-2xl"></div>
 
               <div className="space-y-6 relative z-10">
-                <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
+                <div className="flex items-center justify-between border-b border-white/[0.08] pb-4 flex-wrap gap-2">
                   <span className="text-xs font-bold uppercase tracking-widest text-[#7FE4EA]">Ecosystem Alliance</span>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5 flex-wrap">
                     <span className="px-2.5 py-1 rounded-lg bg-[#00A1E0]/20 text-[#60cdff] text-xs font-bold border border-[#00A1E0]/30">
                       Salesforce
                     </span>
@@ -598,15 +635,19 @@ const Home = () => {
                     <span className="px-2.5 py-1 rounded-lg bg-[#FF3621]/20 text-[#ff8f82] text-xs font-bold border border-[#FF3621]/30">
                       Databricks
                     </span>
+                    <span className="text-white/40 text-xs font-light">×</span>
+                    <span className="px-2.5 py-1 rounded-lg bg-[#F26522]/20 text-[#ffa372] text-xs font-bold border border-[#F26522]/30">
+                      Freshworks
+                    </span>
                   </div>
                 </div>
 
                 <h3 className="text-2xl font-bold leading-snug text-white">
-                  Unifying Enterprise CRM & Lakehouse Intelligence
+                  Unifying CRM, Lakehouse & Intelligent Service Desks
                 </h3>
 
                 <p className="text-sm text-[#C7CDDA] leading-relaxed font-light">
-                  We bridge the gap between Salesforce Customer 360 and Databricks scalable Lakehouse data architecture, unleashing real-time data sync, predictive modeling, and autonomous Agentforce workflows.
+                  We bridge the gap between Salesforce Customer 360, Databricks scalable Lakehouse architecture, and Freshworks modern service desks — delivering real-time data sync, predictive modeling, and Freddy & Agentforce AI workflows.
                 </p>
 
                 <div className="space-y-3 pt-2">
@@ -616,11 +657,11 @@ const Home = () => {
                   </div>
                   <div className="flex items-center gap-3 text-sm text-[#C7CDDA]">
                     <Zap className="w-4 h-4 text-[#00C2CB]" />
-                    <span>Autonomous Agentforce Agents for Sales & Service</span>
+                    <span>Autonomous Agentforce & Freddy AI Automations</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-[#C7CDDA]">
                     <Zap className="w-4 h-4 text-[#00C2CB]" />
-                    <span>Enterprise AppExchange Package Engineering</span>
+                    <span>Freshdesk, Freshservice & WhatsApp Pipelines</span>
                   </div>
                 </div>
 
@@ -793,7 +834,7 @@ const Home = () => {
               </div>
 
               <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold text-[#7FE4EA]">
-                <Link to="/AMERP" className="hover:underline flex items-center gap-1">
+                <Link to="/amerp" className="hover:underline flex items-center gap-1">
                   <span>Explore AM ERP Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
@@ -878,7 +919,7 @@ const Home = () => {
 
               <div className="flex items-center gap-3 flex-shrink-0 self-end md:self-center">
                 <Link
-                  to="/AMERP"
+                  to="/amerp"
                   className="px-4 py-2 rounded-xl text-xs font-bold text-slate-950 bg-[#00C2CB] hover:bg-[#7FE4EA] transition-all shadow-md"
                 >
                   View ArrayMinds ERP
@@ -1012,7 +1053,7 @@ const Home = () => {
               Our Professional Services
             </h2>
             <p className="text-base text-gray-600">
-              End-to-end consulting, engineering, migration, and artificial intelligence solutions across Salesforce & Databricks.
+              End-to-end consulting, engineering, migration, and artificial intelligence solutions across Salesforce, Databricks & Freshworks.
             </p>
 
             {/* Filter Tabs */}
@@ -1046,6 +1087,16 @@ const Home = () => {
                 }`}
               >
                 Databricks & AI
+              </button>
+              <button
+                onClick={() => setActiveServiceTab('freshworks')}
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+                  activeServiceTab === 'freshworks'
+                    ? 'bg-[#F26522] text-white shadow-md'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                Freshworks Suite
               </button>
               <button
                 onClick={() => setActiveServiceTab('integrations')}
@@ -1125,7 +1176,7 @@ const Home = () => {
             Number Of Certified People
           </h2>
           <p className="text-base text-gray-600">
-            Our certified engineering and architecture specialists bring vetted expertise to your enterprise Salesforce and Databricks engagements.
+            Our certified engineering and architecture specialists bring vetted expertise to your enterprise Salesforce, Databricks, and Freshworks engagements.
           </p>
         </div>
 
@@ -1265,10 +1316,10 @@ const Home = () => {
         <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-[#0A1128] via-[#10224A] to-[#1B3B6F] text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left relative overflow-hidden border border-white/[0.08]">
           <div className="space-y-2 max-w-2xl relative z-10">
             <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-              Ready to Accelerate with Salesforce & Databricks?
+              Ready to Accelerate with Salesforce, Databricks & Freshworks?
             </h2>
             <p className="text-[#C7CDDA] text-sm sm:text-base font-light">
-              Connect with our certified architects to explore custom implementation, Agentforce AI automation, or Databricks data integration.
+              Connect with our certified architects to explore custom implementation, Agentforce AI automation, Freshworks CX & ITSM, or Lakehouse data integration.
             </p>
           </div>
 

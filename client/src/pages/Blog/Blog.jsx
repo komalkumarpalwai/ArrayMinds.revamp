@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import LogoLoader from '../../components/common/LogoLoader';
 import SEO from '../../components/common/SEO';
+import api from '../../services/api';
 import { seoRoutes, organizationSchema } from '../../utils/seoConfig';
 
 const Blog = () => {

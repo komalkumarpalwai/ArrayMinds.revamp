@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logoImg from '../../assets/Company Logos/array_minds_logo_FOR_DARK_NAVY_SITE-removebg-preview.png';
 import salesforceLogo from '../../assets/Partnerships/salesforce-logo2.png';
 import databricksLogo from '../../assets/Partnerships/databricks-logo2.png';
+import freshworksLogo from '../../assets/Partnerships/Freshworks..webp';
 import { Sparkles, ShieldCheck, Zap } from 'lucide-react';
 
 const Preloader = () => {
@@ -98,6 +99,15 @@ const Preloader = () => {
             <div className="text-left">
               <span className="text-[10px] font-mono text-[#8A99B5] block uppercase leading-none">Certified</span>
               <span className="text-xs font-bold text-white leading-tight">Databricks Partner</span>
+            </div>
+          </div>
+
+          {/* Freshworks Partner Badge */}
+          <div className="flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white/[0.06] border border-white/[0.1] backdrop-blur-md shadow-sm hover:border-[#F26522]/50 transition-all">
+            <img src={freshworksLogo} alt="Freshworks" className="h-5 w-auto object-contain" />
+            <div className="text-left">
+              <span className="text-[10px] font-mono text-[#8A99B5] block uppercase leading-none">Official</span>
+              <span className="text-xs font-bold text-white leading-tight">Freshworks Partner</span>
             </div>
           </div>
         </div>

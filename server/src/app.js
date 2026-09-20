@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
 import careerRoutes from './routes/careerRoutes.js';
 import careerSubmissionRoutes from './routes/careerSubmissionRoutes.js';
@@ -13,8 +14,45 @@ dotenv.config();
 
 const app = express();
 
+// Lightweight Cookie Parser Middleware
+const cookieParser = (req, res, next) => {
+  req.cookies = {};
+  const cookieHeader = req.headers.cookie;
+  if (cookieHeader) {
+    cookieHeader.split(';').forEach((cookie) => {
+      const parts = cookie.split('=');
+      const name = parts[0].trim();
+      const val = parts.slice(1).join('=').trim();
+      if (name) {
+        req.cookies[name] = decodeURIComponent(val);
+      }
+    });
+  }
+  next();
+};
+
 // Middlewares
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'https://arrayminds.in',
+  'https://www.arrayminds.in',
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // allow requests with no origin (like mobile apps, curl)
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(null, true); // permissive for staging/dev
+    },
+    credentials: true,
+  })
+);
+
+app.use(cookieParser);
 app.use(express.json());
 
 // Serve uploaded resumes statically
@@ -28,11 +66,13 @@ app.get('/', (req, res) => {
     clientUrl: 'http://localhost:5173',
     endpoints: {
       health: '/api',
+      auth: '/api/auth/login',
+      users: '/api/users',
+      auditLogs: '/api/audit-logs',
       blogs: '/api/blogs',
       careers: '/api/careers',
       careerSubmissions: '/api/career-submissions',
       contact: '/api/contact',
-      auth: '/api/auth/login',
     },
   });
 });
@@ -69,6 +109,7 @@ app.get('/api/health', async (req, res) => {
 
 // Mounted Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/careers', careerRoutes);
 app.use('/api/career-submissions', careerSubmissionRoutes);

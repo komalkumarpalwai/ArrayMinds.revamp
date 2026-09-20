@@ -14,7 +14,7 @@ export const organizationSchema = {
   alternateName: 'Array Minds Technologies',
   url: SITE_DOMAIN,
   logo: `${SITE_DOMAIN}/logo.png`,
-  description: 'Official Salesforce and Databricks Partner specializing in enterprise AI, Agentforce ERP, AppExchange solutions, and custom cloud architectures.',
+  description: 'Official Salesforce, Databricks, and Freshworks Partner specializing in enterprise AI, Agentforce ERP, Freshworks CX, AppExchange solutions, and custom cloud architectures.',
   email: 'info@arrayminds.com',
   sameAs: [
     'https://www.linkedin.com/company/arrayminds/',
@@ -82,9 +82,9 @@ export const websiteSchema = {
  */
 export const seoRoutes = {
   home: {
-    title: 'ArrayMinds | Official Salesforce & Databricks Partner | Enterprise AI Solutions',
-    description: 'Empowering global enterprises with next-generation Salesforce architecture, Databricks analytics lakehouse, autonomous Agentforce AI, AM ERP, and custom cloud engineering.',
-    keywords: 'Salesforce Partner, Databricks Partner, Enterprise AI Solutions, Agentforce ERP, AM ERP, Salesforce Consulting London, Salesforce Consulting India, Cloud Transformation',
+    title: 'ArrayMinds | Salesforce, Databricks & Freshworks Partner | Enterprise AI Solutions',
+    description: 'Empowering global enterprises with next-generation Salesforce architecture, Databricks analytics lakehouse, Freshworks CX & ITSM, autonomous Agentforce AI, AM ERP, and custom cloud engineering.',
+    keywords: 'Salesforce Partner, Databricks Partner, Freshworks Partner, Freshdesk, Freshservice, Enterprise AI Solutions, Agentforce ERP, AM ERP, Salesforce Consulting London, Salesforce Consulting India, Cloud Transformation',
     canonicalPath: '/',
     structuredData: [
       organizationSchema,
@@ -92,7 +92,7 @@ export const seoRoutes = {
       {
         '@context': 'https://schema.org',
         '@type': 'ProfessionalService',
-        name: 'ArrayMinds Salesforce & Databricks Consulting',
+        name: 'ArrayMinds Salesforce, Databricks & Freshworks Consulting',
         image: DEFAULT_OG_IMAGE,
         url: SITE_DOMAIN,
         telephone: '+44 7447 917 183',
@@ -120,6 +120,13 @@ export const seoRoutes = {
               itemOffered: {
                 '@type': 'Service',
                 name: 'Databricks Data Lakehouse & AI Analytics'
+              }
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Freshworks CX & Freshservice ITSM Implementation'
               }
             },
             {
@@ -189,15 +196,15 @@ export const seoRoutes = {
     ]
   },
   services: {
-    title: 'Enterprise Services & Consulting | Salesforce & Databricks Lakehouse | ArrayMinds',
-    description: 'Accelerate digital transformation with ArrayMinds consulting services: Salesforce Multi-Cloud, Databricks Analytics & Lakehouse, Custom Cloud Engineering, and Agentforce AI.',
-    keywords: 'Salesforce Consulting Services, Databricks Lakehouse Consulting, Custom Cloud Engineering, Salesforce Integrations, AI Transformation Services',
+    title: 'Enterprise Services & Consulting | Salesforce, Databricks & Freshworks | ArrayMinds',
+    description: 'Accelerate digital transformation with ArrayMinds consulting services: Salesforce Multi-Cloud, Databricks Lakehouse, Freshworks CX & ITSM, Custom Cloud Engineering, and Agentforce AI.',
+    keywords: 'Salesforce Consulting Services, Databricks Lakehouse Consulting, Freshworks Consulting, Freshdesk ITSM, Custom Cloud Engineering, Salesforce Integrations, AI Transformation Services',
     canonicalPath: '/services',
     structuredData: [
       {
         '@context': 'https://schema.org',
         '@type': 'Service',
-        serviceType: 'Enterprise Cloud & Data Consulting',
+        serviceType: 'Enterprise Cloud, CRM & Data Consulting',
         provider: organizationSchema,
         areaServed: ['GB', 'US', 'IN', 'EU'],
         hasOfferCatalog: {
@@ -206,6 +213,7 @@ export const seoRoutes = {
           itemListElement: [
             { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Salesforce Architecture & Implementation' } },
             { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Databricks Lakehouse & Data Engineering' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Freshworks CX & Freshservice ITSM Implementation' } },
             { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Custom Cloud & API Integration' } },
             { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Autonomous Enterprise AI & Agentforce' } }
           ]
@@ -311,6 +319,21 @@ export const seoRoutes = {
         '@type': 'Blog',
         name: 'ArrayMinds Tech Insights',
         url: `${SITE_DOMAIN}/blog`,
+        publisher: organizationSchema
+      }
+    ]
+  },
+  blogs: {
+    title: 'Insights & Technical Blogs | Salesforce, Databricks & AI | ArrayMinds',
+    description: 'Stay ahead with deep dives, architecture best practices, tutorials, and executive insights on Salesforce, Databricks Lakehouse, Agentforce, and Enterprise AI.',
+    keywords: 'Salesforce Blogs, Databricks Tutorials, Enterprise AI Insights, Agentforce Guides, Tech Insights ArrayMinds',
+    canonicalPath: '/blogs',
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: 'ArrayMinds Tech Insights',
+        url: `${SITE_DOMAIN}/blogs`,
         publisher: organizationSchema
       }
     ]
